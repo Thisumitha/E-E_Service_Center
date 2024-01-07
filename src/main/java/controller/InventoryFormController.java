@@ -7,9 +7,13 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
 import dto.ItemDto;
 import dto.tm.ItemTm;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -21,12 +25,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static java.lang.Double.parseDouble;
 
@@ -42,6 +48,8 @@ public class InventoryFormController {
     public JFXTreeTableView<ItemTm> tblItem;
 
     public ImageView itemImage;
+    public JFXTextField searchText;
+
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     public BorderPane pane;
     public JFXTextField id;
@@ -56,6 +64,8 @@ public class InventoryFormController {
     String imagepath;
 
     public void initialize() throws ClassNotFoundException {
+
+
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
         colName.setCellValueFactory(new TreeItemPropertyValueFactory<>("name"));
         colUnitPrice.setCellValueFactory(new TreeItemPropertyValueFactory<>("unitPrice"));
@@ -68,6 +78,18 @@ public class InventoryFormController {
         loadItemTable();
         tblItem.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             setData(newValue);
+        });
+        searchText.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String newValue) {
+                tblItem.setPredicate(new Predicate<TreeItem<ItemTm>>() {
+                    @Override
+                    public boolean test(TreeItem<ItemTm> treeItem) {
+                        return treeItem.getValue().getCode().contains(newValue) ||
+                                treeItem.getValue().getName().contains(newValue);
+                    }
+                });
+            }
         });
     }
 
@@ -257,4 +279,15 @@ public class InventoryFormController {
 
     }
 
+    public void backButton(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("DashBoard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,0 +1,13 @@
+
+g	java:S112<"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8š”¾©Î1
+s
+java:S1104"VMake searchText a static final constant or non-public and provide accessors if needed.(°çÇí8‚¾æ¨Î1
+r
+java:S1104"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8‚¾æ¨Î1
+o
+java:S1104"RMake layout a static final constant or non-public and provide accessors if needed.(Öç•×8‚¾æ¨Î1
+O
+java:S1172"2Remove this unused method parameter "actionEvent".(÷ßù±8‹¾æ¨Î1
+L	java:S1062"+Replace this use of System.out by a logger.(ƒ–©‘ùÿÿÿÿ8•¾æ¨Î1
+[
+java:S1128"9Remove this unused import 'javafx.scene.layout.GridPane'.(ÖÀ¹¯ûÿÿÿÿ8‰½©Î1

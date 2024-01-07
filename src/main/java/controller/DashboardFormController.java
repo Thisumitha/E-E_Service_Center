@@ -22,4 +22,16 @@ public class DashboardFormController  {
             e.printStackTrace();
         }
     }
+
+    public void StoreButton(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/StoreForm.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("Store");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

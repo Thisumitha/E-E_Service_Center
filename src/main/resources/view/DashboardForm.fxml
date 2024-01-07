@@ -51,7 +51,7 @@
                               <Image url="@../Assets/ee%20red%20logo.png" />
                            </image>
                         </ImageView>
-                        <JFXButton alignment="CENTER" prefHeight="46.0" prefWidth="262.0" style="-fx-border-color: #FFFFFF;" text="Store" textFill="WHITE" GridPane.rowIndex="1">
+                        <JFXButton alignment="CENTER" onAction="#StoreButton" prefHeight="46.0" prefWidth="262.0" style="-fx-border-color: #FFFFFF;" text="Store" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
