@@ -12,6 +12,9 @@ public interface ItemBo extends SuperBo {
     boolean deleteItem(String id) throws SQLException, ClassNotFoundException;
     List<ItemDto> allItems() throws SQLException, ClassNotFoundException;
 
+    List<String>getCategories();
+    List<String>getTypes();
+
 
 
 

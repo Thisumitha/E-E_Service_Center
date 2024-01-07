@@ -2,6 +2,8 @@ package dto;
 
 import lombok.*;
 
+import java.awt.*;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -12,5 +14,9 @@ public class ItemDto {
     private String name;
     private double unitPrice;
     private int qty;
+    private String category;
+    private String type;
     private String image;
+
+
 }

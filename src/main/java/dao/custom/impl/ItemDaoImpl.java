@@ -24,9 +24,12 @@ public class ItemDaoImpl implements ItemDao {
 
             return new ItemDto(
                     item.getCode(),
-                    item.getDescription(),
+                    item.getName(),
                     item.getUnitPrice(),
-                    item.getQtyOnHand()
+                    item.getQtyOnHand(),
+                    item.getCategory(),
+                    item.getType(),
+                    item.getImage()
 
             );
 
@@ -65,9 +68,12 @@ public class ItemDaoImpl implements ItemDao {
         Transaction transaction = session.beginTransaction();
         Item item = session.find(Item.class, entity.getCode());
         item.setCode(entity.getCode());
-        item.setDescription(entity.getDescription());
+        item.setName(entity.getName());
         item.setQtyOnHand(entity.getQtyOnHand());
         item.setUnitPrice(entity.getUnitPrice());
+        item.setCategory(entity.getCategory());
+        item.setCategory(entity.getCategory());
+        item.setImage(entity.getImage());
         session.save(item);
         transaction.commit();
         session.close();

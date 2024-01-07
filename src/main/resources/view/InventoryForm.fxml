@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InventoryFormController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1238.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InventoryFormController">
     <center>
         <GridPane BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -136,14 +136,15 @@
                         <RowConstraints maxHeight="-Infinity" minHeight="20.0" prefHeight="10.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                      <children>
-                        <JFXTreeTableView GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <JFXTreeTableView fx:id="tblItem" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <columns>
-                              <TreeTableColumn maxWidth="-1.0" minWidth="125.0" prefWidth="-1.0" text="Item Code" />
-                              <TreeTableColumn maxWidth="-1.0" minWidth="125.0" prefWidth="-1.0" text="Name" />
-                              <TreeTableColumn maxWidth="-1.0" minWidth="125.0" prefWidth="-1.0" text="Unit Price" />
-                              <TreeTableColumn maxWidth="-Infinity" minWidth="125.0" prefWidth="-1.0" text="QTY on Hand" />
-                              <TreeTableColumn maxWidth="-1.0" minWidth="125.0" prefWidth="-1.0" text="Category" />
-                              <TreeTableColumn maxWidth="-1.0" minWidth="125.0" prefWidth="-1.0" text="Option" />
+                              <TreeTableColumn fx:id="colCode" maxWidth="142.0" minWidth="125.0" prefWidth="138.0" text="Item Code" />
+                              <TreeTableColumn fx:id="colName" maxWidth="195.0" minWidth="125.0" prefWidth="163.0" text="Name" />
+                              <TreeTableColumn fx:id="colUnitPrice" maxWidth="213.0" minWidth="120.0" prefWidth="129.0" text="Unit Price" />
+                              <TreeTableColumn fx:id="colQty" maxWidth="205.0" minWidth="117.0" prefWidth="138.0" text="QTY on Hand" />
+                              <TreeTableColumn fx:id="colCategory" maxWidth="194.0" minWidth="114.0" prefWidth="118.0" text="Category" />
+                              <TreeTableColumn fx:id="colType" prefWidth="103.0" text="Type" />
+                              <TreeTableColumn fx:id="colOption" maxWidth="217.0" minWidth="119.0" prefWidth="128.0" text="Option" />
                            </columns>
                         </JFXTreeTableView>
                         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -195,7 +196,7 @@
                                                       <Font name="Bodoni MT Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <Label maxHeight="1.7976931348623157E308" maxWidth="-Infinity" text="Type  :   " textAlignment="RIGHT" GridPane.rowIndex="2">
+                                                <Label maxHeight="1.7976931348623157E308" maxWidth="-Infinity" text="Category :   " textAlignment="RIGHT" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Bodoni MT Bold" size="15.0" />
                                                    </font>
@@ -219,7 +220,7 @@
                                              <children>
                                                 <JFXTextField fx:id="id" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="124.0" />
                                                 <JFXTextField fx:id="name" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
-                                                <JFXComboBox fx:id="type" maxWidth="1.7976931348623157E308" promptText="Chose Type..." GridPane.rowIndex="2" />
+                                                <JFXComboBox fx:id="category" maxWidth="1.7976931348623157E308" promptText="Chose Type..." GridPane.rowIndex="2" />
                                              </children>
                                           </GridPane>
                                           <JFXButton onAction="#saveButtonOnAcction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #1F7A75;" text="Save" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -280,7 +281,7 @@
                                              <children>
                                                 <JFXTextField fx:id="qty" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="124.0" />
                                                 <JFXTextField fx:id="price" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
-                                                <JFXComboBox fx:id="category" maxWidth="1.7976931348623157E308" promptText="Chose Type..." GridPane.rowIndex="2" />
+                                                <JFXComboBox fx:id="type" maxWidth="1.7976931348623157E308" promptText="Chose Type..." GridPane.rowIndex="2" />
                                              </children>
                                           </GridPane>
                                           <JFXButton onAction="#updateButtonOnAcction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #1F7A75;" text="Update" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -301,8 +302,14 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <ImageView fitHeight="116.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                                          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="127.0" style="-fx-border-color: #000000;" GridPane.rowIndex="1" />
+                                          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="127.0" style="-fx-border-color: #000000;" GridPane.rowIndex="1">
+                                             <children>
+                                                <ImageView fx:id="itemImage" fitHeight="109.0" fitWidth="114.0" layoutX="9.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Assets/addPhoto.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children></AnchorPane>
                                           <JFXButton onAction="#importphoto" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #1F7A75;" text="Import" textFill="WHITE" GridPane.rowIndex="2">
                                              <font>
                                                 <Font name="System Bold" size="15.0" />
