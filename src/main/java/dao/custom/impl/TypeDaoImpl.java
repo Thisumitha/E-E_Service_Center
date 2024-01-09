@@ -27,11 +27,14 @@ public class TypeDaoImpl implements TypeDao {
     public boolean update(Type entity) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
 
+
         Transaction transaction = session.beginTransaction();
-        Type type = session.find(Type.class,entity.getId());
-        type.setType(entity.getType());
-        type.setId(entity.getId());
+        Type type = session.find(Type.class, entity.getType());
+        System.out.println("\n\n\n\n"+type+"\n\n\n\n ");
+        type.setType(entity.getId());
         type.setCategory(entity.getCategory());
+        type.setId(type.getType());
+
         session.save(type);
         transaction.commit();
         session.close();
@@ -62,7 +65,7 @@ public class TypeDaoImpl implements TypeDao {
         List list = query.list();
         if(!list.isEmpty()) {
             lastOrder= (Type) list.get(0);
-            last= lastOrder.getId();
+            last= Integer.parseInt(lastOrder.getId());
         }
 
         session.close();

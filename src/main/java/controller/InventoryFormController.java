@@ -105,9 +105,8 @@ public class InventoryFormController {
             name.setText(newValue.getValue().getName());
             price.setText(String.valueOf(newValue.getValue().getUnitPrice()));
             qty.setText(String.valueOf(newValue.getValue().getQty()));
-            int catIndex;
+
             int typeIndex;
-            catIndex = categories.indexOf( newValue.getValue().getCategory());
             typeIndex = types.indexOf(newValue.getValue().getType());
             type.getSelectionModel().select(typeIndex);
             imagepath=getimage(newValue.getValue().getCode());
@@ -133,8 +132,13 @@ public class InventoryFormController {
         try {
 
              dtoList =itemBo.allItems();
-
+            String category=null;
             for (ItemDto dto:dtoList){
+                for(TypeDto typeDto :types){
+                    if (typeDto.getType().equals(dto.getType())){
+                         category = typeDto.getCategory();
+                    }
+                }
                 JFXButton btn = new JFXButton("Delete");
 
                 ItemTm tm = new ItemTm(
@@ -142,7 +146,7 @@ public class InventoryFormController {
                         dto.getName(),
                         dto.getUnitPrice(),
                         dto.getQty(),
-                        null,
+                        category,
                         dto.getType(),
                         btn
                 );

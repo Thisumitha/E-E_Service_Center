@@ -30,7 +30,7 @@ public class ItemBoImpl implements ItemBo {
         Type type =new Type(
                 dto.getType(),
                null,
-                0
+                null
         );
        Item item=new Item(
                 dto.getCode(),
@@ -49,7 +49,7 @@ public class ItemBoImpl implements ItemBo {
         Type type =new Type(
                 dto.getType(),
              null,
-                0
+                null
         );
 
         Item item=new Item(

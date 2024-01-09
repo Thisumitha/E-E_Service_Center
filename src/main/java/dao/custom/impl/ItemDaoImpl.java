@@ -77,6 +77,7 @@ public class ItemDaoImpl implements ItemDao {
 
         Transaction transaction = session.beginTransaction();
         Item item = session.find(Item.class, entity.getCode());
+        System.out.println("\n\n\n\n"+entity+"\n\n\n\n ");
         item.setCode(entity.getCode());
         item.setName(entity.getName());
         item.setQtyOnHand(entity.getQtyOnHand());

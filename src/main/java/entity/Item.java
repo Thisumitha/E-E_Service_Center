@@ -25,7 +25,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "type")
-    private Type type;
+     Type type;
 
     public Item(String code, String name, double unitPrice, int qtyOnHand, String image) {
         this.code = code;

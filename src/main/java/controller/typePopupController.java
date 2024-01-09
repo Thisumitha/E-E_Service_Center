@@ -49,28 +49,28 @@ public class typePopupController {
 
 
         } else if (!((category.getValue().toString().isEmpty())&& (txtname.getText().isEmpty()))) {
-            int i = typeBo.generateId();
+            String i = typeBo.generateId();
             boolean saveItem = typeBo.saveItem(new TypeDto(
-                            txtname.getText(),
-                            category.getValue().toString(),
-                            i
-                    ));
+                    txtname.getText(),
+                    category.getValue().toString(),
+                    i
+            ));
             cmbload();
-                if (saveItem){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Successful");
-            alert.show();
-}
+            if (saveItem){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Successful");
+                alert.show();
+            }
         }
     }
 
     private boolean isNew(String text) {
         for (TypeDto type : types){
-           if( type.getType().equals(text)) {
+            if( type.getType().equals(text)) {
 
-               System.out.println(type.getType());
-               return true;
-           }
+                System.out.println(type.getType());
+                return true;
+            }
         }
         return false;
     }
@@ -80,20 +80,20 @@ public class typePopupController {
     }
     public void initialize() throws ClassNotFoundException, SQLException {
         selectType.setOnAction(event -> {
-             selectedText = selectType.getSelectionModel().getSelectedItem().toString();
+            selectedText = selectType.getSelectionModel().getSelectedItem().toString();
             for (TypeDto dto : types){
-               if (dto.getType().equals( selectedText)) {
+                if (dto.getType().equals( selectedText)) {
                     txtnameUpdate.setText(dto.getType());
-                   for (int i = 0; i < categories.size(); i++) {
+                    for (int i = 0; i < categories.size(); i++) {
                         if (dto.getCategory().equals(categories.get(i))){
                             categoryUpdate.getSelectionModel().select(i);
                         }
-                   }
+                    }
 
                     txtnameUpdate.setDisable(false);
                     categoryUpdate.setDisable(false);
-               }
-           }
+                }
+            }
         });
         cmbload();
     }
@@ -135,18 +135,13 @@ public class typePopupController {
 
 
         } else if (!((categoryUpdate.getValue().toString().isEmpty())&& (txtnameUpdate.getText().isEmpty()))) {
-            int id=0;
-            for (TypeDto type :types){
-                if (type.getType().equals(selectedText)){
-                     id = type.getId();
-                }
-            }
+
 
             boolean saveItem = typeBo.updateItem(new TypeDto(
-                            txtnameUpdate.getText(),
-                            categoryUpdate.getValue().toString(),
-                            id
-                    ));
+                    txtnameUpdate.getText(),
+                    categoryUpdate.getValue().toString(),
+                   selectedText
+            ));
             cmbload();
             if (saveItem){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

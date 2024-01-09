@@ -10,6 +10,6 @@ import lombok.*;
 public class TypeDto {
     private String type;
     private String category;
-    private int id;
+    private String id;
 
 }

@@ -15,7 +15,7 @@ public class TypeBoImpl implements TypeBo {
     private TypeDao typeDao= DaoFactory.getInstance().getDao(DaoType.TYPE);
     @Override
     public boolean saveItem(TypeDto dto) throws SQLException, ClassNotFoundException {
-        int i = generateId();
+        String i = generateId();
         Type type =new Type(
                 dto.getType(),
                 dto.getCategory(),
@@ -40,25 +40,26 @@ public class TypeBoImpl implements TypeBo {
     }
 
     @Override
-    public int generateId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         int last= typeDao.lastOrder();
         System.out.println(last);
         if (last>-1){
 
 
             ++last;
-            return last;
+            return ""+last;
         }else{
-            return 1;
+            return ""+1;
         }
     }
 
     @Override
     public boolean updateItem(TypeDto dto) throws SQLException, ClassNotFoundException {
      return typeDao.update( new Type(
-                dto.getType(),
+                  dto.getId(),
                 dto.getCategory(),
-                dto.getId()
+             dto.getType()
+
         ));
 
     }

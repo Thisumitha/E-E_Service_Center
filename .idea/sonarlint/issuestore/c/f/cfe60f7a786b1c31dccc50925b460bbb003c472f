@@ -1,34 +1,34 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(ıÏœĞıÿÿÿÿ8ÙÅûÎ1
+java:S3740"/Provide the parametrized type for this generic.(ıÏœĞıÿÿÿÿ8“µƒıÎ1
 L
-java:S3740"/Provide the parametrized type for this generic.(ëİÓá8ÙÅûÎ1
+java:S3740"/Provide the parametrized type for this generic.(ëİÓá8“µƒıÎ1
 Q
-java:S3740"/Provide the parametrized type for this generic.(€şÓ½üÿÿÿÿ8ÙÅûÎ1
+java:S3740"/Provide the parametrized type for this generic.(€şÓ½üÿÿÿÿ8“µƒıÎ1
 L
-java:S3740h"/Provide the parametrized type for this generic.(õç¨Ò8ÙÅûÎ1
+java:S3740h"/Provide the parametrized type for this generic.(õç¨Ò8“µƒıÎ1
 L
-java:S3740i"/Provide the parametrized type for this generic.(ëŒ·ì8ÙÅûÎ1
+java:S3740i"/Provide the parametrized type for this generic.(ëŒ·ì8“µƒıÎ1
 |
-java:S1104"ZMake categoryUpdate a static final constant or non-public and provide accessors if needed.(ıÏœĞıÿÿÿÿ8ÚÅûÎ1
+java:S1104"ZMake categoryUpdate a static final constant or non-public and provide accessors if needed.(ıÏœĞıÿÿÿÿ8•µƒıÎ1
 v
-java:S1104"YMake txtnameUpdate a static final constant or non-public and provide accessors if needed.( ğ±ù8ÚÅûÎ1
+java:S1104"YMake txtnameUpdate a static final constant or non-public and provide accessors if needed.( ğ±ù8•µƒıÎ1
 s
-java:S1104"VMake selectType a static final constant or non-public and provide accessors if needed.(ëİÓá8ÚÅûÎ1
+java:S1104"VMake selectType a static final constant or non-public and provide accessors if needed.(ëİÓá8•µƒıÎ1
 p
-java:S1104"SMake txtname a static final constant or non-public and provide accessors if needed.(ñÆø¹8ÚÅûÎ1
+java:S1104"SMake txtname a static final constant or non-public and provide accessors if needed.(ñÆø¹8•µƒıÎ1
 v
-java:S1104"TMake category a static final constant or non-public and provide accessors if needed.(€şÓ½üÿÿÿÿ8ÚÅûÎ1
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(éƒÛœÿÿÿÿÿ8ÚÅûÎ1
+java:S1104"TMake category a static final constant or non-public and provide accessors if needed.(€şÓ½üÿÿÿÿ8•µƒıÎ1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(éƒÛœÿÿÿÿÿ8•µƒıÎ1
 O
-java:S1172""2Remove this unused method parameter "actionEvent".(Ü…ªâ8ñÅûÎ1
-L	java:S106G"+Replace this use of System.out by a logger.(×£¹¾øÿÿÿÿ8óÅûÎ1
+java:S1172""2Remove this unused method parameter "actionEvent".(Ü…ªâ8ªµƒıÎ1
+L	java:S106G"+Replace this use of System.out by a logger.(×£¹¾øÿÿÿÿ8¬µƒıÎ1
 O
-java:S1172N"2Remove this unused method parameter "actionEvent".(÷ßù±8óÅûÎ1
+java:S1172N"2Remove this unused method parameter "actionEvent".(÷ßù±8¬µƒıÎ1
 ^
-java:S1117j"<Rename "category" which hides the field declared at line 26.(ú©–Èûÿÿÿÿ8õÅûÎ1
-j	java:S100x"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÚã¼8õÅûÎ1
+java:S1117j"<Rename "category" which hides the field declared at line 26.(ú©–Èûÿÿÿÿ8®µƒıÎ1
+j	java:S100x"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÚã¼8®µƒıÎ1
 O
-java:S1172x"2Remove this unused method parameter "actionEvent".(ÜÚã¼8öÅûÎ1
+java:S1172x"2Remove this unused method parameter "actionEvent".(ÜÚã¼8¯µƒıÎ1
 J
-java:S1128	"(Remove this unused import 'dto.ItemDto'.(‚Æ‘ıÿÿÿÿ8š«íûÎ1
+java:S1128	"(Remove this unused import 'dto.ItemDto'.(‚Æ‘ıÿÿÿÿ8‹Æ€Ï1

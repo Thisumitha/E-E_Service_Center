@@ -257,3 +257,5 @@ Q.idea/sonarlint/securityhotspotstore/f/9/f9b78407815598d4b3c48eda686c034dd101a8
 Q.idea/sonarlint/securityhotspotstore/9/6/96047be00dd9b74b55ca247c624f759f9b8cc8ba,4\f\4fb85e71fd83e974bdbe652746e0e2dba4b9ffe4
 Å
 Q.idea/sonarlint/securityhotspotstore/f/d/fd596aad30dad7adad0f76c49d98932032c499e0,6\d\6dcc8eec4bff34b08f89e4b9cc6a9dc5c381ee18
+Q
+!src/main/java/entity/TypeKey.java,0\e\0e5a1fb77b910c128a5134c651424e721e5305c0
