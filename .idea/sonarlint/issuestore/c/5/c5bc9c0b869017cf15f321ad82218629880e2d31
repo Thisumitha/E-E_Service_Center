@@ -1,0 +1,14 @@
+
+q
+java:S1104"OMake img a static final constant or non-public and provide accessors if needed.(çŸ ÷úÿÿÿÿ8ä§¼ÈÎ1
+w
+java:S1104"UMake nameLabel a static final constant or non-public and provide accessors if needed.(‡Ä¦¼ıÿÿÿÿ8ä§¼ÈÎ1
+s
+java:S1104"VMake priceLabel a static final constant or non-public and provide accessors if needed.(÷”Ğ8ä§¼ÈÎ1
+r
+java:S1104"UMake codeLabel a static final constant or non-public and provide accessors if needed.(Ú’Œ¸8ä§¼ÈÎ1
+q
+java:S1104"OMake btn a static final constant or non-public and provide accessors if needed.(·¾ïşÿÿÿÿ8ä§¼ÈÎ1
+O
+java:S1172"2Remove this unused method parameter "actionEvent".(ğßíü8è§¼ÈÎ1
+L	java:S106"+Replace this use of System.out by a logger.(àÇô«ûÿÿÿÿ8è§¼ÈÎ1

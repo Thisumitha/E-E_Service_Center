@@ -1,0 +1,11 @@
+
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(“Ÿ´Ëşÿÿÿÿ8½¬¶æÎ1
+5
+java:S1700"Rename field "type"(–î†ûÿÿÿÿ8²ÀÏéÎ1
+T
+java:S1128
+"8Remove this unused import 'javax.persistence.OneToMany'.(«õù;8†¹ŞéÎ1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8†¹ŞéÎ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8†¹ŞéÎ1

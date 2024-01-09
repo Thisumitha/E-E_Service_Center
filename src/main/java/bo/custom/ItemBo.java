@@ -2,6 +2,7 @@ package bo.custom;
 
 import bo.SuperBo;
 import dto.ItemDto;
+import dto.catelog.ItemCatolog;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +14,7 @@ public interface ItemBo extends SuperBo {
     List<ItemDto> allItems() throws SQLException, ClassNotFoundException;
 
     List<String>getCategories();
-    List<String>getTypes();
+
 
 
 

@@ -1,7 +1,8 @@
 
-E
-java:S3740`"/Provide the parametrized type for this generic.(‡İ‰
-Z
-java:S1854"?Remove this useless assignment to local variable "transaction".(¹æ¢üÿÿÿÿ
-K
-java:S1481"0Remove this unused "transaction" local variable.(¹æ¢üÿÿÿÿ
+L
+java:S3740i"/Provide the parametrized type for this generic.(‡İ‰8Ù›ûìÎ1
+a
+java:S1854"?Remove this useless assignment to local variable "transaction".(¹æ¢üÿÿÿÿ8æ›ûìÎ1
+R
+java:S1481"0Remove this unused "transaction" local variable.(¹æ¢üÿÿÿÿ8ç›ûìÎ1
+L	java:S106?"+Replace this use of System.out by a logger.(¦ˆ‘Šùÿÿÿÿ8×…ÇîÎ1

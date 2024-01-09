@@ -1,6 +1,7 @@
 package bo;
 
 import bo.custom.impl.ItemBoImpl;
+import bo.custom.impl.TypeBoImpl;
 import dao.util.BoType;
 
 public class BoFactory {
@@ -15,6 +16,7 @@ public class BoFactory {
         switch (type){
             //case CUSTOMER:return (T)  new CustomerBoImpl();
              case ITEM:return (T) new ItemBoImpl();
+            case TYPE:return (T) new TypeBoImpl();
         }
         return null;
 

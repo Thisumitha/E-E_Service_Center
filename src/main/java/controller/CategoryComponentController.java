@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXCheckBox;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,10 +10,11 @@ import java.util.ResourceBundle;
 public class CategoryComponentController implements Initializable {
 
     public JFXCheckBox checkBox;
+    public AnchorPane layout;
 
     public void setData(String catogery){
-        checkBox.setText(catogery);
-        checkBox.setId(catogery);
+        this.checkBox.setText(catogery);
+        this.checkBox.setId(catogery);
     }
 
 

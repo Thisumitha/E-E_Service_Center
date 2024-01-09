@@ -1,6 +1,7 @@
 package dao.util;
 
 import entity.Item;
+import entity.Type;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -19,8 +20,9 @@ public class HibernateUtil {
 
 
         Metadata metadata = new MetadataSources(standardRegistry)
-//                .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Item.class)
+               .addAnnotatedClass(Type.class)
+
 //                .addAnnotatedClass(OrderDetail.class)
 //                .addAnnotatedClass(Orders.class)
 

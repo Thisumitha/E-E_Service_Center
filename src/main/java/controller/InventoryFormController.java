@@ -2,10 +2,12 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.ItemBo;
+import bo.custom.TypeBo;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
 import dto.ItemDto;
+import dto.TypeDto;
 import dto.tm.ItemTm;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
@@ -22,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -50,20 +54,22 @@ public class InventoryFormController {
     public ImageView itemImage;
     public JFXTextField searchText;
 
-    private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+
     public BorderPane pane;
     public JFXTextField id;
     public JFXTextField name;
     public JFXComboBox type;
     public JFXTextField qty;
     public JFXTextField price;
-    public JFXComboBox category;
+
     private List<String> categories=new ArrayList<>();
-    private List<String> types=new ArrayList<>();
+    private List<TypeDto> types=new ArrayList<>();
     List<ItemDto>dtoList=new ArrayList<>();
     String imagepath;
+    private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private TypeBo typeBo = BoFactory.getInstance().getBo(BoType.TYPE);
 
-    public void initialize() throws ClassNotFoundException {
+    public void initialize() throws ClassNotFoundException, SQLException {
 
 
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
@@ -103,7 +109,6 @@ public class InventoryFormController {
             int typeIndex;
             catIndex = categories.indexOf( newValue.getValue().getCategory());
             typeIndex = types.indexOf(newValue.getValue().getType());
-            category.getSelectionModel().select(catIndex);
             type.getSelectionModel().select(typeIndex);
             imagepath=getimage(newValue.getValue().getCode());
             Image image = new Image(imagepath, 120, 127, false, true);
@@ -137,7 +142,7 @@ public class InventoryFormController {
                         dto.getName(),
                         dto.getUnitPrice(),
                         dto.getQty(),
-                        dto.getCategory(),
+                        null,
                         dto.getType(),
                         btn
                 );
@@ -173,19 +178,17 @@ public class InventoryFormController {
         }
     }
 
-    private void cmbLoad() throws ClassNotFoundException {
+    private void cmbLoad() throws ClassNotFoundException, SQLException {
         categories = itemBo.getCategories();
-        types=itemBo.getTypes();
-        ObservableList categorylist = FXCollections.observableArrayList();
+        types= typeBo.allItems();
+
         ObservableList typelist = FXCollections.observableArrayList();
-        for(String category:categories){
-            categorylist.add(category);
+
+        for(TypeDto type:types){
+            typelist.add(type.getType());
         }
-        for(String type:types){
-            typelist.add(type);
-        }
-        category.setItems(categorylist);
         type.setItems(typelist);
+
     }
 
     public void importphoto(ActionEvent actionEvent) {
@@ -197,9 +200,7 @@ public class InventoryFormController {
             System.out.println("file:"+imagepath);
             Image image = new Image(imagepath, 120, 127, false, true);
             itemImage.setImage(image);
-        }
-        else
-        {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText("Please Select a File");
@@ -218,7 +219,6 @@ public class InventoryFormController {
                     name.getText(),
                     parseDouble(price.getText()),
                     Integer.parseInt(qty.getText()),
-                    category.getValue().toString(),
                     type.getValue().toString(),
                     imagepath
 
@@ -244,7 +244,6 @@ public class InventoryFormController {
                     name.getText(),
                     parseDouble(price.getText()),
                     Integer.parseInt(qty.getText()),
-                    category.getValue().toString(),
                     type.getValue().toString(),
                     imagepath
 
@@ -270,7 +269,6 @@ public class InventoryFormController {
             id.clear();
             price.clear();
             qty.clear();
-            category.getSelectionModel().clearSelection();
             type.getSelectionModel().clearSelection();
             itemImage.setImage(null);
     } catch (IllegalArgumentException e) {
@@ -290,4 +288,27 @@ public class InventoryFormController {
             e.printStackTrace();
         }
     }
+
+    public void createButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/typepopup.fxml"));
+            Parent root = loader.load();
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Create Type");
+            popupStage.setScene(new Scene(root));
+
+            // Set up the controller for the popup (if needed)
+            typePopupController typePopupController = loader.getController();
+
+            // Show the popup
+            popupStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

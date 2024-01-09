@@ -4,6 +4,7 @@ import dao.custom.ItemDao;
 import dao.util.HibernateUtil;
 import dto.ItemDto;
 import entity.Item;
+import entity.Type;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -21,16 +22,13 @@ public class ItemDaoImpl implements ItemDao {
         Item item = session.find(Item.class,code);
 
 
-
             return new ItemDto(
                     item.getCode(),
                     item.getName(),
                     item.getUnitPrice(),
                     item.getQtyOnHand(),
-                    item.getCategory(),
-                    item.getType(),
+                    item.getType().getType(),
                     item.getImage()
-
             );
 
 
@@ -55,7 +53,19 @@ public class ItemDaoImpl implements ItemDao {
     public boolean save(Item entity) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        session.save(entity);
+        Item item =new Item(
+                entity.getCode(),
+                entity.getName(),
+                entity.getUnitPrice(),
+                entity.getQtyOnHand(),
+                entity.getImage()
+        );
+        System.out.println(entity.getType().getType());
+        item.setType(session.find(Type.class,entity.getType().getType()));
+
+
+
+        session.save(item);
         transaction.commit();
         session.close();
         return true;
@@ -71,9 +81,8 @@ public class ItemDaoImpl implements ItemDao {
         item.setName(entity.getName());
         item.setQtyOnHand(entity.getQtyOnHand());
         item.setUnitPrice(entity.getUnitPrice());
-        item.setCategory(entity.getCategory());
-        item.setCategory(entity.getCategory());
         item.setImage(entity.getImage());
+        item.setType(entity.getType());
         session.save(item);
         transaction.commit();
         session.close();
