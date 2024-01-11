@@ -13,7 +13,7 @@ import dto.ItemDto;
 import dto.TypeDto;
 import dto.catelog.ItemCatologDto;
 import dto.tm.CatologTm;
-import dto.tm.ItemTm;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,16 +23,15 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class StoreFormController  {
 
@@ -43,9 +42,10 @@ public class StoreFormController  {
     public TreeTableColumn colQty;
     public TreeTableColumn colPus;
     public TreeTableColumn colPrice;
+    public JFXTextField searchText;
+    public Label priceLabel;
 
-    @FXML
-    private JFXTextField searchText;
+
     @FXML
     private BorderPane pane;
     @FXML
@@ -53,27 +53,6 @@ public class StoreFormController  {
     @FXML
     private VBox layout1;
     public GridPane grid ;
-    @FXML
-    private ScrollPane sp;
-
-
-
-
-
-    @FXML
-    private ImageView img;
-
-    @FXML
-    private Label nameLabel;
-
-    @FXML
-    private Label codeLabel;
-
-    @FXML
-    private Label priceLabel;
-
-    @FXML
-    private JFXButton btn;
 
 
 
@@ -87,7 +66,7 @@ public class StoreFormController  {
     List<ItemCatologDto> items=new ArrayList<>();
     List<TypeDto> typeDtos =new ArrayList<TypeDto>();
     List<ItemDto> itemDtos =new ArrayList<ItemDto>();
-    private List<ItemCatologDto> catologDtoList=new ArrayList<>();
+    private static List<ItemCatologDto> catologDtoList=new ArrayList<>();
     ObservableList<CatologTm> tmList = FXCollections.observableArrayList();
 
 
@@ -138,7 +117,7 @@ public class StoreFormController  {
 
     }
     public void loadToCart(){
-
+    double tot=0;
         ObservableList<CatologTm> tmList = FXCollections.observableArrayList();
 
 
@@ -154,12 +133,12 @@ public class StoreFormController  {
                         dto.getCode(),
                         dto.getName(),
                         btnMinus,
-                        1,
+                        dto.getQty(),
                         btnPlus,
                         dto.getPrice()
                 );
 
-                btn.setOnAction(actionEvent -> {
+                btnMinus.setOnAction(actionEvent -> {
                     changecart(tm.getId(),"-");
 
                 });
@@ -168,6 +147,7 @@ public class StoreFormController  {
                 });
 
                 tmList.add(tm);
+                tot+= dto.getPrice();
             }
 
 
@@ -177,7 +157,7 @@ public class StoreFormController  {
 
 
 
-
+        priceLabel.setText(String.format("%.2f",tot));
     }
 
     private void loadItems(List<ItemDto> list) throws SQLException, ClassNotFoundException {
@@ -201,11 +181,11 @@ public class StoreFormController  {
 //
 //            // Add the RowConstraints to the GridPane
 //            grid.getRowConstraints().add(rowConstraints);
-            System.out.println(grid.getRowCount());
+
 
             for (int i = 0; i < items.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/view/itemCatolog.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/itemCatalog.fxml"));
 
             AnchorPane anchorPane = (AnchorPane) fxmlLoader.load();
             ItemController controller = fxmlLoader.getController();
@@ -298,7 +278,7 @@ public class StoreFormController  {
 
 
         ArrayList<ItemCatologDto> list = new ArrayList<>();
-
+        JFXButton btn=new JFXButton() ;
         for (ItemDto dto : itemscatolog) {
             ItemCatologDto itemCatologDto = new ItemCatologDto(
                     dto.getName(),
@@ -353,33 +333,36 @@ public class StoreFormController  {
     }
     public void savecart(ItemCatologDto itemCatologDto) {
         catologDtoList.add(itemCatologDto);
+        System.out.println(itemCatologDto);
+        System.out.println(catologDtoList);
+
 
     }
     public void changecart(String id, String bool) {
         try {
             List<ItemDto> itemDtos = new ArrayList<>(itemBo.allItems());
+            Iterator<ItemCatologDto> iterator = catologDtoList.iterator();
+
+            while (iterator.hasNext()) {
+                ItemCatologDto catologDto = iterator.next();
 
                 for (ItemDto dto : itemDtos) {
-                    if (id.equals(dto.getCode())) {
-                        for (ItemCatologDto catologDto : catologDtoList) {
-                            if (dto.getCode().equals(dto.getCode())) {
-                                if ("+".equals(bool)) {
-                                    catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
-                                    catologDto.setQty(catologDto.getQty() + 1);
-                                }else{
-                                    if (!(catologDto.getQty() == 1)) {
-
-                                        catologDto.setPrice(catologDto.getPrice() - dto.getUnitPrice());
-                                        catologDto.setQty(catologDto.getQty() - 1);
-                                    }else{
-                                       catologDtoList.remove(catologDto);
-                                    }
-
-                                }
+                    if (id.equals(dto.getCode()) && dto.getCode().equals(catologDto.getCode())) {
+                        if ("+".equals(bool)) {
+                            catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
+                            catologDto.setQty(catologDto.getQty() + 1);
+                        } else {
+                            if (!(catologDto.getQty() == 1)) {
+                                catologDto.setPrice(catologDto.getPrice() - dto.getUnitPrice());
+                                catologDto.setQty(catologDto.getQty() - 1);
+                            } else {
+                                System.out.println(catologDto);
+                                iterator.remove();  // Safely remove the item using the iterator
                             }
                         }
                     }
                 }
+            }
 
             loadToCart();
         } catch (SQLException e) {
@@ -387,6 +370,9 @@ public class StoreFormController  {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+
+
+
 }

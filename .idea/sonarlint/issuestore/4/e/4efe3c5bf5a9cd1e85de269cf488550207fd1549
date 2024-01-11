@@ -1,85 +1,85 @@
 
-h	java:S112ô"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¾É†’Ï1
+h	java:S112ô"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8áê ÄÏ1
 Q
-java:S3740-"/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8¾É†’Ï1
+java:S3740-"/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8áê ÄÏ1
 Q
-java:S3740."/Provide the parametrized type for this generic.(©à¾Àúÿÿÿÿ8¾É†’Ï1
+java:S3740."/Provide the parametrized type for this generic.(©à¾Àúÿÿÿÿ8áê ÄÏ1
 Q
-java:S3740/"/Provide the parametrized type for this generic.(ÍÎÿüÿÿÿÿ8¾É†’Ï1
+java:S3740/"/Provide the parametrized type for this generic.(ÍÎÿüÿÿÿÿ8áê ÄÏ1
 L
-java:S37400"/Provide the parametrized type for this generic.(»§²8¾É†’Ï1
+java:S37400"/Provide the parametrized type for this generic.(»§²8áê ÄÏ1
 Q
-java:S37401"/Provide the parametrized type for this generic.(ŒĞ¶Ñøÿÿÿÿ8¾É†’Ï1
+java:S37401"/Provide the parametrized type for this generic.(ŒĞ¶Ñøÿÿÿÿ8áê ÄÏ1
 L
-java:S37402"/Provide the parametrized type for this generic.(Ç…’ß8¾É†’Ï1
+java:S37402"/Provide the parametrized type for this generic.(Ç…’ß8áê ÄÏ1
 L
-java:S37403"/Provide the parametrized type for this generic.(™¼…ÿ8¾É†’Ï1
+java:S37403"/Provide the parametrized type for this generic.(™¼…ÿ8áê ÄÏ1
 L
-java:S3740="/Provide the parametrized type for this generic.(ÖŒÃ8¾É†’Ï1
+java:S3740="/Provide the parametrized type for this generic.(ÖŒÃ8áê ÄÏ1
 M
-java:S3740Ã"/Provide the parametrized type for this generic.(ëŒ·ì8¾É†’Ï1
+java:S3740Ã"/Provide the parametrized type for this generic.(ëŒ·ì8áê ÄÏ1
 E
-java:S1604["(Make this anonymous inner class a lambda(óâ›İ8¿É†’Ï1
+java:S1604["(Make this anonymous inner class a lambda(óâ›İ8âê ÄÏ1
 E
-java:S1604X"(Make this anonymous inner class a lambda(ÉÈØ8¿É†’Ï1
+java:S1604X"(Make this anonymous inner class a lambda(ÉÈØ8âê ÄÏ1
 u
-java:S1104-"SMake colName a static final constant or non-public and provide accessors if needed.(¸ç€˜ÿÿÿÿÿ8¿É†’Ï1
+java:S1104-"SMake colName a static final constant or non-public and provide accessors if needed.(¸ç€˜ÿÿÿÿÿ8âê ÄÏ1
 z
-java:S1104."XMake colUnitPrice a static final constant or non-public and provide accessors if needed.(©à¾Àúÿÿÿÿ8¿É†’Ï1
+java:S1104."XMake colUnitPrice a static final constant or non-public and provide accessors if needed.(©à¾Àúÿÿÿÿ8âê ÄÏ1
 y
-java:S1104/"WMake colCategory a static final constant or non-public and provide accessors if needed.(ÍÎÿüÿÿÿÿ8¿É†’Ï1
+java:S1104/"WMake colCategory a static final constant or non-public and provide accessors if needed.(ÍÎÿüÿÿÿÿ8âê ÄÏ1
 r
-java:S11040"UMake colOption a static final constant or non-public and provide accessors if needed.(»§²8¿É†’Ï1
+java:S11040"UMake colOption a static final constant or non-public and provide accessors if needed.(»§²8âê ÄÏ1
 u
-java:S11041"SMake colCode a static final constant or non-public and provide accessors if needed.(ŒĞ¶Ñøÿÿÿÿ8¿É†’Ï1
+java:S11041"SMake colCode a static final constant or non-public and provide accessors if needed.(ŒĞ¶Ñøÿÿÿÿ8âê ÄÏ1
 p
-java:S11042"SMake colType a static final constant or non-public and provide accessors if needed.(Ç…’ß8¿É†’Ï1
+java:S11042"SMake colType a static final constant or non-public and provide accessors if needed.(Ç…’ß8ãê ÄÏ1
 o
-java:S11043"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8¿É†’Ï1
+java:S11043"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8ãê ÄÏ1
 p
-java:S11044"SMake tblItem a static final constant or non-public and provide accessors if needed.(ŸØå¼8¿É†’Ï1
+java:S11044"SMake tblItem a static final constant or non-public and provide accessors if needed.(ŸØå¼8ãê ÄÏ1
 w
-java:S11046"UMake itemImage a static final constant or non-public and provide accessors if needed.(¥å ùÿÿÿÿ8¿É†’Ï1
+java:S11046"UMake itemImage a static final constant or non-public and provide accessors if needed.(¥å ùÿÿÿÿ8ãê ÄÏ1
 s
-java:S11047"VMake searchText a static final constant or non-public and provide accessors if needed.(°çÇí8¿É†’Ï1
+java:S11047"VMake searchText a static final constant or non-public and provide accessors if needed.(°çÇí8ãê ÄÏ1
 r
-java:S1104:"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8¿É†’Ï1
+java:S1104:"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8ãê ÄÏ1
 k
-java:S1104;"NMake id a static final constant or non-public and provide accessors if needed.(ˆîÙ±8¿É†’Ï1
+java:S1104;"NMake id a static final constant or non-public and provide accessors if needed.(ˆîÙ±8ãê ÄÏ1
 m
-java:S1104<"PMake name a static final constant or non-public and provide accessors if needed.(£˜ ø8¿É†’Ï1
+java:S1104<"PMake name a static final constant or non-public and provide accessors if needed.(£˜ ø8ãê ÄÏ1
 m
-java:S1104="PMake type a static final constant or non-public and provide accessors if needed.(ÖŒÃ8¿É†’Ï1
+java:S1104="PMake type a static final constant or non-public and provide accessors if needed.(ÖŒÃ8ãê ÄÏ1
 q
-java:S1104>"OMake qty a static final constant or non-public and provide accessors if needed.(Ñ×úúÿÿÿÿ8¿É†’Ï1
+java:S1104>"OMake qty a static final constant or non-public and provide accessors if needed.(Ñ×úúÿÿÿÿ8ãê ÄÏ1
 n
-java:S1104?"QMake price a static final constant or non-public and provide accessors if needed.(Ÿÿ¯8¿É†’Ï1
+java:S1104?"QMake price a static final constant or non-public and provide accessors if needed.(Ÿÿ¯8ãê ÄÏ1
 K
-java:S5411†"(Use a primitive boolean expression here.(¢¢Û«ûÿÿÿÿ8¿É†’Ï1
+java:S5411†"(Use a primitive boolean expression here.(¢¢Û«ûÿÿÿÿ8ãê ÄÏ1
 u
-java:S1450A"YRemove the "categories" field and declare it as a local variable in the relevant methods.(İÍÄy8¯Ê†’Ï1
+java:S1450A"YRemove the "categories" field and declare it as a local variable in the relevant methods.(İÍÄy8¶ë ÄÏ1
 N
-java:S1602U",Remove useless curly braces around statement(Ñ¡Õùÿÿÿÿ8´Ê†’Ï1
+java:S1602U",Remove useless curly braces around statement(Ñ¡Õùÿÿÿÿ8ºë ÄÏ1
 J
-java:S1602Ÿ",Remove useless curly braces around statement(ë¹¬8½Ê†’Ï1
+java:S1602Ÿ",Remove useless curly braces around statement(ë¹¬8Àë ÄÏ1
 V
-java:S1117Å"8Rename "type" which hides the field declared at line 61.(é‡ŞÄ8ÀÊ†’Ï1
+java:S1117Å"8Rename "type" which hides the field declared at line 61.(é‡ŞÄ8Ãë ÄÏ1
 O
-java:S1172Ì"2Remove this unused method parameter "actionEvent".(Ÿ±Â8ÁÊ†’Ï1
-H	java:S106Ò"+Replace this use of System.out by a logger.(™ãœ8 » ¸Ï1
+java:S1172Ì"2Remove this unused method parameter "actionEvent".(Ÿ±Â8Äë ÄÏ1
+H	java:S106Ò"+Replace this use of System.out by a logger.(™ãœ8Åë ÄÏ1
 U
-java:S1172ß"2Remove this unused method parameter "actionEvent".(øÔ‘øÿÿÿÿ8ÄÊ†’Ï1
+java:S1172ß"2Remove this unused method parameter "actionEvent".(øÔ‘øÿÿÿÿ8Æë ÄÏ1
 P
-java:S1172ø"2Remove this unused method parameter "actionEvent".(¦íŸ…8ÅÊ†’Ï1
+java:S1172ø"2Remove this unused method parameter "actionEvent".(¦íŸ…8×ë ÄÏ1
 ™
-java:S1130”"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(å‹ÊÈûÿÿÿÿ8ÇÊ†’Ï1
+java:S1130”"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(å‹ÊÈûÿÿÿÿ8Øë ÄÏ1
 P
-java:S1172¢"2Remove this unused method parameter "actionEvent".(÷ßù±8ÈÊ†’Ï1
+java:S1172¢"2Remove this unused method parameter "actionEvent".(÷ßù±8Ùë ÄÏ1
 j
-java:S1854¹"GRemove this useless assignment to local variable "typePopupController".(€âŸüÿÿÿÿ8¿¹°¿Ï1
+java:S1854¹"GRemove this useless assignment to local variable "typePopupController".(€âŸüÿÿÿÿ8Şë ÄÏ1
 U
-java:S1172®"2Remove this unused method parameter "actionEvent".(õêùúşÿÿÿÿ8ÎÊ†’Ï1
+java:S1172®"2Remove this unused method parameter "actionEvent".(õêùúşÿÿÿÿ8Şë ÄÏ1
 [
-java:S1481¹"8Remove this unused "typePopupController" local variable.(€âŸüÿÿÿÿ8È¹°¿Ï1
+java:S1481¹"8Remove this unused "typePopupController" local variable.(€âŸüÿÿÿÿ8âë ÄÏ1
 J
-java:S1068A".Remove this unused "categories" private field.(İÍÄy8ÔÊ†’Ï1
+java:S1068A".Remove this unused "categories" private field.(İÍÄy8âë ÄÏ1

@@ -1,82 +1,80 @@
 
-g	java:S112}"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íµ¶ÂÏ1
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íµ¶ÂÏ1
-h	java:S112æ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íµ¶ÂÏ1
-h	java:S112‚"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íµ¶ÂÏ1
-h	java:S112„"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íµ¶ÂÏ1
+g	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8È¥…ÆÏ1
+g	java:S112j"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8È¥…ÆÏ1
+h	java:S112Ò"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8È¥…ÆÏ1
+h	java:S112ñ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8È¥…ÆÏ1
+h	java:S112ó"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8È¥…ÆÏ1
 Q
-java:S3740)"/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8îµ¶ÂÏ1
+java:S3740("/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8È¥…ÆÏ1
 L
-java:S3740*"/Provide the parametrized type for this generic.(²í‹©8îµ¶ÂÏ1
+java:S3740)"/Provide the parametrized type for this generic.(²í‹©8È¥…ÆÏ1
 L
-java:S3740+"/Provide the parametrized type for this generic.(™¼…ÿ8îµ¶ÂÏ1
+java:S3740*"/Provide the parametrized type for this generic.(™¼…ÿ8È¥…ÆÏ1
 L
-java:S3740,"/Provide the parametrized type for this generic.(¥˜°µ8îµ¶ÂÏ1
+java:S3740+"/Provide the parametrized type for this generic.(¥˜°µ8È¥…ÆÏ1
 Q
-java:S3740-"/Provide the parametrized type for this generic.(®—ıäúÿÿÿÿ8îµ¶ÂÏ1
+java:S3740,"/Provide the parametrized type for this generic.(®—ıäúÿÿÿÿ8È¥…ÆÏ1
 v
-java:S2293X"YReplace the type specification in this constructor call with the diamond operator ("<>").(®ŞŒ–8îµ¶ÂÏ1
+java:S2293C"YReplace the type specification in this constructor call with the diamond operator ("<>").(®ŞŒ–8É¥…ÆÏ1
 {
-java:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(­Ôéœüÿÿÿÿ8îµ¶ÂÏ1
+java:S2293D"YReplace the type specification in this constructor call with the diamond operator ("<>").(­Ôéœüÿÿÿÿ8É¥…ÆÏ1
 M
-java:S1066Ë"/Merge this if statement with the enclosing one.(œšğÇ8îµ¶ÂÏ1
+java:S1066·"/Merge this if statement with the enclosing one.(œšğÇ8É¥…ÆÏ1
 p
-java:S1104("SMake tblList a static final constant or non-public and provide accessors if needed.(Ëµ«å8ïµ¶ÂÏ1
+java:S1104'"SMake tblList a static final constant or non-public and provide accessors if needed.(Ëµ«å8Ê¥…ÆÏ1
 u
-java:S1104)"SMake colName a static final constant or non-public and provide accessors if needed.(¸ç€˜ÿÿÿÿÿ8ïµ¶ÂÏ1
+java:S1104("SMake colName a static final constant or non-public and provide accessors if needed.(¸ç€˜ÿÿÿÿÿ8Ê¥…ÆÏ1
 q
-java:S1104*"TMake colMinus a static final constant or non-public and provide accessors if needed.(²í‹©8ïµ¶ÂÏ1
+java:S1104)"TMake colMinus a static final constant or non-public and provide accessors if needed.(²í‹©8Ê¥…ÆÏ1
 o
-java:S1104+"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8ïµ¶ÂÏ1
+java:S1104*"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8Ê¥…ÆÏ1
 o
-java:S1104,"RMake colPus a static final constant or non-public and provide accessors if needed.(¥˜°µ8ïµ¶ÂÏ1
+java:S1104+"RMake colPus a static final constant or non-public and provide accessors if needed.(¥˜°µ8Ê¥…ÆÏ1
 v
-java:S1104-"TMake colPrice a static final constant or non-public and provide accessors if needed.(®—ıäúÿÿÿÿ8ïµ¶ÂÏ1
+java:S1104,"TMake colPrice a static final constant or non-public and provide accessors if needed.(®—ıäúÿÿÿÿ8Ê¥…ÆÏ1
+s
+java:S1104-"VMake searchText a static final constant or non-public and provide accessors if needed.(°çÇí8Ê¥…ÆÏ1
+s
+java:S1104."VMake priceLabel a static final constant or non-public and provide accessors if needed.(÷”Ğ8ôßˆÆÏ1
 m
-java:S11047"PMake grid a static final constant or non-public and provide accessors if needed.(¦Íî«8ïµ¶ÂÏ1
+java:S11047"PMake grid a static final constant or non-public and provide accessors if needed.(¦Íî«8Ê¥…ÆÏ1
 O
-java:S1172`"2Remove this unused method parameter "actionEvent".(÷ßù±8·¶ÂÏ1
+java:S1172K"2Remove this unused method parameter "actionEvent".(÷ßù±8œ§…ÆÏ1
 b
-java:S2147~"ECombine this catch with the one at line 124, which has the same body.(ıàÑÎ8”·¶ÂÏ1
-Y	java:S125"<This block of commented-out lines of code should be removed.(÷ñµ8—·¶ÂÏ1
-]
-java:S1117":Rename "tmList" which hides the field declared at line 91.(Ÿœ“ƒûÿÿÿÿ8—·¶ÂÏ1
+java:S2147i"ECombine this catch with the one at line 103, which has the same body.(ıàÑÎ8£§…ÆÏ1
+X	java:S125l"<This block of commented-out lines of code should be removed.(÷ñµ8¤§…ÆÏ1
+\
+java:S1117y":Rename "tmList" which hides the field declared at line 70.(Ÿœ“ƒûÿÿÿÿ8¤§…ÆÏ1
 J
-java:S1602¢",Remove useless curly braces around statement(ë¹¬8™·¶ÂÏ1
+java:S1602",Remove useless curly braces around statement(óëÕè8¥§…ÆÏ1
 O
-java:S1602¦",Remove useless curly braces around statement(ğºÊÒüÿÿÿÿ8™·¶ÂÏ1
-M	java:S106Ì"+Replace this use of System.out by a logger.(¾¿§¨ùÿÿÿÿ8›·¶ÂÏ1
-^	java:S125¿"<This block of commented-out lines of code should be removed.(µíäÃüÿÿÿÿ8›·¶ÂÏ1
+java:S1602‘",Remove useless curly braces around statement(ğºÊÒüÿÿÿÿ8¦§…ÆÏ1
+^	java:S125«"<This block of commented-out lines of code should be removed.(µíäÃüÿÿÿÿ8¨§…ÆÏ1
 p
-java:S3776í"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(”Áå8£·¶ÂÏ1
+java:S3776Ù"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(”Áå8¬§…ÆÏ1
 Œ
-java:S1130í"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(”Áå8åáÃÂÏ1
+java:S1130Ù"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(”Áå8¬§…ÆÏ1
 —
-java:S1130í"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(”Áå8åáÃÂÏ1
-M	java:S106‰"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8¤·¶ÂÏ1
-M	java:S106 "+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8¥·¶ÂÏ1
+java:S1130Ù"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(”Áå8¬§…ÆÏ1
+M	java:S106õ"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8­§…ÆÏ1
+M	java:S106Œ"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8®§…ÆÏ1
 Œ
-java:S1130©"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ó²Š–8çáÃÂÏ1
+java:S1130•"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ó²Š–8®§…ÆÏ1
 —
-java:S1130©"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(ó²Š–8çáÃÂÏ1
-Y	java:S125¸"<This block of commented-out lines of code should be removed.(Î˜‹»8¦·¶ÂÏ1
+java:S1130•"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(ó²Š–8®§…ÆÏ1
+Y	java:S125¤"<This block of commented-out lines of code should be removed.(Î˜‹»8¯§…ÆÏ1
 U
-java:S1172Ù"2Remove this unused method parameter "actionEvent".(­Ü£ƒıÿÿÿÿ8§·¶ÂÏ1
+java:S1172Å"2Remove this unused method parameter "actionEvent".(­Ü£ƒıÿÿÿÿ8°§…ÆÏ1
 U
-java:S1172Ş"2Remove this unused method parameter "actionEvent".(ì‹ú²úÿÿÿÿ8³·¶ÂÏ1
+java:S1172Ê"2Remove this unused method parameter "actionEvent".(ì‹ú²úÿÿÿÿ8°§…ÆÏ1
+H	java:S106Ğ"+Replace this use of System.out by a logger.(«Áš·8±§…ÆÏ1
+M	java:S106Ñ"+Replace this use of System.out by a logger.(øÄôƒüÿÿÿÿ8±§…ÆÏ1
 p
-java:S3776æ"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(ùÚÆò8¶·¶ÂÏ1
+java:S3776Õ"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ùÚÆò8±§…ÆÏ1
 c
-java:S2147ƒ"ECombine this catch with the one at line 385, which has the same body.(ıàÑÎ8¶·¶ÂÏ1
+java:S2147ò"ECombine this catch with the one at line 368, which has the same body.(ıàÑÎ8±§…ÆÏ1
 Z
-java:S1117è"<Rename "itemDtos" which hides the field declared at line 89.(Ï–8¶·¶ÂÏ1
-c
-java:S1764í"ECorrect one of the identical sub-expressions on both sides of equals.(°Û¸º8ìáÃÂÏ1
+java:S1117×"<Rename "itemDtos" which hides the field declared at line 68.(Ï–8±§…ÆÏ1
 L
-java:S1940ò")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8··¶ÂÏ1
-G
-java:S1128"*Remove this unused import 'dto.tm.ItemTm'.( ƒúš8íáÃÂÏ1
-N
-java:S1128"",Remove this unused import 'java.util.Timer'.(†£ñáÿÿÿÿÿ8íáÃÂÏ1
-M
-java:S1128#"0Remove this unused import 'java.util.TimerTask'.(àÀÇÙ8íáÃÂÏ1
+java:S1940ã")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8³§…ÆÏ1
+M	java:S106ç"+Replace this use of System.out by a logger.(á„–ûÿÿÿÿ8³§…ÆÏ1
