@@ -204,6 +204,7 @@ public class InventoryFormController {
     public void importphoto(ActionEvent actionEvent) {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
+        chooser.getExtensionFilters().add((new FileChooser.ExtensionFilter("Image Files","*.png","*.jpg")));
         File file = chooser.showOpenDialog(new Stage());
         if(file != null) {
             imagepath = file.getPath();

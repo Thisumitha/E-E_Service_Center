@@ -323,7 +323,22 @@ public class StoreFormController  {
     }
 
     public void checkOutButton(ActionEvent actionEvent) {
-        loadToCart();
+        if (catologDtoList.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Cart is Empty");
+            alert.show();
+        }else {
+            itemBo.savecart(catologDtoList);
+            Stage stage = (Stage) pane.getScene().getWindow();
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
+                stage.setResizable(true);
+                stage.setTitle("Store");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 

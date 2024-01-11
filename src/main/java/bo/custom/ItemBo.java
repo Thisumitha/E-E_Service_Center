@@ -17,6 +17,9 @@ public interface ItemBo extends SuperBo {
     List<ItemDto> allItems() throws SQLException, ClassNotFoundException;
 
     List<String> getCategories();
+    void savecart(List<ItemCatologDto> save);
+    List<ItemCatologDto> loadCart();
+
 }
 
 

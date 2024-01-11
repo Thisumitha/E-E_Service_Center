@@ -118,12 +118,15 @@ public class ItemBoImpl implements ItemBo {
         return categories;
     }
 
+    @Override
+    public void savecart(List<ItemCatologDto> save) {
+        catologDtoList=save;
+    }
 
-
-
-
-
-
+    @Override
+    public List<ItemCatologDto> loadCart() {
+        return catologDtoList;
+    }
 
 
 }
