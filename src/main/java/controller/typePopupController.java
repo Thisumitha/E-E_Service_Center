@@ -29,6 +29,7 @@ public class typePopupController {
     private List<TypeDto> types=new ArrayList<>();
     private TypeBo typeBo = BoFactory.getInstance().getBo(BoType.TYPE);
     private  String selectedText;
+    private  String id;
 
 
     public void createButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -79,13 +80,21 @@ public class typePopupController {
         txtname.getScene().getWindow().hide();
     }
     public void initialize() throws ClassNotFoundException, SQLException {
+        cmbload();
+       loadupdate();
+
+    }
+
+    private void loadupdate() {
         selectType.setOnAction(event -> {
             selectedText = selectType.getSelectionModel().getSelectedItem().toString();
-            for (TypeDto dto : types){
-                if (dto.getType().equals( selectedText)) {
+            for (TypeDto dto : types) {
+                if (dto.getType().equals(selectedText)) {
                     txtnameUpdate.setText(dto.getType());
+                    id = dto.getId();
+
                     for (int i = 0; i < categories.size(); i++) {
-                        if (dto.getCategory().equals(categories.get(i))){
+                        if (dto.getCategory().equals(categories.get(i))) {
                             categoryUpdate.getSelectionModel().select(i);
                         }
                     }
@@ -95,8 +104,8 @@ public class typePopupController {
                 }
             }
         });
-        cmbload();
     }
+
 
     private void cmbload() throws SQLException, ClassNotFoundException {
         categories = itemBo.getCategories();
@@ -128,21 +137,15 @@ public class typePopupController {
             alert.setContentText("Select category");
             alert.show();
 
-        } else if (isNew(txtnameUpdate.getText())) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Already have");
-            alert.show();
-
-
         } else if (!((categoryUpdate.getValue().toString().isEmpty())&& (txtnameUpdate.getText().isEmpty()))) {
 
 
             boolean saveItem = typeBo.updateItem(new TypeDto(
                     txtnameUpdate.getText(),
                     categoryUpdate.getValue().toString(),
-                   selectedText
+                   id
             ));
-            cmbload();
+
             if (saveItem){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Successfully update");

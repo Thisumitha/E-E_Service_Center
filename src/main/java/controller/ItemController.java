@@ -1,7 +1,10 @@
 package controller;
 
+import bo.BoFactory;
+import bo.custom.ItemBo;
 import com.jfoenix.controls.JFXButton;
-import dto.catelog.ItemCatolog;
+import dao.util.BoType;
+import dto.catelog.ItemCatologDto;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,13 +17,17 @@ public class ItemController {
     public Label priceLabel;
     public Label codeLabel;
     public JFXButton btn;
-    private  ItemCatolog itemCatolog;
+    private ItemCatologDto itemCatologDto;
+    StoreFormController storeFormController =new StoreFormController();
+
 
     public void addToCart(ActionEvent actionEvent) {
-        System.out.println(this.itemCatolog);
+        System.out.println(this.itemCatologDto);
+        storeFormController.savecart(this.itemCatologDto );
+
     }
-    public  void setData (ItemCatolog item ){
-        this.itemCatolog=item;
+    public  void setData (ItemCatologDto item ){
+        this.itemCatologDto =item;
         this.nameLabel.setText(item.getName());
         this.codeLabel.setText(item.getCode());
         this.priceLabel.setText("RS :"+item.getPrice());

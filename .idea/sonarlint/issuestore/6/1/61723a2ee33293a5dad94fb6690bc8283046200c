@@ -1,10 +1,12 @@
 
 L
-java:S37404"/Provide the parametrized type for this generic.(²§  8ÿñ˜şÎ1
+java:S37405"/Provide the parametrized type for this generic.(²§  8ÿñ˜şÎ1
 L
-java:S3740?"/Provide the parametrized type for this generic.(—´°ß8ÿñ˜şÎ1
+java:S3740@"/Provide the parametrized type for this generic.(—´°ß8ÿñ˜şÎ1
 L
-java:S3740A"/Provide the parametrized type for this generic.(©ìß8ÿñ˜şÎ1
-G	java:S106!"+Replace this use of System.out by a logger.(ßÉ½Ú8‹ò˜şÎ1
+java:S3740B"/Provide the parametrized type for this generic.(©ìß8ÿñ˜şÎ1
+G	java:S106!"+Replace this use of System.out by a logger.(µâ†í8‹ò˜şÎ1
+G	java:S106""+Replace this use of System.out by a logger.(ßÉ½Ú8¾Ù´Ï1
+]	java:S125%"<This block of commented-out lines of code should be removed.(·¬—Òùÿÿÿÿ8ô›ª‘Ï1
 E
 java:S1128"(Remove this unused import 'entity.Item'.(ÏÂã8ôöÂşÎ1

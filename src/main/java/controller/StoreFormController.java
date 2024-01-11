@@ -5,35 +5,60 @@ import bo.custom.ItemBo;
 import bo.custom.TypeBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
 import dto.ItemDto;
-import dto.catelog.ItemCatolog;
+import dto.TypeDto;
+import dto.catelog.ItemCatologDto;
+import dto.tm.CatologTm;
+import dto.tm.ItemTm;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class StoreFormController implements Initializable {
+public class StoreFormController  {
 
-    public JFXTextField searchText;
-    public BorderPane pane;
-    public VBox layout;
-    public VBox layout1;
-    public GridPane grid;
+
+    public JFXTreeTableView<CatologTm> tblList;
+    public TreeTableColumn colName;
+    public TreeTableColumn colMinus;
+    public TreeTableColumn colQty;
+    public TreeTableColumn colPus;
+    public TreeTableColumn colPrice;
+
+    @FXML
+    private JFXTextField searchText;
+    @FXML
+    private BorderPane pane;
+    @FXML
+    private VBox layout;
+    @FXML
+    private VBox layout1;
+    public GridPane grid ;
+    @FXML
+    private ScrollPane sp;
+
+
+
+
 
     @FXML
     private ImageView img;
@@ -50,14 +75,22 @@ public class StoreFormController implements Initializable {
     @FXML
     private JFXButton btn;
 
-    @FXML
+
+
+    private List<TypeDto> electricalTypes=new ArrayList<>();
+    private List<TypeDto> elctronicTypes=new ArrayList<>();
 
 
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     private TypeBo typeBo = BoFactory.getInstance().getBo(BoType.TYPE);
-    List<String> elctronicTypes=new ArrayList<>();
-    List<String> electricalTypes=new ArrayList<>();
-    List<ItemCatolog> items=new ArrayList<>();
+
+    List<ItemCatologDto> items=new ArrayList<>();
+    List<TypeDto> typeDtos =new ArrayList<TypeDto>();
+    List<ItemDto> itemDtos =new ArrayList<ItemDto>();
+    private List<ItemCatologDto> catologDtoList=new ArrayList<>();
+    ObservableList<CatologTm> tmList = FXCollections.observableArrayList();
+
+
 
 
     public void backButton(ActionEvent actionEvent) {
@@ -72,34 +105,112 @@ public class StoreFormController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
+    public void initialize() {
+        colName.setCellValueFactory(new TreeItemPropertyValueFactory<CatologTm,String>("name"));
+        colMinus.setCellValueFactory(new TreeItemPropertyValueFactory<CatologTm,JFXButton>("btnMinus"));
+        colQty.setCellValueFactory(new TreeItemPropertyValueFactory<CatologTm,Integer>("qty"));
+        colPus.setCellValueFactory(new TreeItemPropertyValueFactory<CatologTm,JFXButton>("btnPlus"));
+        colPrice.setCellValueFactory(new TreeItemPropertyValueFactory<CatologTm,Double>("price"));
         try {
+            itemDtos = itemBo.allItems();
+            typeDtos.addAll(typeBo.allItems());
+
             loadTypes();
-            loadItems();
+            loadItems(itemDtos);
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+//        Timer t = new Timer();
+//        t.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                loadToCart();
+//            }
+//        }, 0, 5000);
+
+
+
+    }
+    public void loadToCart(){
+
+        ObservableList<CatologTm> tmList = FXCollections.observableArrayList();
+
+
+
+
+            List<ItemCatologDto> dtoList =catologDtoList;
+
+            for (ItemCatologDto dto:dtoList){
+                JFXButton btnMinus = new JFXButton("-");
+                JFXButton btnPlus = new JFXButton("+");
+
+                CatologTm tm = new CatologTm(
+                        dto.getCode(),
+                        dto.getName(),
+                        btnMinus,
+                        1,
+                        btnPlus,
+                        dto.getPrice()
+                );
+
+                btn.setOnAction(actionEvent -> {
+                    changecart(tm.getId(),"-");
+
+                });
+                btnPlus.setOnAction(actionEvent -> {
+                    changecart(tm.getId(),"+");
+                });
+
+                tmList.add(tm);
+            }
+
+
+        TreeItem<CatologTm> treeItem = new RecursiveTreeItem<>(tmList, RecursiveTreeObject::getChildren);
+        tblList.setRoot(treeItem);
+        tblList.setShowRoot(false);
+
+
+
 
     }
 
-
-    private void loadItems() throws SQLException, ClassNotFoundException {
+    private void loadItems(List<ItemDto> list) throws SQLException, ClassNotFoundException {
         int column = 0;
         int row = 1;
-       items=new ArrayList<>(allcatologs());
+
+
+
+       items=new ArrayList<>(allcatologs(list));
         try {
-        for (int i = 0; i < items.size(); i++) {
+//            System.out.println(grid.getRowCount());
+//
+//
+//
+//            // Create RowConstraints for the row
+//            RowConstraints rowConstraints = new RowConstraints();
+//            rowConstraints.setMinHeight(10.0);
+//            rowConstraints.setPrefHeight(30.0);
+//            rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+//
+//
+//            // Add the RowConstraints to the GridPane
+//            grid.getRowConstraints().add(rowConstraints);
+            System.out.println(grid.getRowCount());
+
+            for (int i = 0; i < items.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/view/itemCatolog.fxml"));
 
             AnchorPane anchorPane = (AnchorPane) fxmlLoader.load();
             ItemController controller = fxmlLoader.getController();
             controller.setData(items.get(i));
-            System.out.println(i);
+
             if (column == 4) {
                 column = 0;
                 ++row;
@@ -115,7 +226,7 @@ public class StoreFormController implements Initializable {
             grid.setMaxHeight(Region.USE_PREF_SIZE);
             GridPane.setMargin(anchorPane, new Insets(10) );
         }
-            } catch (IOException e) {
+        }catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
@@ -124,11 +235,21 @@ public class StoreFormController implements Initializable {
     }
 
     private void loadTypes() throws SQLException, ClassNotFoundException {
-//        elctronicTypes.addAll(typeBo.allItems());
-//        electricalTypes.addAll(itemBo.getCategories());
 
-        for (String type : elctronicTypes) {
-            System.out.println(type);
+
+
+
+
+        for(TypeDto dto:typeDtos){
+            if(dto.getCategory().equals("Electronic")){
+                elctronicTypes.add(dto);
+            } else if (dto.getCategory().equals("Electrical")) {
+                electricalTypes.add(dto);
+            }
+        }
+
+        for (TypeDto type : elctronicTypes) {
+
 
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/category.fxml"));
@@ -149,9 +270,9 @@ public class StoreFormController implements Initializable {
             }
         }
 
-        System.out.println("type");
-        for (String type : electricalTypes) {
-            System.out.println(type);
+
+        for (TypeDto type : electricalTypes) {
+
 
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/category.fxml"));
@@ -163,26 +284,27 @@ public class StoreFormController implements Initializable {
                 if (layout1 != null) {
                     layout1.getChildren().add(anchorPane);
                 } else {
-                    // Handle the case when layout is null
+
                     System.err.println("Error: 'layout' is not initialized.");
                 }
             } catch (IOException | NullPointerException e) {
-                // Handle the exception according to your application's requirements
+
                 e.printStackTrace();
             }
         }
 
     }
-    public List<ItemCatolog> allcatologs() throws SQLException, ClassNotFoundException {
+    public List<ItemCatologDto> allcatologs(List<ItemDto> itemscatolog) throws SQLException, ClassNotFoundException {
 
-        ArrayList<ItemDto> items = new ArrayList<>(itemBo.allItems());
-        ArrayList<ItemCatolog> list = new ArrayList<>();
 
-        for (ItemDto dto : items) {
-            ItemCatolog itemCatolog = new ItemCatolog(
+        ArrayList<ItemCatologDto> list = new ArrayList<>();
+
+        for (ItemDto dto : itemscatolog) {
+            ItemCatologDto itemCatologDto = new ItemCatologDto(
                     dto.getName(),
                     dto.getCode(),
                     dto.getImage(),
+                    1,
                     dto.getUnitPrice(),
                     btn
 
@@ -190,10 +312,81 @@ public class StoreFormController implements Initializable {
 //            btn.setOnAction(actionEvent -> {
 //                System.out.println(dto);
 //            });
-            list.add(itemCatolog);
+            list.add(itemCatologDto);
 
         }
 
+
         return list;
+    }
+    public void selectedType(String checkBoxId) throws SQLException, ClassNotFoundException {
+        List<ItemDto> list =new ArrayList<>();
+        List<ItemDto> dtoList = itemBo.allItems();
+        List<TypeDto> dtos = typeBo.allItems();
+
+        for (ItemDto item:dtoList){
+            for (TypeDto type:dtos){
+                if(item.getType().equals(type.getType())){
+
+                    if(checkBoxId.equals(type.getId())){
+                        list.add(item);
+                    }
+                }
+            }
+
+        }
+
+        if (!(list.isEmpty())) {
+            loadItems(list);
+        }
+
+    }
+
+    public void checkOutButton(ActionEvent actionEvent) {
+        loadToCart();
+    }
+
+
+    public void reloadButton(ActionEvent actionEvent) {
+        loadToCart();
+
+    }
+    public void savecart(ItemCatologDto itemCatologDto) {
+        catologDtoList.add(itemCatologDto);
+
+    }
+    public void changecart(String id, String bool) {
+        try {
+            List<ItemDto> itemDtos = new ArrayList<>(itemBo.allItems());
+
+                for (ItemDto dto : itemDtos) {
+                    if (id.equals(dto.getCode())) {
+                        for (ItemCatologDto catologDto : catologDtoList) {
+                            if (dto.getCode().equals(dto.getCode())) {
+                                if ("+".equals(bool)) {
+                                    catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
+                                    catologDto.setQty(catologDto.getQty() + 1);
+                                }else{
+                                    if (!(catologDto.getQty() == 1)) {
+
+                                        catologDto.setPrice(catologDto.getPrice() - dto.getUnitPrice());
+                                        catologDto.setQty(catologDto.getQty() - 1);
+                                    }else{
+                                       catologDtoList.remove(catologDto);
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            loadToCart();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

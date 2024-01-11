@@ -13,10 +13,9 @@ import java.util.List;
 @Setter
 @Entity
 public class Type {
-     @Id
+    @Id
+
     private String id;
-
-
     private String type;
     private String category;
 

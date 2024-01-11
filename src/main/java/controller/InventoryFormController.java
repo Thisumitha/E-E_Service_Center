@@ -105,13 +105,18 @@ public class InventoryFormController {
             name.setText(newValue.getValue().getName());
             price.setText(String.valueOf(newValue.getValue().getUnitPrice()));
             qty.setText(String.valueOf(newValue.getValue().getQty()));
+            for (int i = 0; i < types.size(); i++) {
+                TypeDto typeDto = types.get(i);
+                if (newValue.getValue().getType().equals(typeDto.getType())) {
+                    type.getSelectionModel().select(i);
+                }
+            }
 
-            int typeIndex;
-            typeIndex = types.indexOf(newValue.getValue().getType());
-            type.getSelectionModel().select(typeIndex);
+
             imagepath=getimage(newValue.getValue().getCode());
             Image image = new Image(imagepath, 120, 127, false, true);
             itemImage.setImage(image);
+
         }
     }
 
@@ -159,6 +164,7 @@ public class InventoryFormController {
             }
 
             TreeItem<ItemTm> treeItem = new RecursiveTreeItem<>(tmList, RecursiveTreeObject::getChildren);
+
             tblItem.setRoot(treeItem);
             tblItem.setShowRoot(false);
 

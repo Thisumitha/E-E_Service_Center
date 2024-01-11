@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: D9D9D9;" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemController">
+<AnchorPane prefHeight="248.0" prefWidth="190.0" style="-fx-background-color: D9D9D9;" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemController">
    <children>
-      <ImageView fx:id="img" fitHeight="116.0" fitWidth="139.0" layoutX="38.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img" fitHeight="116.0" fitWidth="139.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/logo.png" />
          </image>
@@ -25,12 +25,14 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btn" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" defaultButton="true" graphicTextGap="0.0" layoutX="151.0" layoutY="198.0" onAction="#addToCart" prefHeight="49.0" prefWidth="45.0" textFill="TRANSPARENT" />
-      <ImageView fitHeight="100.0" fitWidth="47.0" layoutX="140.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Assets/cart-item.png" />
-         </image>
-      </ImageView>
+      <JFXButton fx:id="btn" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" defaultButton="true" graphicTextGap="0.0" layoutX="123.0" layoutY="190.0" onAction="#addToCart" prefHeight="49.0" prefWidth="45.0" textFill="TRANSPARENT">
+         <graphic>
+            <ImageView fitHeight="100.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/cart-item.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
    </children>
 
 </AnchorPane>

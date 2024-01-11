@@ -61,7 +61,7 @@ public class ItemDaoImpl implements ItemDao {
                 entity.getImage()
         );
         System.out.println(entity.getType().getType());
-        item.setType(session.find(Type.class,entity.getType().getType()));
+        item.setType(session.find(Type.class,entity.getType().getId()));
 
 
 

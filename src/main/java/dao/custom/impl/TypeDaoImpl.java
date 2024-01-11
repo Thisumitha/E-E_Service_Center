@@ -29,11 +29,12 @@ public class TypeDaoImpl implements TypeDao {
 
 
         Transaction transaction = session.beginTransaction();
-        Type type = session.find(Type.class, entity.getType());
+        Type type = session.find(Type.class, entity.getId());
+        System.out.println("\n\n\n\n"+entity+"\n\n\n\n ");
         System.out.println("\n\n\n\n"+type+"\n\n\n\n ");
-        type.setType(entity.getId());
+        type.setType(entity.getType());
         type.setCategory(entity.getCategory());
-        type.setId(type.getType());
+//        type.setId(type.getId());
 
         session.save(type);
         transaction.commit();

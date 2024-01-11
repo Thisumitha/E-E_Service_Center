@@ -56,13 +56,14 @@ public class TypeBoImpl implements TypeBo {
     @Override
     public boolean updateItem(TypeDto dto) throws SQLException, ClassNotFoundException {
      return typeDao.update( new Type(
-                  dto.getId(),
-                dto.getCategory(),
-             dto.getType()
+             dto.getType(),
+             dto.getCategory(),
+             dto.getId()
 
         ));
 
     }
+
 
 
 }

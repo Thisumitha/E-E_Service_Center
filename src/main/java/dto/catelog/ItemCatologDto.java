@@ -8,10 +8,11 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-public class ItemCatolog {
+public class ItemCatologDto {
     private String name;
     private String code;
     private String imgsrc;
+    private int qty;
     private double price;
     private JFXButton btn;
 }
