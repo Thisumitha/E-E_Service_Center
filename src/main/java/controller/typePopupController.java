@@ -69,7 +69,7 @@ public class typePopupController {
         for (TypeDto type : types){
             if( type.getType().equals(text)) {
 
-                System.out.println(type.getType());
+
                 return true;
             }
         }
@@ -82,6 +82,7 @@ public class typePopupController {
     public void initialize() throws ClassNotFoundException, SQLException {
         cmbload();
        loadupdate();
+
 
     }
 
@@ -108,6 +109,7 @@ public class typePopupController {
 
 
     private void cmbload() throws SQLException, ClassNotFoundException {
+
         categories = itemBo.getCategories();
         types=typeBo.allItems();
         ObservableList categorylist = FXCollections.observableArrayList();
@@ -125,6 +127,7 @@ public class typePopupController {
         selectType.setVisibleRowCount(3);
 
     }
+
 
     public void UpdateButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (txtnameUpdate.getText().isEmpty()) {
@@ -150,9 +153,13 @@ public class typePopupController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Successfully update");
                 alert.show();
+                txtnameUpdate.setDisable(true);
+                categoryUpdate.setDisable(true);
+                cmbload();
+                loadupdate();
             }
         }
-        txtnameUpdate.setDisable(true);
-        categoryUpdate.setDisable(true);
+
     }
+
 }

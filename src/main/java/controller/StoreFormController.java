@@ -25,6 +25,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -46,6 +47,7 @@ public class StoreFormController  {
     public TreeTableColumn colPrice;
     public JFXTextField searchText;
     public Label priceLabel;
+    public JFXButton load;
 
 
 
@@ -363,13 +365,13 @@ public class StoreFormController  {
             for (ItemCatologDto dto : catologDtoList) {
                 if (dto.getCode().equals(itemCatologDto.getCode())) {
                     addAgain(itemCatologDto.getCode());
-                    System.out.println("hellloooooooooooooooooooooooo");
+
                     add=false;
                 }
             }
             if (add){
                 catologDtoList.add(itemCatologDto);
-                System.out.println("byeeeeeeeeeeee");
+
             }
         }
 
@@ -438,6 +440,7 @@ public class StoreFormController  {
     }
 
 
-
-
+    public void reloadTrack(MouseEvent mouseEvent) {
+       load.fire();
+    }
 }

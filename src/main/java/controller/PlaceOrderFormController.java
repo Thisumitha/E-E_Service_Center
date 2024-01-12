@@ -3,6 +3,7 @@ package controller;
 import bo.BoFactory;
 import bo.custom.CustomerBo;
 import bo.custom.ItemBo;
+import bo.custom.OrderBo;
 import bo.custom.TypeBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -12,24 +13,33 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
 import dto.CustomerDto;
 import dto.ItemDto;
+import dto.OrderDetailsDto;
+import dto.OrderDto;
 import dto.catelog.ItemCatologDto;
 import dto.tm.CatologTm;
 import dto.tm.PlaceOrderTm;
+import impl.org.controlsfx.autocompletion.SuggestionProvider;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
 
 
 public class PlaceOrderFormController {
@@ -45,9 +55,11 @@ public class PlaceOrderFormController {
     public JFXTextField discount;
     public Label discountToatal;
     public Label netTotalLabel;
+    public TextField test;
 
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
 
     @FXML
     private BorderPane pane;
@@ -67,6 +79,7 @@ public class PlaceOrderFormController {
     private double tot=0;
     private double discountedAmount=0;
     private double netTotal=0;
+    private AutoCompletionBinding<String> autoCompletionBinding;
 
     public void PlaceOrderButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (txtName.getText().isEmpty()||txtNumber.getText().isEmpty()||txtEmail.getText().isEmpty()){
@@ -78,32 +91,54 @@ public class PlaceOrderFormController {
             alert.setContentText("No Items");
             alert.show();
         }else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);// line 1
-            alert.setTitle("Confirmation Dialog Box");// line 2
-            alert.setHeaderText("Please Confirm!");// line 3
-            alert.setContentText("Are you sure want to Place this Order?!");// line 4
-            Optional<ButtonType> result = alert.showAndWait(); // line 5
-            if(!result.isPresent() || result.get() != ButtonType.OK) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm Order");
+            alert.setHeaderText("Place Order");
+            alert.setContentText("Do you really want to Place Order");
+            Optional<ButtonType> buttonType = alert.showAndWait();
+            if(buttonType.isPresent() && buttonType.get().equals(ButtonType.OK)) {
                placeOrder();
-            } else {
+            }else{
                 alert.hide();
             }
-
 
         }
 
 
     }
     private void placeOrder() throws SQLException, ClassNotFoundException {
-        customerBo.saveCustomer(new CustomerDto(
-                customerBo.generateId(),
+        String cId = customerBo.generateId();
+        String oId = orderBo.generateId();
+        List<OrderDetailsDto> list = new ArrayList<>();
+        for(ItemCatologDto catologDto :itemCatologDtos){
+            OrderDetailsDto dto=new OrderDetailsDto(
+                    oId,
+                    catologDto.getCode(),
+                    catologDto.getQty(),
+                    catologDto.getPrice()
+            );
+            list.add(dto);
+
+        }
+        boolean savedCustomer = customerBo.saveCustomer(new CustomerDto(
+                cId,
                 txtName.getText(),
                 Integer.parseInt(txtNumber.getText()),
                 txtEmail.getText()
         ));
+        if (savedCustomer){
+            orderBo.saveOreder(new OrderDto(
+                    oId,
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                    cId,
+                    list
+            ));
 
+
+        }
     }
-    public void initialize() throws ClassNotFoundException, SQLException {
+    public void initialize() throws ClassNotFoundException, SQLException, IOException {
 
         colName.setCellValueFactory(new TreeItemPropertyValueFactory<>("name"));
         colUnitPrice.setCellValueFactory(new TreeItemPropertyValueFactory<>("unitPrice"));
@@ -113,16 +148,29 @@ public class PlaceOrderFormController {
         colPrice.setCellValueFactory(new TreeItemPropertyValueFactory<>("price"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("option"));
         loadTable();
+//        loadCustomers();
+//        String[] words={"Hello","Thisu","Adi","Liviru","Kalhara","Gayathri"};
+//        TextFields.bindAutoCompletion(test, words);
+    }
+
+    private void loadCustomers() throws IOException {
+
+    }
+    private Collection<String> getNames() {
+        Collection<String> names = new ArrayList<>();
+        names.add("Hello");
+        names.add("Thisu");
+        names.add("Adi");
+        names.add("Liviru");
+        names.add("Kalhara");
+        names.add("Gayathri");
+        return names;
     }
 
     private void loadTable() {
          itemCatologDtos = itemBo.loadCart();
 
-
         ObservableList<PlaceOrderTm> tmList = FXCollections.observableArrayList();
-
-
-
 
         List<ItemCatologDto> dtoList =itemCatologDtos;
 
@@ -174,7 +222,6 @@ public class PlaceOrderFormController {
         TreeItem<PlaceOrderTm> treeItem = new RecursiveTreeItem<>(tmList, RecursiveTreeObject::getChildren);
         tblPlace.setRoot(treeItem);
         tblPlace.setShowRoot(false);
-
 
 
         priceLabel.setText(String.format("%.2f",tot));
@@ -235,4 +282,15 @@ public class PlaceOrderFormController {
         netTotalLabel.setText(String.format("%.2f",netTotal));
     }
 
+    public void backButton(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/StoreForm.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("Store");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

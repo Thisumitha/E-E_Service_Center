@@ -26,6 +26,8 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "type")
      Type type;
+    @OneToMany(mappedBy = "item")
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 
     public Item(String code, String name, double unitPrice, int qtyOnHand, String image) {
         this.code = code;

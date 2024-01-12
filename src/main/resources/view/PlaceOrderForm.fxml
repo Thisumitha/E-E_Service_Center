@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -296,6 +297,7 @@
                               <GridPane GridPane.columnIndex="3" GridPane.rowIndex="2">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
@@ -334,7 +336,7 @@
                                     </GridPane>
                                  </children>
                               </GridPane>
-                              <JFXButton text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <JFXButton onAction="#backButton" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <graphic>
                                     <ImageView fitHeight="47.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -398,6 +400,7 @@
                                         <Image url="@../Assets/search.png" />
                                     </image>
                                 </ImageView>
+                        <TextField fx:id="test" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
                     </children>

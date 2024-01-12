@@ -1,89 +1,91 @@
 
-g	java:S112k"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8†àìÏ1
-g	java:S112m"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8†àìÏ1
-h	java:S112Û"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8†àìÏ1
-h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8†àìÏ1
-h	java:S112‘"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8†àìÏ1
-h	java:S112²"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8†àìÏ1
-h	java:S112´"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8†àìÏ1
+g	java:S112m"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8åÄĞõÏ1
+g	java:S112o"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æÄĞõÏ1
+h	java:S112İ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æÄĞõÏ1
+h	java:S112‘"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æÄĞõÏ1
+h	java:S112“"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æÄĞõÏ1
+h	java:S112´"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æÄĞõÏ1
+h	java:S112¶"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æÄĞõÏ1
 Q
-java:S3740*"/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8†àìÏ1
+java:S3740+"/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8æÄĞõÏ1
 L
-java:S3740+"/Provide the parametrized type for this generic.(²í‹©8†àìÏ1
+java:S3740,"/Provide the parametrized type for this generic.(²í‹©8æÄĞõÏ1
 L
-java:S3740,"/Provide the parametrized type for this generic.(™¼…ÿ8†àìÏ1
+java:S3740-"/Provide the parametrized type for this generic.(™¼…ÿ8æÄĞõÏ1
 L
-java:S3740-"/Provide the parametrized type for this generic.(¥˜°µ8†àìÏ1
+java:S3740."/Provide the parametrized type for this generic.(¥˜°µ8æÄĞõÏ1
 Q
-java:S3740."/Provide the parametrized type for this generic.(®—ıäúÿÿÿÿ8†àìÏ1
+java:S3740/"/Provide the parametrized type for this generic.(®—ıäúÿÿÿÿ8æÄĞõÏ1
 v
-java:S2293F"YReplace the type specification in this constructor call with the diamond operator ("<>").(®ŞŒ–8†àìÏ1
+java:S2293H"YReplace the type specification in this constructor call with the diamond operator ("<>").(®ŞŒ–8æÄĞõÏ1
 {
-java:S2293G"YReplace the type specification in this constructor call with the diamond operator ("<>").(­Ôéœüÿÿÿÿ8†àìÏ1
+java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(­Ôéœüÿÿÿÿ8æÄĞõÏ1
 M
-java:S1066À"/Merge this if statement with the enclosing one.(œšğÇ8†àìÏ1
+java:S1066Â"/Merge this if statement with the enclosing one.(œšğÇ8çÄĞõÏ1
 p
-java:S1104)"SMake tblList a static final constant or non-public and provide accessors if needed.(Ëµ«å8†àìÏ1
+java:S1104*"SMake tblList a static final constant or non-public and provide accessors if needed.(Ëµ«å8çÄĞõÏ1
 u
-java:S1104*"SMake colName a static final constant or non-public and provide accessors if needed.(¸ç€˜ÿÿÿÿÿ8†àìÏ1
+java:S1104+"SMake colName a static final constant or non-public and provide accessors if needed.(¸ç€˜ÿÿÿÿÿ8çÄĞõÏ1
 q
-java:S1104+"TMake colMinus a static final constant or non-public and provide accessors if needed.(²í‹©8†àìÏ1
+java:S1104,"TMake colMinus a static final constant or non-public and provide accessors if needed.(²í‹©8çÄĞõÏ1
 o
-java:S1104,"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8†àìÏ1
+java:S1104-"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8çÄĞõÏ1
 o
-java:S1104-"RMake colPus a static final constant or non-public and provide accessors if needed.(¥˜°µ8†àìÏ1
+java:S1104."RMake colPus a static final constant or non-public and provide accessors if needed.(¥˜°µ8çÄĞõÏ1
 v
-java:S1104."TMake colPrice a static final constant or non-public and provide accessors if needed.(®—ıäúÿÿÿÿ8†àìÏ1
+java:S1104/"TMake colPrice a static final constant or non-public and provide accessors if needed.(®—ıäúÿÿÿÿ8çÄĞõÏ1
 s
-java:S1104/"VMake searchText a static final constant or non-public and provide accessors if needed.(°çÇí8†àìÏ1
+java:S11040"VMake searchText a static final constant or non-public and provide accessors if needed.(°çÇí8çÄĞõÏ1
 s
-java:S11040"VMake priceLabel a static final constant or non-public and provide accessors if needed.(÷”Ğ8†àìÏ1
+java:S11041"VMake priceLabel a static final constant or non-public and provide accessors if needed.(÷”Ğ8çÄĞõÏ1
+r
+java:S11042"PMake load a static final constant or non-public and provide accessors if needed.(™ŠÛ·úÿÿÿÿ8çÄĞõÏ1
 m
-java:S1104:"PMake grid a static final constant or non-public and provide accessors if needed.(¦Íî«8†àìÏ1
+java:S1104<"PMake grid a static final constant or non-public and provide accessors if needed.(¦Íî«8çÄĞõÏ1
 O
-java:S1172N"2Remove this unused method parameter "actionEvent".(÷ßù±8»ˆàìÏ1
+java:S1172P"2Remove this unused method parameter "actionEvent".(÷ßù±8ßÆĞõÏ1
 b
-java:S2147l"ECombine this catch with the one at line 106, which has the same body.(ıàÑÎ8ÅˆàìÏ1
-X	java:S125o"<This block of commented-out lines of code should be removed.(÷ñµ8ÇˆàìÏ1
+java:S2147n"ECombine this catch with the one at line 108, which has the same body.(ıàÑÎ8åÆĞõÏ1
+X	java:S125q"<This block of commented-out lines of code should be removed.(÷ñµ8æÆĞõÏ1
 \
-java:S1117|":Rename "tmList" which hides the field declared at line 73.(Ÿœ“ƒûÿÿÿÿ8ÇˆàìÏ1
+java:S1117~":Rename "tmList" which hides the field declared at line 75.(Ÿœ“ƒûÿÿÿÿ8çÆĞõÏ1
 J
-java:S1602–",Remove useless curly braces around statement(óëÕè8ÉˆàìÏ1
+java:S1602˜",Remove useless curly braces around statement(óëÕè8èÆĞõÏ1
 O
-java:S1602š",Remove useless curly braces around statement(ğºÊÒüÿÿÿÿ8ÏˆàìÏ1
-^	java:S125´"<This block of commented-out lines of code should be removed.(µíäÃüÿÿÿÿ8ñˆàìÏ1
+java:S1602œ",Remove useless curly braces around statement(ğºÊÒüÿÿÿÿ8éÆĞõÏ1
+^	java:S125¶"<This block of commented-out lines of code should be removed.(µíäÃüÿÿÿÿ8êÆĞõÏ1
 p
-java:S3776â"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(”Áå8ùˆàìÏ1
+java:S3776ä"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(”Áå8ğÆĞõÏ1
 Œ
-java:S1130â"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(”Áå8ÍãİíÏ1
+java:S1130ä"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(”Áå8Öë“öÏ1
 —
-java:S1130â"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(”Áå8ÎãİíÏ1
-M	java:S106ş"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8ûˆàìÏ1
-M	java:S106•"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8üˆàìÏ1
+java:S1130ä"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(”Áå8Öë“öÏ1
+M	java:S106€"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8ñÆĞõÏ1
+M	java:S106—"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8òÆĞõÏ1
 Œ
-java:S1130"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ó²Š–8ĞãİíÏ1
+java:S1130 "nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ó²Š–8Ùë“öÏ1
 —
-java:S1130"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(ó²Š–8ÑãİíÏ1
+java:S1130 "yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(ó²Š–8Ùë“öÏ1
 J
-java:S1602­",Remove useless curly braces around statement(ë¹¬8ıˆàìÏ1
+java:S1602¯",Remove useless curly braces around statement(ë¹¬8òÆĞõÏ1
 U
-java:S1172Î"2Remove this unused method parameter "actionEvent".(­Ü£ƒıÿÿÿÿ8€‰àìÏ1
+java:S1172Ğ"2Remove this unused method parameter "actionEvent".(­Ü£ƒıÿÿÿÿ8ôÆĞõÏ1
 U
-java:S1172â"2Remove this unused method parameter "actionEvent".(ì‹ú²úÿÿÿÿ8‚‰àìÏ1
-H	java:S106î"+Replace this use of System.out by a logger.(Ûˆ˜Ã8ƒ‰àìÏ1
-G	java:S106ô"+Replace this use of System.out by a logger.(¨²¬28„‰àìÏ1
+java:S1172ä"2Remove this unused method parameter "actionEvent".(ì‹ú²úÿÿÿÿ8õÆĞõÏ1
 c
-java:S2147"ECombine this catch with the one at line 398, which has the same body.(ıàÑÎ8…‰àìÏ1
+java:S2147’"ECombine this catch with the one at line 400, which has the same body.(ıàÑÎ8öÆĞõÏ1
 Z
-java:S1117ÿ"<Rename "itemDtos" which hides the field declared at line 71.(Ï–8…‰àìÏ1
+java:S1117"<Rename "itemDtos" which hides the field declared at line 73.(Ï–8öÆĞõÏ1
 u
-java:S3776•"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(í¹‚Ìúÿÿÿÿ8‡‰àìÏ1
+java:S3776—"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(í¹‚Ìúÿÿÿÿ8÷ÆĞõÏ1
 c
-java:S2147³"ECombine this catch with the one at line 433, which has the same body.(ıàÑÎ8ˆ‰àìÏ1
+java:S2147µ"ECombine this catch with the one at line 435, which has the same body.(ıàÑÎ8÷ÆĞõÏ1
 Z
-java:S1117—"<Rename "itemDtos" which hides the field declared at line 71.(Ï–8ˆ‰àìÏ1
+java:S1117™"<Rename "itemDtos" which hides the field declared at line 73.(Ï–8÷ÆĞõÏ1
 L
-java:S1940¤")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8Š‰àìÏ1
-M	java:S106¨"+Replace this use of System.out by a logger.(á„–ûÿÿÿÿ8Š‰àìÏ1
+java:S1940¦")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8øÆĞõÏ1
+M	java:S106ª"+Replace this use of System.out by a logger.(á„–ûÿÿÿÿ8øÆĞõÏ1
+N
+java:S1172»"1Remove this unused method parameter "mouseEvent".(²¡Ë28ùÆĞõÏ1
 R
-java:S1128"5Remove this unused import 'javafx.scene.image.Image'.(‰¿½Ç8ØãİíÏ1
+java:S1128"5Remove this unused import 'javafx.scene.image.Image'.(‰¿½Ç8åë“öÏ1

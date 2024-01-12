@@ -8,14 +8,16 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Embeddable
-public class TypeKey implements Serializable {
-    @Column(name="id")
-    private  String id;
-    @Column(name = "type")
-    private  String type;
+public class OrderDetailsKey implements Serializable {
+
+    @Column(name = "order_id")
+    private String orderId;
+    @Column(name = "item_code")
+    private String itemCode;
 }

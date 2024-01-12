@@ -253,3 +253,21 @@ W
 0src/main/java/bo/custom/impl/CustomerBoImpl.java,1\a\1a654b3282b021ba122a376474fac2d6aba60198
 V
 &src/main/java/dto/tm/PlaceOrderTm.java,7\c\7c0d4412bde53fae35b7488774926dda572e75a4
+U
+%src/main/java/entity/OrderDetail.java,9\5\95539df9e9e1bc7fb0d7822ae09bdd972b17ec90
+P
+ src/main/java/entity/Orders.java,4\8\48211ba3dd7e8b79fb874d28da2202f2c0a2a141
+Y
+)src/main/java/entity/OrderDetailsKey.java,d\8\d8bf35ddbede29bf962753bff8b727d827e0db2f
+V
+&src/main/java/dto/OrderDetailsDto.java,2\0\20791c7d2d61ee83b17398b4f8bb5ffe10c1df39
+V
+&src/main/java/dao/custom/OrderDao.java,0\8\0862556bde68ad47794fc754fd19e77b0f13b6d7
+]
+-src/main/java/dao/custom/OrderDetailsDao.java,6\1\618ccafb113838f03b58553ca7e60903bdd2cead
+_
+/src/main/java/dao/custom/impl/OrderDaoImpl.java,2\a\2a0f2887e69155c4ab17b9a6277638f1abc5cc15
+f
+6src/main/java/dao/custom/impl/OrderDetailsDaoImpl.java,6\8\68bf14efc52543139fcbff5e945d69e8ade6262d
+]
+-src/main/java/bo/custom/impl/OrderBoImpl.java,3\b\3b7ed7c5f9386b52fcbd273d709e57a03acfa6d2

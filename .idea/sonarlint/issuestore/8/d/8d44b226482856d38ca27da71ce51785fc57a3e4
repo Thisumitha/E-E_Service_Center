@@ -1,9 +1,8 @@
 
 I
-java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ
+java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ
 ¯
-java:S6548
-"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê
-n	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÜŸ•
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê
+n	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÜŸ•
 I
-java:S1128",Remove this unused import 'entity.Customer'.(éş²¢8ë‰ËäÏ1
+java:S1128	",Remove this unused import 'entity.Customer'.(éş²¢8š‘÷ùÏ1

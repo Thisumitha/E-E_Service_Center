@@ -18,7 +18,7 @@ public class ItemController {
     public Label codeLabel;
     public JFXButton btn;
     private ItemCatologDto itemCatologDto;
-    StoreFormController storeFormController =new StoreFormController();
+   static StoreFormController storeFormController =new StoreFormController();
 
 
     public void addToCart(ActionEvent actionEvent) {
