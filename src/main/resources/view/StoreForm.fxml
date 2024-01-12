@@ -201,7 +201,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton accessibleRole="IMAGE_VIEW" alignment="CENTER" maxWidth="-Infinity" onAction="#reloadButton" ripplerFill="WHITE" wrapText="true">
+                        <JFXButton fx:id="load" accessibleRole="IMAGE_VIEW" alignment="CENTER" maxWidth="-Infinity" onAction="#reloadButton" ripplerFill="WHITE" wrapText="true">
                            <graphic>
                               <ImageView fitHeight="29.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

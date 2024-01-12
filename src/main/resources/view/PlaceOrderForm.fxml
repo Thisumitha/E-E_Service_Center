@@ -108,15 +108,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXTreeTableView GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <JFXTreeTableView fx:id="tblPlace" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <columns>
-                                    <TreeTableColumn prefWidth="240.33333587646484" text="Item" />
-                                    <TreeTableColumn prefWidth="182.0" text="Price(Rs.)" />
-                                    <TreeTableColumn minWidth="0.0" prefWidth="71.0" text="-" />
-                                    <TreeTableColumn prefWidth="139.0" text="QTY" />
-                                    <TreeTableColumn minWidth="0.0" prefWidth="47.0" text="+" />
-                                    <TreeTableColumn prefWidth="232.0" text="Subtotal(RS.)" />
-                                    <TreeTableColumn prefWidth="96.0" text="Option" />
+                                    <TreeTableColumn fx:id="colName" prefWidth="240.33333587646484" text="Item" />
+                                    <TreeTableColumn fx:id="colUnitPrice" prefWidth="182.0" text="Price(Rs.)" />
+                                    <TreeTableColumn fx:id="colMinus" minWidth="0.0" prefWidth="71.0" text="-" />
+                                    <TreeTableColumn fx:id="colQty" prefWidth="139.0" text="QTY" />
+                                    <TreeTableColumn fx:id="colPlus" minWidth="0.0" prefWidth="47.0" text="+" />
+                                    <TreeTableColumn fx:id="colPrice" prefWidth="232.0" text="Subtotal(RS.)" />
+                                    <TreeTableColumn fx:id="colOption" prefWidth="96.0" text="Option" />
                                  </columns>
                               </JFXTreeTableView>
                               <GridPane GridPane.columnIndex="1">
@@ -190,7 +190,7 @@
                                                 <Font size="22.0" />
                                              </font>
                                           </Label>
-                                          <Label text="0.00" GridPane.columnIndex="1">
+                                          <Label fx:id="priceLabel" text="0.00" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
@@ -221,8 +221,8 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <JFXTextField />
-                                                <JFXButton contentDisplay="GRAPHIC_ONLY" GridPane.columnIndex="1">
+                                                <JFXTextField fx:id="discount" />
+                                                <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#discountAddButton" GridPane.columnIndex="1">
                                                    <graphic>
                                                       <ImageView fitHeight="26.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -250,7 +250,7 @@
                                                 <Font size="20.0" />
                                              </font>
                                           </Label>
-                                          <Label text="0.00" GridPane.columnIndex="1">
+                                          <Label fx:id="discountToatal" text="0.00" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
@@ -284,7 +284,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="0.00" GridPane.columnIndex="1">
+                                          <Label fx:id="netTotalLabel" text="0.00" GridPane.columnIndex="1">
                                              <font>
                                                 <Font name="System Bold" size="28.0" />
                                              </font>

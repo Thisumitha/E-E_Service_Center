@@ -23,6 +23,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -44,6 +46,7 @@ public class StoreFormController  {
     public TreeTableColumn colPrice;
     public JFXTextField searchText;
     public Label priceLabel;
+
 
 
     @FXML
@@ -122,13 +125,19 @@ public class StoreFormController  {
 
 
 
-
             List<ItemCatologDto> dtoList =catologDtoList;
 
             for (ItemCatologDto dto:dtoList){
-                JFXButton btnMinus = new JFXButton("-");
-                JFXButton btnPlus = new JFXButton("+");
-
+                ImageView imageMinus = new ImageView("/Assets/minus.png");
+                imageMinus.setFitWidth(20);
+                imageMinus.setFitHeight(20);
+                ImageView imagePlus = new ImageView("/Assets/plus.png");
+                imagePlus.setFitWidth(20);
+                imagePlus.setFitHeight(20);
+                JFXButton btnMinus = new JFXButton();
+                btnMinus.setGraphic(imageMinus);
+                JFXButton btnPlus = new JFXButton();
+                btnPlus.setGraphic(imagePlus);
                 CatologTm tm = new CatologTm(
                         dto.getCode(),
                         dto.getName(),
@@ -289,9 +298,9 @@ public class StoreFormController  {
                     btn
 
             );
-//            btn.setOnAction(actionEvent -> {
-//                System.out.println(dto);
-//            });
+            btn.setOnAction(actionEvent -> {
+                loadToCart();
+            });
             list.add(itemCatologDto);
 
         }
@@ -333,7 +342,7 @@ public class StoreFormController  {
             try {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
                 stage.setResizable(true);
-                stage.setTitle("Store");
+                stage.setTitle("Place Order");
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -347,13 +356,53 @@ public class StoreFormController  {
 
     }
     public void savecart(ItemCatologDto itemCatologDto) {
-        catologDtoList.add(itemCatologDto);
-        System.out.println(itemCatologDto);
-        System.out.println(catologDtoList);
+        boolean add= true;
+        if (catologDtoList.isEmpty()){
+            catologDtoList.add(itemCatologDto);
+        }else {
+            for (ItemCatologDto dto : catologDtoList) {
+                if (dto.getCode().equals(itemCatologDto.getCode())) {
+                    addAgain(itemCatologDto.getCode());
+                    System.out.println("hellloooooooooooooooooooooooo");
+                    add=false;
+                }
+            }
+            if (add){
+                catologDtoList.add(itemCatologDto);
+                System.out.println("byeeeeeeeeeeee");
+            }
+        }
+
+
 
 
     }
-    public void changecart(String id, String bool) {
+
+    private void addAgain(String code) {
+        try {
+            List<ItemDto> itemDtos = new ArrayList<>(itemBo.allItems());
+            Iterator<ItemCatologDto> iterator = catologDtoList.iterator();
+
+            while (iterator.hasNext()) {
+                ItemCatologDto catologDto = iterator.next();
+
+                for (ItemDto dto : itemDtos) {
+                    if (code.equals(dto.getCode()) && dto.getCode().equals(catologDto.getCode())) {
+                            catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
+                            catologDto.setQty(catologDto.getQty() + 1);
+                    }
+                }
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void changecart(String id, String bool) {
         try {
             List<ItemDto> itemDtos = new ArrayList<>(itemBo.allItems());
             Iterator<ItemCatologDto> iterator = catologDtoList.iterator();
@@ -366,6 +415,7 @@ public class StoreFormController  {
                         if ("+".equals(bool)) {
                             catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
                             catologDto.setQty(catologDto.getQty() + 1);
+
                         } else {
                             if (!(catologDto.getQty() == 1)) {
                                 catologDto.setPrice(catologDto.getPrice() - dto.getUnitPrice());
@@ -378,8 +428,8 @@ public class StoreFormController  {
                     }
                 }
             }
-
             loadToCart();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

@@ -5,5 +5,3 @@ a
 java:S1854"?Remove this useless assignment to local variable "transaction".(¹æ¢üÿÿÿÿ8æ›ûìÎ1
 R
 java:S1481"0Remove this unused "transaction" local variable.(¹æ¢üÿÿÿÿ8ç›ûìÎ1
-L	java:S106?"+Replace this use of System.out by a logger.(¦ˆ‘Šùÿÿÿÿ8×…ÇîÎ1
-G	java:S106P"+Replace this use of System.out by a logger.(µâ†í8úûÿÎ1

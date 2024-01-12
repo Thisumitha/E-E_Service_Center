@@ -60,7 +60,7 @@ public class ItemDaoImpl implements ItemDao {
                 entity.getQtyOnHand(),
                 entity.getImage()
         );
-        System.out.println(entity.getType().getType());
+
         item.setType(session.find(Type.class,entity.getType().getId()));
 
 
@@ -77,7 +77,7 @@ public class ItemDaoImpl implements ItemDao {
 
         Transaction transaction = session.beginTransaction();
         Item item = session.find(Item.class, entity.getCode());
-        System.out.println("\n\n\n\n"+entity+"\n\n\n\n ");
+
         item.setCode(entity.getCode());
         item.setName(entity.getName());
         item.setQtyOnHand(entity.getQtyOnHand());

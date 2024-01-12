@@ -1,9 +1,9 @@
 
 I
-java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ
-a
-java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ
 ¯
-java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê
-n	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÜŸ•
-X	java:S125"<This block of commented-out lines of code should be removed.(íĞ¡²8ñ—ôÍ1
+java:S6548
+"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê
+n	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÜŸ•
+I
+java:S1128",Remove this unused import 'entity.Customer'.(éş²¢8ë‰ËäÏ1
