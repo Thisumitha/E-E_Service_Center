@@ -10,9 +10,9 @@ import lombok.*;
 @Getter
 @Setter
 public class OrderTm extends RecursiveTreeObject<OrderTm> {
-    private String code;
-    private String desc;
-    private int qty;
-    private double amount;
-    private JFXButton btn;
+    private String id;
+    private String price;
+    private String date;
+    private String cashier;
+
 }

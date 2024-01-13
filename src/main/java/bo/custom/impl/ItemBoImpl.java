@@ -128,5 +128,25 @@ public class ItemBoImpl implements ItemBo {
         return catologDtoList;
     }
 
+    @Override
+    public void updatequantities(List<ItemCatologDto> itemCatologDtos) throws SQLException, ClassNotFoundException {
+        List<ItemDto> dtoList = allItems();
+        for(ItemCatologDto item:itemCatologDtos ){
+            for (ItemDto dto:dtoList) {
+                if (item.getCode().equals(dto.getCode())){
+                    int i = dto.getQty() - item.getQty();
+                    updateItem(new ItemDto(
+                           item.getCode(),
+                            item.getName(),
+                            dto.getUnitPrice(),
+                            i,
+                            dto.getType(),
+                            dto.getImage()
+                    ));
+                }
+            }
+        }
+    }
+
 
 }

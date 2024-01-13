@@ -230,8 +230,6 @@ Q.idea/sonarlint/securityhotspotstore/f/9/f9b78407815598d4b3c48eda686c034dd101a8
 Å
 Q.idea/sonarlint/securityhotspotstore/f/d/fd596aad30dad7adad0f76c49d98932032c499e0,6\d\6dcc8eec4bff34b08f89e4b9cc6a9dc5c381ee18
 Q
-!src/main/java/entity/TypeKey.java,0\e\0e5a1fb77b910c128a5134c651424e721e5305c0
-Q
 !src/main/java/dto/tm/OrderTm.java,4\2\42a6499ee3db77d80f585b9bd106d7b57745c86a
 S
 #src/main/java/dto/tm/catologTm.java,d\7\d71376eb0f86b1626a25b2089fce4a4702cfeccf
@@ -271,3 +269,9 @@ f
 6src/main/java/dao/custom/impl/OrderDetailsDaoImpl.java,6\8\68bf14efc52543139fcbff5e945d69e8ade6262d
 ]
 -src/main/java/bo/custom/impl/OrderBoImpl.java,3\b\3b7ed7c5f9386b52fcbd273d709e57a03acfa6d2
+R
+"src/main/java/controller/test.java,d\f\df5d15351f81bbf2887d197294ec64fcc1fd4cad
+d
+4src/main/java/controller/OrderHistoryController.java,d\a\da562136a0ba7371f8cf885ed0a34be9aa618b39
+X
+(src/main/java/dto/tm/OrderDetailsTm.java,0\a\0a3ca277329d44e70e294c614daa83a848da0241

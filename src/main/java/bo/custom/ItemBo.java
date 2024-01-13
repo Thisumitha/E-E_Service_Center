@@ -20,6 +20,7 @@ public interface ItemBo extends SuperBo {
     void savecart(List<ItemCatologDto> save);
     List<ItemCatologDto> loadCart();
 
+    void updatequantities(List<ItemCatologDto> itemCatologDtos) throws SQLException, ClassNotFoundException;
 }
 
 

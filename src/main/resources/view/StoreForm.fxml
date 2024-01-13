@@ -172,7 +172,7 @@
                               </GridPane>
                                     </children>
                                 </GridPane>
-                                <JFXTreeTableView fx:id="tblList">
+                                <JFXTreeTableView fx:id="tblList" onMouseMoved="#reloadTrack">
                                     <columns>
                                         <TreeTableColumn fx:id="colName" maxWidth="93.0" minWidth="64.0" prefWidth="86.0" resizable="false" text="Name" />
                                         <TreeTableColumn fx:id="colMinus" maxWidth="81.0" minWidth="30.0" prefWidth="41.0" resizable="false" text=" - " />
@@ -203,7 +203,7 @@
                      <children>
                         <JFXButton fx:id="load" accessibleRole="IMAGE_VIEW" alignment="CENTER" maxWidth="-Infinity" onAction="#reloadButton" ripplerFill="WHITE" wrapText="true">
                            <graphic>
-                              <ImageView  fitHeight="29.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="29.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/reload.png" />
                                  </image>

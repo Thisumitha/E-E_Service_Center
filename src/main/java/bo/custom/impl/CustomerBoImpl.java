@@ -12,6 +12,7 @@ import dto.CustomerDto;
 import entity.Customer;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerBoImpl implements CustomerBo {
@@ -28,8 +29,18 @@ public class CustomerBoImpl implements CustomerBo {
     }
 
     @Override
-    public List<CustomerDto> allItems() throws SQLException, ClassNotFoundException {
-        return null;
+    public List<CustomerDto> allICustomers() throws SQLException, ClassNotFoundException {
+        List<Customer> customerList = customerDao.getAll();
+        List<CustomerDto>list=new ArrayList<>();
+        for (Customer customer:customerList){
+            list.add(new CustomerDto(
+                    customer.getCode(),
+                    customer.getName(),
+                    customer.getNumber(),
+                    customer.getEmail()
+            ));
+        }
+        return list;
     }
 
     @Override

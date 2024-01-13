@@ -10,7 +10,7 @@ import java.util.List;
 public interface CustomerBo extends SuperBo {
 
     boolean saveCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException;
-    List<CustomerDto> allItems() throws SQLException, ClassNotFoundException;
+    List<CustomerDto> allICustomers() throws SQLException, ClassNotFoundException;
     String generateId() throws SQLException, ClassNotFoundException;
     boolean updateItem(CustomerDto dto) throws SQLException, ClassNotFoundException;
 

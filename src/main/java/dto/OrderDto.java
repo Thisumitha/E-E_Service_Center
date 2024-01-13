@@ -14,4 +14,5 @@ public class OrderDto {
     private String time;
     private String cusCode;
     private List<OrderDetailsDto> list;
+    private String cashier;
 }

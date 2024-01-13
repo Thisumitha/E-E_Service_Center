@@ -33,6 +33,7 @@ public class OrderDaoImpl implements OrderDao {
                     null,
                     null,
                     null,
+                    null,
                     null
 
             );
@@ -52,7 +53,9 @@ public class OrderDaoImpl implements OrderDao {
         Orders order=new Orders(
                 dto.getOrderId(),
                 dto.getDate(),
-                dto.getTime()
+                dto.getTime(),
+                dto.getCashier()
+
         );
         order.setCustomer(session.find(Customer.class,dto.getCusCode()));
         session.save(order);
@@ -89,6 +92,34 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<OrderDto> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        Session session = HibernateUtil.getSession();
+        List<OrderDto>orderDtos=new ArrayList<>();
+
+        org.hibernate.query.Query query = session.createQuery("FROM Orders ");
+        List<Orders> list = query.list();
+
+        for (Orders orders:list){
+            List<OrderDetailsDto>detailsDtoList=new ArrayList<>();
+            for(OrderDetail detailsDto:orders.getOrderDetails()){
+                detailsDtoList.add( new OrderDetailsDto(
+                        detailsDto.getOrders().getOrderId(),
+                        detailsDto.getItem().getCode(),
+                        detailsDto.getQty(),
+                        detailsDto.getPrice()
+                ));
+            }
+            orderDtos.add(new OrderDto(
+                    orders.getOrderId(),
+                    orders.getDate(),
+                    orders.getTime(),
+                    orders.getCustomer().getCode(),
+                    detailsDtoList,
+                    orders.getCashier()
+
+            ));
+        }
+
+        session.close();
+        return orderDtos;
     }
 }

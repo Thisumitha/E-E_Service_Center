@@ -364,7 +364,7 @@ public class StoreFormController  {
         }else {
             for (ItemCatologDto dto : catologDtoList) {
                 if (dto.getCode().equals(itemCatologDto.getCode())) {
-                    addAgain(itemCatologDto.getCode());
+                    changecart(itemCatologDto.getCode(),"+");
 
                     add=false;
                 }
@@ -380,29 +380,7 @@ public class StoreFormController  {
 
     }
 
-    private void addAgain(String code) {
-        try {
-            List<ItemDto> itemDtos = new ArrayList<>(itemBo.allItems());
-            Iterator<ItemCatologDto> iterator = catologDtoList.iterator();
 
-            while (iterator.hasNext()) {
-                ItemCatologDto catologDto = iterator.next();
-
-                for (ItemDto dto : itemDtos) {
-                    if (code.equals(dto.getCode()) && dto.getCode().equals(catologDto.getCode())) {
-                            catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
-                            catologDto.setQty(catologDto.getQty() + 1);
-                    }
-                }
-            }
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private void changecart(String id, String bool) {
         try {
@@ -415,22 +393,29 @@ public class StoreFormController  {
                 for (ItemDto dto : itemDtos) {
                     if (id.equals(dto.getCode()) && dto.getCode().equals(catologDto.getCode())) {
                         if ("+".equals(bool)) {
-                            catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
-                            catologDto.setQty(catologDto.getQty() + 1);
+                            if (!(dto.getQty() == catologDto.getQty())) {
+                                catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
+                                catologDto.setQty(catologDto.getQty() + 1);
+                            }else{
+                                Alert alert = new Alert(Alert.AlertType.WARNING);
+                                alert.setContentText("Not Available Qty");
+                                alert.show();
+
+                            }
 
                         } else {
                             if (!(catologDto.getQty() == 1)) {
                                 catologDto.setPrice(catologDto.getPrice() - dto.getUnitPrice());
                                 catologDto.setQty(catologDto.getQty() - 1);
                             } else {
-                                System.out.println(catologDto);
+
                                 iterator.remove();  // Safely remove the item using the iterator
                             }
                         }
                     }
                 }
             }
-            loadToCart();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

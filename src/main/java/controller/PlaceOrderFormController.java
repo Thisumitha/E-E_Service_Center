@@ -18,21 +18,22 @@ import dto.OrderDto;
 import dto.catelog.ItemCatologDto;
 import dto.tm.CatologTm;
 import dto.tm.PlaceOrderTm;
+import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import impl.org.controlsfx.autocompletion.SuggestionProvider;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
-import org.controlsfx.control.textfield.*;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -55,11 +56,14 @@ public class PlaceOrderFormController {
     public JFXTextField discount;
     public Label discountToatal;
     public Label netTotalLabel;
-    public TextField test;
+
+
+
 
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
+
 
     @FXML
     private BorderPane pane;
@@ -76,10 +80,12 @@ public class PlaceOrderFormController {
     @FXML
     private JFXTextField searchText;
     List<ItemCatologDto> itemCatologDtos=new ArrayList<>();
+    List<CustomerDto> customerDtos=new ArrayList<>();
     private double tot=0;
     private double discountedAmount=0;
     private double netTotal=0;
-    private AutoCompletionBinding<String> autoCompletionBinding;
+
+
 
     public void PlaceOrderButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (txtName.getText().isEmpty()||txtNumber.getText().isEmpty()||txtEmail.getText().isEmpty()){
@@ -127,13 +133,21 @@ public class PlaceOrderFormController {
                 txtEmail.getText()
         ));
         if (savedCustomer){
-            orderBo.saveOreder(new OrderDto(
+            boolean savedOreder = orderBo.saveOreder(new OrderDto(
                     oId,
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
                     cId,
-                    list
+                    list,
+                    "thisumitha"
             ));
+            itemBo.updatequantities(itemCatologDtos);
+            itemBo.savecart(new ArrayList<>());
+            if (savedOreder){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Order Placed");
+                alert.show();
+            }
 
 
         }
@@ -148,13 +162,14 @@ public class PlaceOrderFormController {
         colPrice.setCellValueFactory(new TreeItemPropertyValueFactory<>("price"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("option"));
         loadTable();
-//        loadCustomers();
-//        String[] words={"Hello","Thisu","Adi","Liviru","Kalhara","Gayathri"};
-//        TextFields.bindAutoCompletion(test, words);
+        loadCustomers();
+
     }
 
-    private void loadCustomers() throws IOException {
 
+
+    private void loadCustomers() throws IOException, SQLException, ClassNotFoundException {
+        customerDtos = customerBo.allICustomers();
     }
     private Collection<String> getNames() {
         Collection<String> names = new ArrayList<>();
@@ -227,6 +242,7 @@ public class PlaceOrderFormController {
         priceLabel.setText(String.format("%.2f",tot));
         netTotalLabel.setText(String.format("%.2f",tot));
         netTotal=tot;
+
     }
 
     private void deleteitem(PlaceOrderTm tm) {
@@ -252,8 +268,15 @@ public class PlaceOrderFormController {
                 for (ItemDto dto : itemDtos) {
                     if (id.equals(dto.getCode()) && dto.getCode().equals(catologDto.getCode())) {
                         if ("+".equals(bool)) {
-                            catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
-                            catologDto.setQty(catologDto.getQty() + 1);
+                            if (!(dto.getQty() == catologDto.getQty())) {
+                                catologDto.setPrice(catologDto.getPrice() + dto.getUnitPrice());
+                                catologDto.setQty(catologDto.getQty() + 1);
+                            }else{
+                                Alert alert = new Alert(Alert.AlertType.WARNING);
+                                alert.setContentText("Not Available Qty");
+                                alert.show();
+
+                            }
                         } else {
                             if (!(catologDto.getQty() == 1)) {
                                 catologDto.setPrice(catologDto.getPrice() - dto.getUnitPrice());
@@ -292,5 +315,34 @@ public class PlaceOrderFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void searchCustomerAction(KeyEvent keyEvent) {
+        String customer = searchText.getText();
+        if (customer.isEmpty() || customer.isBlank() || customer == null) {
+            txtName.setText("");
+            txtNumber.setText("");
+            txtEmail.setText("");
+        } else {
+            fillCustomerDetails(customer);
+        }
+    }
+
+    private void fillCustomerDetails(String customer) {
+        for (CustomerDto customerDto: customerDtos){
+            if (customerDto.getCode().equals(customer)||customerDto.getName().equals(customer)||String.valueOf(customerDto.getNumber()).equals(customer)||customerDto.getEmail().equals(customer)){
+                txtName.setText(customerDto.getName());
+                txtNumber.setText(String.valueOf(customerDto.getNumber()));
+                txtEmail.setText(customerDto.getEmail());
+
+            }
+        }
+    }
+
+    public void resetCusAction(ActionEvent actionEvent) {
+        txtName.setText("");
+        txtNumber.setText("");
+        txtEmail.setText("");
+        searchText.setText("");
     }
 }
