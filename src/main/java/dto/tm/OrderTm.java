@@ -11,7 +11,7 @@ import lombok.*;
 @Setter
 public class OrderTm extends RecursiveTreeObject<OrderTm> {
     private String id;
-    private String price;
+    private double price;
     private String date;
     private String cashier;
 

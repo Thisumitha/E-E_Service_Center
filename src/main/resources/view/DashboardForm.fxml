@@ -68,7 +68,7 @@
                               <Font name="System Bold" size="26.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton alignment="CENTER" prefHeight="46.0" prefWidth="262.0" style="-fx-border-color: #FFFFFF;" text="Oreder History" textFill="WHITE" GridPane.rowIndex="2">
+                        <JFXButton alignment="CENTER" onAction="#OrderHistoryButton" prefHeight="46.0" prefWidth="262.0" style="-fx-border-color: #FFFFFF;" text="Oreder History" textFill="WHITE" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>

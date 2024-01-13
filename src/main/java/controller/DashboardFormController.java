@@ -34,4 +34,16 @@ public class DashboardFormController  {
             e.printStackTrace();
         }
     }
+
+    public void OrderHistoryButton(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderHistory.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("OrderHistory");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -24,6 +24,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Orders> orders = new ArrayList<>();
 
+    @OneToMany(mappedBy = "customer")
+    private List<RepairItem> repairItems = new ArrayList<>();
+
     public Customer(String code, String name, int number, String email) {
         this.code = code;
         this.name = name;
