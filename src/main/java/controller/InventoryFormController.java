@@ -321,5 +321,7 @@ public class InventoryFormController {
     }
 
 
-
+    public void reloadButtonAcction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        cmbLoad();
+    }
 }

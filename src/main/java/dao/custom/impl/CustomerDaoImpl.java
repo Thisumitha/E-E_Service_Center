@@ -2,9 +2,8 @@ package dao.custom.impl;
 
 import dao.custom.CustomerDao;
 import dao.util.HibernateUtil;
+import dto.RepairItemDto;
 import entity.Customer;
-import entity.Item;
-import entity.Type;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

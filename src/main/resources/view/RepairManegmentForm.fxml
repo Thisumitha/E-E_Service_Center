@@ -281,7 +281,7 @@
                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="20.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="20.0" />
                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -327,7 +327,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <JFXTextField style="-fx-background-color: white;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="cusName" style="-fx-background-color: white;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
                               <JFXTextField fx:id="txtEmail" style="-fx-background-color: white;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
                               <JFXComboBox fx:id="cmbstetus" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" GridPane.columnIndex="7" GridPane.rowIndex="5" />
                               <JFXButton onAction="#btnSave" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #E11B1B; -fx-background-radius: 34px;" text="New" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="7">

@@ -11,8 +11,12 @@ import dto.TypeDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +34,7 @@ public class typePopupController {
     private TypeBo typeBo = BoFactory.getInstance().getBo(BoType.TYPE);
     private  String selectedText;
     private  String id;
+    InventoryFormController inventoryFormController=new InventoryFormController();
 
 
     public void createButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -76,7 +81,7 @@ public class typePopupController {
         return false;
     }
 
-    public void backButton(ActionEvent actionEvent) {
+    public void backButton(ActionEvent actionEvent) throws IOException {
         txtname.getScene().getWindow().hide();
     }
     public void initialize() throws ClassNotFoundException, SQLException {

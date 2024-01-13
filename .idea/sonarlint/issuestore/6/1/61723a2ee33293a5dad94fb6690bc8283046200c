@@ -8,5 +8,5 @@ java:S3740B"/Provide the parametrized type for this generic.(©ìß8ÿñ˜şÎ1
 G	java:S106!"+Replace this use of System.out by a logger.(µâ†í8‹ò˜şÎ1
 G	java:S106""+Replace this use of System.out by a logger.(ßÉ½Ú8¾Ù´Ï1
 ]	java:S125%"<This block of commented-out lines of code should be removed.(·¬—Òùÿÿÿÿ8ô›ª‘Ï1
-E
-java:S1128"(Remove this unused import 'entity.Item'.(ÏÂã8ôöÂşÎ1
+P
+java:S1128".Remove this unused import 'dto.RepairItemDto'.(ø…â•şÿÿÿÿ8ø†¥Ğ1

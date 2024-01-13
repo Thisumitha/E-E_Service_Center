@@ -3,6 +3,7 @@ package dao.custom.impl;
 import dao.custom.ItemDao;
 import dao.util.HibernateUtil;
 import dto.ItemDto;
+import dto.RepairItemDto;
 import entity.Item;
 import entity.Type;
 import org.hibernate.Session;

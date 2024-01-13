@@ -1,5 +1,7 @@
 package dao;
 
+import dto.RepairItemDto;
+
 import java.sql.SQLException;
 import java.util.List;
 

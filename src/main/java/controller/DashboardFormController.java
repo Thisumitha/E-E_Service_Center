@@ -46,4 +46,17 @@ public class DashboardFormController  {
             e.printStackTrace();
         }
     }
+
+    public void repairManegment(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/RepairManegmentForm.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("Repair Management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

@@ -3,9 +3,8 @@ package dao.custom.impl;
 import dao.custom.OrderDetailsDao;
 import dao.util.HibernateUtil;
 import dto.OrderDetailsDto;
-import dto.OrderDto;
+import dto.RepairItemDto;
 import entity.OrderDetail;
-import entity.Orders;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDetailsDaoImpl implements OrderDetailsDao {
+
 
 
     @Override

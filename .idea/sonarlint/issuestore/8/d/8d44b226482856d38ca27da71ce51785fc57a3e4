@@ -1,8 +1,10 @@
 
+P
+java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ8®ã¡Ğ1
+¶
+java:S6548	"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê8±ã¡Ğ1
+u	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÜŸ•8ß†¥Ğ1
+Y
+java:S1128"<Remove this unused import 'bo.custom.impl.RepairItemBoImpl'.(Í’Ïé8à†¥Ğ1
 I
-java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ
-¯
-java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê
-n	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÜŸ•
-I
-java:S1128	",Remove this unused import 'entity.Customer'.(éş²¢8š‘÷ùÏ1
+java:S1128",Remove this unused import 'entity.Customer'.(éş²¢8à†¥Ğ1
