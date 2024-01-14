@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Setter
@@ -25,8 +27,8 @@ public class RepairItem {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-//    @OneToMany(mappedBy = "parts")
-//    private List<RepairaPartsDetails> repairParts = new ArrayList<>();
+    @OneToMany(mappedBy = "item")
+    private List<RepairaPartsDetails> repairParts = new ArrayList<>();
 
 
     public RepairItem(String id, String name, String date, String cashier, String price, String note) {

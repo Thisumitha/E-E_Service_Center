@@ -171,16 +171,6 @@ public class PlaceOrderFormController {
     private void loadCustomers() throws IOException, SQLException, ClassNotFoundException {
         customerDtos = customerBo.allICustomers();
     }
-    private Collection<String> getNames() {
-        Collection<String> names = new ArrayList<>();
-        names.add("Hello");
-        names.add("Thisu");
-        names.add("Adi");
-        names.add("Liviru");
-        names.add("Kalhara");
-        names.add("Gayathri");
-        return names;
-    }
 
     private void loadTable() {
          itemCatologDtos = itemBo.loadCart();

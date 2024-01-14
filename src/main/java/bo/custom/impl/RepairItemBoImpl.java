@@ -7,6 +7,7 @@ import dao.custom.OrderDao;
 import dao.custom.RepairItemDao;
 import dao.util.DaoType;
 import dto.ItemDto;
+import dto.OrderDto;
 import dto.RepairItemDto;
 import entity.RepairItem;
 
@@ -36,7 +37,27 @@ public class RepairItemBoImpl implements RepairItemBo {
     }
 
     @Override
-    public List<RepairItemDto> allItems() {
+    public List<RepairItemDto> allItems() throws SQLException, ClassNotFoundException {
+        return repairItemDao.getAll();
+    }
+
+    @Override
+    public String generateId() throws SQLException, ClassNotFoundException {
+        try {
+            String lastOrder = repairItemDao.lastOrder();
+
+            if (lastOrder!=null){
+                int num = Integer.parseInt(lastOrder.split("[R]")[1]);
+                num++;
+                return String.format("R%03d",num);
+            }else{
+                return "R001";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

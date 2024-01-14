@@ -1,12 +1,11 @@
 package dao.custom;
 
 import dao.CrudDao;
-import dto.RepairItemDto;
-import entity.RepairItem;
-import entity.Type;
+import dto.OrderDetailsDto;
+import entity.RepairaPartsDetails;
 
 import java.sql.SQLException;
 
-public interface RepairItemDao extends CrudDao<RepairItemDto> {
+public interface RepairaPartsDetailsDao extends CrudDao<RepairaPartsDetails> {
     String lastOrder() throws SQLException, ClassNotFoundException;
 }

@@ -37,6 +37,9 @@ public class typePopupController {
     InventoryFormController inventoryFormController=new InventoryFormController();
 
 
+
+
+
     public void createButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (txtname.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

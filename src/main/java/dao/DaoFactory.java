@@ -22,6 +22,7 @@ public class DaoFactory {
             case CUSTOMER:return (T)  new CustomerDaoImpl();
             case ORDER:return (T)  new OrderDaoImpl();
             case REPAIR_ITEM:return (T)new RepairItemDaoImpl();
+            case REPAIR_PARTS:return (T)new RepairaPartsDetailsDaoImpl();
         }
         return null;
     }

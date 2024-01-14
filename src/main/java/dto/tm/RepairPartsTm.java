@@ -1,24 +1,15 @@
-package entity;
+package dto.tm;
 
 import lombok.*;
-
-import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @ToString
-@Entity
-public class RepairaPartsDetails {
-  @Id
+public class RepairPartsTm {
     private String id;
     private String name;
     private int qty;
     private double price;
-
-    @ManyToOne
-    @JoinColumn(name = "repair_id")
-    private RepairItem item;
-
 }

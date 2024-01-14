@@ -2,6 +2,7 @@ package dto;
 
 import entity.Customer;
 import entity.RepairItem;
+import entity.RepairaPartsDetails;
 import lombok.*;
 
 import java.util.List;
@@ -18,5 +19,5 @@ public class RepairItemDto {
     private String price;
     private String note;
     private Customer customer;
-    private List<RepairItem> repairItems;
+    private List<RepairaPartsDetails> repairItems;
 }

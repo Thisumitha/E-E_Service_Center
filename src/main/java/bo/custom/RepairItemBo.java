@@ -13,5 +13,6 @@ public interface RepairItemBo extends SuperBo {
 
     boolean deleteItem(String id);
 
-    List<RepairItemDto> allItems() ;
+    List<RepairItemDto> allItems() throws SQLException, ClassNotFoundException;
+    String generateId() throws SQLException, ClassNotFoundException;
 }
