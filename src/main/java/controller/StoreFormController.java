@@ -340,7 +340,9 @@ public class StoreFormController  {
             alert.show();
         }else {
             itemBo.savecart(catologDtoList);
+            catologDtoList=new ArrayList<>();
             Stage stage = (Stage) pane.getScene().getWindow();
+
             try {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
                 stage.setResizable(true);

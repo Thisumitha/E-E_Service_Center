@@ -295,10 +295,6 @@ T
 $src/main/java/dto/RepairPartDto.java,1\e\1e59bffa3262c2fd9be411e9fee769f00173f237
 W
 'src/main/java/dto/tm/RepairPartsTm.java,5\8\58929ee6635e59e2cfa8565f8d4e7c111660a8dd
-d
-4src/main/java/dao/custom/RepairaPartsDetailsDao.java,d\f\df4287bf794cacab5b8a7d996b783eb92c1bd222
-m
-=src/main/java/dao/custom/impl/RepairaPartsDetailsDaoImpl.java,f\4\f47310db2c75fdba262b85ed57dd54859b696945
 Z
 *src/main/java/bo/custom/RepairPartsBo.java,0\c\0c081fb1f76f87180234c949a6e5de86c68acfbb
 c
@@ -309,3 +305,5 @@ c
 3src/main/java/dao/custom/RepairPartsDetailsDao.java,f\b\fb4903fe526e2346f06428f22b0dcbd254cfc640
 l
 <src/main/java/dao/custom/impl/RepairPartsDetailsDaoImpl.java,6\1\612b063a88c4b0f5c394ccd8f81cebcfbf0d6edb
+\
+,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c

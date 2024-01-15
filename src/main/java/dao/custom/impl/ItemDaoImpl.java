@@ -3,7 +3,6 @@ package dao.custom.impl;
 import dao.custom.ItemDao;
 import dao.util.HibernateUtil;
 import dto.ItemDto;
-import dto.RepairItemDto;
 import entity.Item;
 import entity.Type;
 import org.hibernate.Session;
@@ -36,7 +35,7 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public void removeItem(int num ,String code) throws SQLException, ClassNotFoundException {
+    public void removeItem(int num, String code) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
 
         Transaction transaction = session.beginTransaction();

@@ -18,6 +18,7 @@ import dto.OrderDto;
 import dto.catelog.ItemCatologDto;
 import dto.tm.CatologTm;
 import dto.tm.PlaceOrderTm;
+import entity.Customer;
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import impl.org.controlsfx.autocompletion.SuggestionProvider;
 import javafx.collections.FXCollections;
@@ -84,7 +85,9 @@ public class PlaceOrderFormController {
     private double tot=0;
     private double discountedAmount=0;
     private double netTotal=0;
-
+    private CustomerDto selectedCustomer;
+    private boolean isNew=true;
+    String cId;
 
 
     public void PlaceOrderButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -113,7 +116,7 @@ public class PlaceOrderFormController {
 
     }
     private void placeOrder() throws SQLException, ClassNotFoundException {
-        String cId = customerBo.generateId();
+
         String oId = orderBo.generateId();
         List<OrderDetailsDto> list = new ArrayList<>();
         for(ItemCatologDto catologDto :itemCatologDtos){
@@ -126,13 +129,18 @@ public class PlaceOrderFormController {
             list.add(dto);
 
         }
-        boolean savedCustomer = customerBo.saveCustomer(new CustomerDto(
-                cId,
-                txtName.getText(),
-                Integer.parseInt(txtNumber.getText()),
-                txtEmail.getText()
-        ));
-        if (savedCustomer){
+        Customer customer ;
+        if (isNew) {
+                    customerBo.saveCustomer(new CustomerDto(
+                    customerBo.generateId(),
+                    txtName.getText(),
+                    Integer.parseInt(txtNumber.getText()),
+                    txtEmail.getText()
+            ));
+
+        }
+
+
             boolean savedOreder = orderBo.saveOreder(new OrderDto(
                     oId,
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
@@ -143,6 +151,7 @@ public class PlaceOrderFormController {
             ));
             itemBo.updatequantities(itemCatologDtos);
             itemBo.savecart(new ArrayList<>());
+            loadTable();
             if (savedOreder){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Order Placed");
@@ -150,7 +159,7 @@ public class PlaceOrderFormController {
             }
 
 
-        }
+
     }
     public void initialize() throws ClassNotFoundException, SQLException, IOException {
 
@@ -163,6 +172,7 @@ public class PlaceOrderFormController {
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("option"));
         loadTable();
         loadCustomers();
+         cId = customerBo.generateId();
 
     }
 
@@ -307,23 +317,32 @@ public class PlaceOrderFormController {
         }
     }
 
-    public void searchCustomerAction(KeyEvent keyEvent) {
+    public void searchCustomerAction(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
         String customer = searchText.getText();
         if (customer.isEmpty() || customer.isBlank() || customer == null) {
             txtName.setText("");
             txtNumber.setText("");
             txtEmail.setText("");
-        } else {
+        }else{
             fillCustomerDetails(customer);
         }
     }
 
-    private void fillCustomerDetails(String customer) {
+    private void fillCustomerDetails(String customer) throws SQLException, ClassNotFoundException {
         for (CustomerDto customerDto: customerDtos){
             if (customerDto.getCode().equals(customer)||customerDto.getName().equals(customer)||String.valueOf(customerDto.getNumber()).equals(customer)||customerDto.getEmail().equals(customer)){
+                selectedCustomer=customerDto;
+                cId=customerDto.getCode();
                 txtName.setText(customerDto.getName());
                 txtNumber.setText(String.valueOf(customerDto.getNumber()));
                 txtEmail.setText(customerDto.getEmail());
+                isNew=false;
+            }else{
+                cId=customerBo.generateId();
+                isNew=false;
+                txtName.setText("");
+                txtNumber.setText("");
+                txtEmail.setText("");
 
             }
         }
