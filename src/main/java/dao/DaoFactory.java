@@ -1,10 +1,8 @@
 package dao;
 
 
-import bo.custom.impl.RepairItemBoImpl;
 import dao.custom.impl.*;
 import dao.util.DaoType;
-import entity.Customer;
 
 public class DaoFactory {
     private static DaoFactory daoFactory;
@@ -22,7 +20,7 @@ public class DaoFactory {
             case CUSTOMER:return (T)  new CustomerDaoImpl();
             case ORDER:return (T)  new OrderDaoImpl();
             case REPAIR_ITEM:return (T)new RepairItemDaoImpl();
-            case REPAIR_PARTS:return (T)new RepairaPartsDetailsDaoImpl();
+            case REPAIR_PARTS:return (T)new RepairPartsDetailsDaoImpl();
         }
         return null;
     }

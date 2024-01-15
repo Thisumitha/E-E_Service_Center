@@ -33,7 +33,7 @@ public class RepairItemDaoImpl implements RepairItemDao {
                 dto.getPrice(),
                 dto.getNote()
         );
-        repairItem.setCustomer(dto.getCustomer());
+
         repairItem.setCustomer(session.find(Customer.class,dto.getCustomer().getCode()));
         session.save(repairItem);
         transaction.commit();
@@ -42,8 +42,19 @@ public class RepairItemDaoImpl implements RepairItemDao {
     }
 
     @Override
-    public boolean update(RepairItemDto entity) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(RepairItemDto dto) throws SQLException, ClassNotFoundException {
+        Session session = HibernateUtil.getSession();
+
+        Transaction transaction = session.beginTransaction();
+        RepairItem item = session.find(RepairItem.class, dto.getId());
+        item.setName(dto.getName());
+        item.setNote(dto.getNote());
+        item.setDate(dto.getDate());
+        item.setPrice(dto.getPrice());
+        session.save(item);
+        transaction.commit();
+        session.close();
+        return true;
     }
 
 

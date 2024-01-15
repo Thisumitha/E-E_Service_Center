@@ -19,16 +19,14 @@ public class RepairItemBoImpl implements RepairItemBo {
     private CustomerDao customerDao= DaoFactory.getInstance().getDao(DaoType.CUSTOMER);
     @Override
     public boolean saveItem(RepairItemDto dto) throws SQLException, ClassNotFoundException {
-        boolean save = customerDao.save(dto.getCustomer());
-        if (save) {
             return repairItemDao.save(dto);
-        }
-        return false;
+
     }
 
     @Override
-    public boolean updateItem(RepairItemDto dto) {
-        return false;
+    public boolean updateItem(RepairItemDto dto) throws SQLException, ClassNotFoundException {
+        return  repairItemDao.update(dto);
+
     }
 
     @Override

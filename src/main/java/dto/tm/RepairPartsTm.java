@@ -1,5 +1,6 @@
 package dto.tm;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import lombok.*;
 
 @AllArgsConstructor
@@ -7,8 +8,8 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class RepairPartsTm {
-    private String id;
+public class RepairPartsTm extends RecursiveTreeObject<RepairPartsTm> {
+
     private String name;
     private int qty;
     private double price;

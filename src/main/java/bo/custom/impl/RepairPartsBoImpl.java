@@ -2,8 +2,7 @@ package bo.custom.impl;
 
 import bo.custom.RepairPartsBo;
 import dao.DaoFactory;
-import dao.custom.RepairItemDao;
-import dao.custom.RepairaPartsDetailsDao;
+import dao.custom.RepairPartsDetailsDao;
 import dao.util.DaoType;
 import dto.RepairPartDto;
 
@@ -11,21 +10,21 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class RepairPartsBoImpl implements RepairPartsBo {
-    private RepairaPartsDetailsDao repairaPartsDetailsDao= DaoFactory.getInstance().getDao(DaoType.REPAIR_PARTS);
+    private RepairPartsDetailsDao repairPartsDetailsDao = DaoFactory.getInstance().getDao(DaoType.REPAIR_PARTS);
     @Override
     public boolean saveItem(RepairPartDto dto) throws SQLException, ClassNotFoundException {
-        return false;
+        return repairPartsDetailsDao.save(dto);
     }
 
     @Override
     public List<RepairPartDto> allItems() throws SQLException, ClassNotFoundException {
-        return null;
+        return repairPartsDetailsDao.getAll();
     }
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
         try {
-            String lastOrder = repairaPartsDetailsDao.lastOrder();
+            String lastOrder = repairPartsDetailsDao.lastOrder();
 
             if (lastOrder!=null){
                 int num = Integer.parseInt(lastOrder.split("[P]")[1]);

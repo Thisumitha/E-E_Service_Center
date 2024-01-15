@@ -305,3 +305,7 @@ c
 3src/main/java/bo/custom/impl/RepairPartsBOImpl.java,7\8\785e589c579fc7613da581b5eac36572bc62960d
 c
 3src/main/java/bo/custom/impl/RepairPartsBoImpl.java,6\0\60b62c50dd67bfac7f75cbb101c0ca795e7430ae
+c
+3src/main/java/dao/custom/RepairPartsDetailsDao.java,f\b\fb4903fe526e2346f06428f22b0dcbd254cfc640
+l
+<src/main/java/dao/custom/impl/RepairPartsDetailsDaoImpl.java,6\1\612b063a88c4b0f5c394ccd8f81cebcfbf0d6edb

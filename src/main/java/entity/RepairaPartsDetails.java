@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Setter
 @Getter
@@ -21,4 +21,10 @@ public class RepairaPartsDetails {
     @JoinColumn(name = "repair_id")
     private RepairItem item;
 
+  public RepairaPartsDetails(String id, String name, int qty, double price) {
+    this.id = id;
+    this.name = name;
+    this.qty = qty;
+    this.price = price;
+  }
 }
