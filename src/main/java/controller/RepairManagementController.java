@@ -113,15 +113,17 @@ public class RepairManagementController implements Initializable {
     public void btnSave(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (!(txtName.getText().isEmpty()||txtMsg.getText().isEmpty()||txtNumber.getText().isEmpty()||txtEmail.getText().isEmpty()||cusName.getText().isEmpty())){
             Customer customer = null;
-            if (isNew) {
-               customerBo.saveCustomer( new CustomerDto(
-                      customerBo.generateId(),
+            if ((isNew)) {
+                String generateId = customerBo.generateId();
+
+                customerBo.saveCustomer( new CustomerDto(
+                        generateId,
                       cusName.getText(),
                       Integer.parseInt(txtNumber.getText()),
                       txtEmail.getText()
               ));
                customer=new Customer(
-                       customerBo.generateId(),
+                       generateId,
                        cusName.getText(),
                        Integer.parseInt(txtNumber.getText()),
                        txtEmail.getText()
@@ -130,6 +132,7 @@ public class RepairManagementController implements Initializable {
                customer = new Customer(selectedCustomer.getCode(), selectedCustomer.getName(), selectedCustomer.getNumber(), selectedCustomer.getEmail());
           }
             String date = (datePicker.getValue() == null) ? "Processing" : datePicker.getValue().toString();
+            System.out.println(customer);
             repairItemBo.saveItem(new RepairItemDto(
                     repairItemBo.generateId(),
                     txtName.getText(),
@@ -386,7 +389,7 @@ public class RepairManagementController implements Initializable {
                 txtEmail.setText(customerDto.getEmail());
                 isNew=false;
             }else{
-                isNew=false;
+                isNew=true;
                 cusName.setText("");
                 txtNumber.setText("");
                 txtEmail.setText("");

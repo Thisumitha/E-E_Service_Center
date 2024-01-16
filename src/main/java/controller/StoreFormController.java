@@ -357,7 +357,7 @@ public class StoreFormController  {
 
     public void reloadButton(ActionEvent actionEvent) {
         loadToCart();
-
+        tblList.refresh();
     }
     public void savecart(ItemCatologDto itemCatologDto) {
         boolean add= true;
@@ -428,6 +428,6 @@ public class StoreFormController  {
 
 
     public void reloadTrack(MouseEvent mouseEvent) {
-       load.fire();
+//       load.fire();
     }
 }
