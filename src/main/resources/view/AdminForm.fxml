@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -320,7 +321,13 @@
                               </GridPane>
                            </children>
                         </GridPane>
-                        <JFXTreeTableView GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <JFXTreeTableView fx:id="tblEmp" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <columns>
+                              <TreeTableColumn fx:id="colId" prefWidth="273.0000305175781" text="Employer ID" />
+                              <TreeTableColumn fx:id="colName" prefWidth="261.0" text="Employee Name" />
+                              <TreeTableColumn fx:id="colEmail" prefWidth="363.0" text="Employee Email" />
+                              <TreeTableColumn fx:id="colBtn" prefWidth="240.0" text="Remove" />
+                           </columns></JFXTreeTableView>
                      </children>
                         </GridPane>
                     </children>

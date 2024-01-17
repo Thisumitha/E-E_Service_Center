@@ -38,7 +38,7 @@ public class EmployerBoImpl implements EmployerBo {
 
     @Override
     public List<EmployerDto> allIEmployers() throws SQLException, ClassNotFoundException {
-        return null;
+        return employerDao.getAll();
     }
 
     @Override
