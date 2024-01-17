@@ -19,6 +19,8 @@ public class BoFactory {
             case ORDER:return (T)new OrderBoImpl();
             case REPAIR_ITEM:return (T)new RepairItemBoImpl();
             case REPAIR_PARTS:return (T)new RepairPartsBoImpl();
+            case EMPLOYER:return (T)new EmployerBoImpl();
+            case ACCESS:return (T)new AccessBoImpl();
         }
         return null;
 

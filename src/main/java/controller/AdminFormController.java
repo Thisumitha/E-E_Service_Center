@@ -1,6 +1,13 @@
 package controller;
 
+import bo.BoFactory;
+import bo.custom.AccessBo;
+import bo.custom.EmployerBo;
+import bo.custom.OrderBo;
 import com.jfoenix.controls.JFXTextField;
+import dao.util.BoType;
+import dto.AccessDto;
+import dto.EmployerDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class AdminFormController {
     public BorderPane pane;
@@ -20,10 +28,33 @@ public class AdminFormController {
     public CheckBox reportAcess;
     public CheckBox repairAcess;
 
-    public void saveBtn(ActionEvent actionEvent) {
-        if (txtName.getText().isEmpty()||txtEmail.getText().isEmpty()){
+    private EmployerBo employerBo = BoFactory.getInstance().getBo(BoType.EMPLOYER);
+    private AccessBo accessBo = BoFactory.getInstance().getBo(BoType.ACCESS);
+    public void saveBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        if (txtName.getText().isEmpty()||txtEmail.getText().isEmpty()||Selected()){
+            AccessDto accessDto = new AccessDto(
+                    accessBo.generateId(),
+                    storeAcess.isSelected(),
+                    inventoryAcess.isSelected(),
+                    customerAcess.isSelected(),
+                    reportAcess.isSelected(),
+                    repairAcess.isSelected()
+            );
+
+
+            employerBo.saveEmployer(new EmployerDto(
+                    employerBo.generateId(),
+                    txtName.getText(),
+                    null,
+                    txtEmail.getText(),
+                    accessDto
+            ));
 
         }
+    }
+
+    private boolean Selected() {
+        return storeAcess.isSelected()||inventoryAcess.isSelected()||customerAcess.isSelected()||repairAcess.isSelected()||reportAcess.isSelected();
     }
 
     public void updateBtn(ActionEvent actionEvent) {

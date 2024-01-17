@@ -10,7 +10,7 @@ import lombok.*;
 public class EmployerDto {
     private String code;
     private String name;
-    private int number;
+    private Integer number;
     private String email;
     private AccessDto access;
 }

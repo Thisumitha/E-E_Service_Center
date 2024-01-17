@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 public class AccessDto {
+    private String id;
     private boolean storeAccess;
     private boolean inventoryAccess;
     private boolean customerAccess;

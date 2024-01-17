@@ -14,8 +14,7 @@ import javax.persistence.*;
 @Entity
 public class Access {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private String id;
 
     private boolean storeAccess;
     private boolean inventoryAccess;
@@ -24,14 +23,17 @@ public class Access {
     private boolean repairAccess;
 
     @OneToOne
-    @JoinColumn(name = "employer")
+    @JoinColumn(name = "employer_id") // Assuming the column name is "employer_id" in the database
     private Employers employer;
 
-    public Access(boolean storeAccess, boolean inventoryAccess, boolean customerAccess, boolean reportAccess, boolean repairAccess) {
+    public Access(String id, boolean storeAccess, boolean inventoryAccess, boolean customerAccess, boolean reportAccess, boolean repairAccess) {
+        this.id = id;
         this.storeAccess = storeAccess;
         this.inventoryAccess = inventoryAccess;
         this.customerAccess = customerAccess;
         this.reportAccess = reportAccess;
         this.repairAccess = repairAccess;
     }
+
+
 }
