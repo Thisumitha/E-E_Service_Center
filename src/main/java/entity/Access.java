@@ -23,7 +23,7 @@ public class Access {
     private boolean repairAccess;
 
     @OneToOne
-    @JoinColumn(name = "employer_id") // Assuming the column name is "employer_id" in the database
+    @JoinColumn(name = "employer_id")
     private Employers employer;
 
     public Access(String id, boolean storeAccess, boolean inventoryAccess, boolean customerAccess, boolean reportAccess, boolean repairAccess) {

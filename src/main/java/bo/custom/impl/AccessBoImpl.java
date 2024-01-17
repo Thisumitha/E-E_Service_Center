@@ -4,6 +4,7 @@ import bo.custom.AccessBo;
 import dao.DaoFactory;
 import dao.custom.AccessDao;
 import dao.util.DaoType;
+import dto.AccessDto;
 import entity.Access;
 
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ public class AccessBoImpl implements AccessBo {
         try {
             String lastOrder = accessDao.lastOrder();
 
-            if (lastOrder.isEmpty()){
+            if (lastOrder!=null){
                 int num = Integer.parseInt(lastOrder.split("[A]")[1]);
                 num++;
                 return String.format("A%03d",num);
@@ -31,7 +32,7 @@ public class AccessBoImpl implements AccessBo {
     }
 
     @Override
-    public boolean saveAccess(Access entity) throws SQLException, ClassNotFoundException {
+    public boolean saveAccess(AccessDto entity) throws SQLException, ClassNotFoundException {
         return accessDao.save(entity);
     }
 }

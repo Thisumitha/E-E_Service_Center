@@ -2,10 +2,8 @@ package dao.custom.impl;
 
 import dao.custom.AccessDao;
 import dao.util.HibernateUtil;
-import entity.Access;
-import entity.Item;
-import entity.RepairItem;
-import entity.Type;
+import dto.AccessDto;
+import entity.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -15,17 +13,27 @@ import java.util.List;
 
 public class AccessDaoImpl implements AccessDao {
     @Override
-    public boolean save(Access entity) throws SQLException, ClassNotFoundException {
+    public boolean save(AccessDto dto) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        session.save(entity);
+        Access access = new Access(
+                dto.getId(),
+                dto.isStoreAccess(),
+                dto.isInventoryAccess(),
+                dto.isCustomerAccess(),
+                dto.isReportAccess(),
+                dto.isRepairAccess()
+        );
+        access.setEmployer(session.find(Employers.class,dto.getEmployer()));
+
+        session.save(access);
         transaction.commit();
         session.close();
         return true;
     }
 
     @Override
-    public boolean update(Access entity) throws SQLException, ClassNotFoundException {
+    public boolean update(AccessDto entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -35,7 +43,7 @@ public class AccessDaoImpl implements AccessDao {
     }
 
     @Override
-    public List<Access> getAll() throws SQLException, ClassNotFoundException {
+    public List<AccessDto> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 

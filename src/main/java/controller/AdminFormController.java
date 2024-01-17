@@ -32,18 +32,20 @@ public class AdminFormController {
     private AccessBo accessBo = BoFactory.getInstance().getBo(BoType.ACCESS);
     public void saveBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (txtName.getText().isEmpty()||txtEmail.getText().isEmpty()||Selected()){
+            String generateId = employerBo.generateId();
             AccessDto accessDto = new AccessDto(
                     accessBo.generateId(),
                     storeAcess.isSelected(),
                     inventoryAcess.isSelected(),
                     customerAcess.isSelected(),
                     reportAcess.isSelected(),
-                    repairAcess.isSelected()
+                    repairAcess.isSelected(),
+                    generateId
             );
 
 
             employerBo.saveEmployer(new EmployerDto(
-                    employerBo.generateId(),
+                    generateId,
                     txtName.getText(),
                     null,
                     txtEmail.getText(),

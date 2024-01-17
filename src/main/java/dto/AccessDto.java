@@ -14,4 +14,5 @@ public class AccessDto {
     private boolean customerAccess;
     private boolean reportAccess;
     private boolean repairAccess;
+    private String employer;
 }
