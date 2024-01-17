@@ -78,7 +78,7 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton alignment="CENTER" prefHeight="46.0" prefWidth="262.0" style="-fx-border-color: white;" text="Customers" textFill="WHITE" GridPane.rowIndex="4">
+                        <JFXButton alignment="CENTER" onAction="#customerButton" prefHeight="46.0" prefWidth="262.0" style="-fx-border-color: white;" text="Customers" textFill="WHITE" GridPane.rowIndex="4">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>

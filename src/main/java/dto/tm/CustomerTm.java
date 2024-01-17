@@ -1,5 +1,6 @@
 package dto.tm;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.scene.control.Button;
 import lombok.*;
 
@@ -8,13 +9,11 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-public class CustomerTm {
-    private String id;
+public class CustomerTm extends RecursiveTreeObject<CustomerTm> {
+    private String code;
     private String name;
-    private String address;
-    private double salary;
-    private Button btn;
-
+    private int number;
+    private String Email;
 
 
 
