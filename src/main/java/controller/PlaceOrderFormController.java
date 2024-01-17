@@ -58,13 +58,9 @@ public class PlaceOrderFormController {
     public Label discountToatal;
     public Label netTotalLabel;
 
-
-
-
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
-
 
     @FXML
     private BorderPane pane;

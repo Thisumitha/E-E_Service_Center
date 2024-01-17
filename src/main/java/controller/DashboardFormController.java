@@ -75,9 +75,21 @@ public class DashboardFormController  {
     public void adminButton(ActionEvent actionEvent) {
         Stage stage = (Stage) pane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportForm.fxml"))));
             stage.setResizable(true);
-            stage.setTitle("Customer Management");
+            stage.setTitle("Admin Management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void reportFormController(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportForm.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("Report Management");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
