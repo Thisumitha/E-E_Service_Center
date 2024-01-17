@@ -313,3 +313,19 @@ a
 1src/main/java/controller/AdminFormController.java,0\8\0804754d73091876dbb23e5c115db7d5c51d8ffb
 b
 2src/main/java/controller/ReportFormController.java,2\4\24a38e55a405c4e1d9b0478144b19ffab29fe88f
+S
+#src/main/java/entity/Employers.java,a\7\a70bd4305498efacfe5d0cc2dc97df9addd23a19
+P
+ src/main/java/entity/Access.java,6\0\6090dd1bf95416f30f3c587a861b0c704bfeb653
+Y
+)src/main/java/dao/custom/EmployerDao.java,5\f\5fb19c958f629519046be82c82dd7b2213077837
+b
+2src/main/java/dao/custom/impl/EmployerDaoImpl.java,1\7\17fd20828e9f7b7d9c7549c83016a324f491e7f1
+W
+'src/main/java/bo/custom/EmployerBo.java,b\6\b66cabfe82265520ae823a3a80080c53b0aa57f8
+^
+.src/main/java/bo/custom/impl/EmployerImpl.java,e\f\ef7cc08f16c887c2e4d8abc016b96224eba8f5dd
+P
+ src/main/java/dto/AccessDto.java,f\9\f9a0e203a1e4482bc8954854277e0383eeb7c495
+R
+"src/main/java/dto/EmployerDto.java,b\a\ba1694b490ea04512cf07c36020a19a9b320995e

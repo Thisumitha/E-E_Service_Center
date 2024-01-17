@@ -75,7 +75,7 @@ public class DashboardFormController  {
     public void adminButton(ActionEvent actionEvent) {
         Stage stage = (Stage) pane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminForm.fxml"))));
             stage.setResizable(true);
             stage.setTitle("Admin Management");
             stage.show();
