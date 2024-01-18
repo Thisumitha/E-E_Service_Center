@@ -26,7 +26,8 @@ public class EmployerDaoImpl implements EmployerDao {
                 dto.getCode(),
                 dto.getName(),
                 null,
-                dto.getEmail()
+                dto.getEmail(),
+                dto.getPassword()
 
         );
 
@@ -65,12 +66,13 @@ public class EmployerDaoImpl implements EmployerDao {
                     null
             );
 
-           employerDtos.add( new EmployerDto(
+            employerDtos.add( new EmployerDto(
                     emp.getCode(),
                     emp.getName(),
                     emp.getNumber(),
                     emp.getEmail(),
-                    accessDto
+                    accessDto,
+                    emp.getPassword()
             ));
         }
         return employerDtos;

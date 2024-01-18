@@ -22,14 +22,14 @@ public class ItemDaoImpl implements ItemDao {
         Item item = session.find(Item.class,code);
 
 
-            return new ItemDto(
-                    item.getCode(),
-                    item.getName(),
-                    item.getUnitPrice(),
-                    item.getQtyOnHand(),
-                    item.getType().getType(),
-                    item.getImage()
-            );
+        return new ItemDto(
+                item.getCode(),
+                item.getName(),
+                item.getUnitPrice(),
+                item.getQtyOnHand(),
+                item.getType().getType(),
+                item.getImage()
+        );
 
 
     }

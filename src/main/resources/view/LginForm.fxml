@@ -106,7 +106,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton prefHeight="40.0" prefWidth="186.0" style="-fx-background-color: #1F7A75; -fx-background-radius: 34;" text="Login" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <JFXButton onAction="#LoginBtnAction" prefHeight="40.0" prefWidth="186.0" style="-fx-background-color: #1F7A75; -fx-background-radius: 34;" text="Login" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>

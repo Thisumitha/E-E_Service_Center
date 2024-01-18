@@ -4,7 +4,9 @@ import dto.AccessDto;
 import dto.EmployerDto;
 import lombok.*;
 
-@AllArgsConstructor
+import java.util.Properties;
+
+
 @NoArgsConstructor
 @ToString
 @Getter
@@ -17,6 +19,9 @@ public class User {
    }
    public String getName(){
        return user.getName();
+   }
+   public void userDeta(EmployerDto user) {
+      this.user = user;
    }
 
 

@@ -34,7 +34,7 @@ public class DashboardFormController  {
         customerBtn.setDisable(!(accessLevel.isCustomerAccess()));
         repairBtn.setDisable(!(accessLevel.isRepairAccess()));
         reportBtn.setDisable(!(accessLevel.isReportAccess()));
-        adminBtn.setDisable(!(true));
+        adminBtn.setDisable(!(false));
     }
 
     public void inventoryButtonOnAction(ActionEvent actionEvent) {
@@ -116,6 +116,18 @@ public class DashboardFormController  {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportForm.fxml"))));
             stage.setResizable(true);
             stage.setTitle("Report Management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void signOutBtn(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LginForm.fxml"))));
+
+            stage.setTitle("Login");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

@@ -38,7 +38,7 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
         List<OrderDetail> list = query.list();
         for (OrderDetail orders:list){
             orderDtos.add(new OrderDetailsDto(
-                   orders.getOrders().getOrderId(),
+                    orders.getOrders().getOrderId(),
                     orders.getItem().getCode(),
                     orders.getQty(),
                     orders.getPrice()

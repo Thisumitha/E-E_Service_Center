@@ -13,4 +13,5 @@ public class EmployerDto {
     private Integer number;
     private String email;
     private AccessDto access;
+    private String password;
 }

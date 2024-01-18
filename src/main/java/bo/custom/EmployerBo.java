@@ -12,5 +12,5 @@ public interface EmployerBo extends SuperBo {
     List<EmployerDto> allIEmployers() throws SQLException, ClassNotFoundException;
     String generateId() throws SQLException, ClassNotFoundException;
     boolean updateItem(EmployerDto dto) throws SQLException, ClassNotFoundException;
-
+    String generateOTP();
 }

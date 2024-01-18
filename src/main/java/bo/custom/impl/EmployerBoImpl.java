@@ -65,4 +65,9 @@ public class EmployerBoImpl implements EmployerBo {
     public boolean updateItem(EmployerDto dto) throws SQLException, ClassNotFoundException {
         return false;
     }
+    public  String generateOTP() {
+        int randomPin   =(int)(Math.random()*9000)+1000;
+        String otp  =String.valueOf(randomPin);
+        return otp;
+    }
 }

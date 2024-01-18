@@ -338,10 +338,12 @@ U
 `
 0src/main/java/bo/custom/impl/EmployerBoImpl.java,e\1\e1788cd68da88b32f4cdd435b1ff789a910a164c
 T
-$src/main/java/dto/tm/EmlpoyerTm.java,b\2\b2a3b565fe2ba1d5cd7e3243d89419a1f8d65626
-T
 $src/main/java/dto/tm/EmployerTm.java,3\c\3c0bcd6544ac56b3109b705167bc2e1b0108251f
 ]
 -src/main/java/controller/LoginController.java,d\9\d915cdbef77c656eebfb7602fce5b0a8962b2b51
 i
 9src/main/java/controller/UpdateProfileFormController.java,a\5\a531853216981e9b980bc572d20ef9545a30e257
+P
+ src/main/java/dao/util/User.java,a\a\aa4411f38034ba62febd47faf7c7ec249fe0406b
+X
+(src/main/java/dao/util/EmailService.java,0\a\0a8b29f654f63e2fc19e5c2c2a86af49b6ef6e88

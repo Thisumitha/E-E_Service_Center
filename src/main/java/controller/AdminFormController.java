@@ -68,7 +68,8 @@ public class AdminFormController {
                     txtName.getText(),
                     null,
                     txtEmail.getText(),
-                    accessDto
+                    accessDto,
+                    employerBo.generateOTP()
             ));
             loadEmTable();
 
@@ -175,5 +176,6 @@ public class AdminFormController {
     }
 
     private void deleteItem(String code) {
+
     }
 }

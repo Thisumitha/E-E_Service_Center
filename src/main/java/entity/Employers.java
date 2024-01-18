@@ -20,14 +20,16 @@ public class Employers {
     private String name;
     private Integer number;
     private String email;
+    private String password;
 
     @OneToOne(mappedBy = "employer")
     private Access access;
 
-    public Employers(String code, String name, Integer number, String email) {
+    public Employers(String code, String name, Integer number, String email, String password) {
         this.code = code;
         this.name = name;
         this.number = number;
         this.email = email;
+        this.password = password;
     }
 }

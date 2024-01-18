@@ -22,6 +22,7 @@ public class Access {
     private boolean reportAccess;
     private boolean repairAccess;
 
+
     @OneToOne
     @JoinColumn(name = "employer_id")
     private Employers employer;
