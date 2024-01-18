@@ -166,7 +166,7 @@ public class RepairManagementController implements Initializable {
 
             boolean saveItem = repairPartsBo.saveItem(new RepairPartDto(
                     repairPartsBo.generateId(),
-                    txtPartName.getText().toString(),
+                    txtPartName.getText(),
                     Integer.parseInt(txtPartQty.getText().toString()),
                     Double.parseDouble(txtPartPrice.getText().toString()),
                     codeSelect

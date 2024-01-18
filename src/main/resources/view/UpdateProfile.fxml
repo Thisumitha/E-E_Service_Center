@@ -120,7 +120,7 @@
                                  </graphic></JFXButton>
                            </children>
                         </GridPane>
-                        <Label text="Welcome thisumitha Bandara" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Label fx:id="lblSideBarName" text="Welcome thisumitha Bandara" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
@@ -141,7 +141,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Welcome,Thisumitha Bandara" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="lblName" text="Welcome,Thisumitha Bandara" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="25.0" />
                            </font>
@@ -169,9 +169,9 @@
                                     <Font name="System Bold" size="25.0" />
                                  </font>
                               </Label>
-                              <JFXTextField style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <JFXTextField style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <JFXButton prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #0B5AA4; -fx-background-radius: 34px;" text="Update" textFill="WHITE" GridPane.rowIndex="4">
+                              <JFXTextField fx:id="txtName" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="txtNumber" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <JFXButton onAction="#updateDataBtn" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #0B5AA4; -fx-background-radius: 34px;" text="Update" textFill="WHITE" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font></JFXButton>
@@ -200,13 +200,13 @@
                                     <Font name="System Bold" size="25.0" />
                                  </font>
                               </Label>
-                              <JFXButton prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #0B5AA4; -fx-background-radius: 34px;" text="Update" textFill="WHITE" GridPane.rowIndex="4">
+                              <JFXButton onAction="#updatePwBtn" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #0B5AA4; -fx-background-radius: 34px;" text="Update" textFill="WHITE" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </JFXButton>
-                              <JFXPasswordField style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <JFXPasswordField layoutX="294.0" layoutY="55.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <JFXPasswordField fx:id="txtPassword" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXPasswordField fx:id="txtNewPassword" layoutX="294.0" layoutY="55.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                      </children>

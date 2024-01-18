@@ -14,6 +14,7 @@ import entity.Access;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 public class EmployerBoImpl implements EmployerBo {
     private AccessBo accessBo = BoFactory.getInstance().getBo(BoType.ACCESS);
@@ -63,11 +64,23 @@ public class EmployerBoImpl implements EmployerBo {
 
     @Override
     public boolean updateItem(EmployerDto dto) throws SQLException, ClassNotFoundException {
-        return false;
+        return employerDao.update(dto);
     }
     public  String generateOTP() {
         int randomPin   =(int)(Math.random()*9000)+1000;
         String otp  =String.valueOf(randomPin);
         return otp;
+    }
+    public  String generatePassword() {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder password = new StringBuilder();
+
+        Random random = new Random();
+        for (int i = 0; i < 6; i++) {
+            int index = random.nextInt(characters.length());
+            password.append(characters.charAt(index));
+        }
+
+        return password.toString();
     }
 }

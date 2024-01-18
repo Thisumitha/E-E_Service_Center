@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
+import dao.util.EmailService;
 import dto.AccessDto;
 import dto.EmployerDto;
 import dto.tm.EmployerTm;
@@ -46,6 +47,7 @@ public class AdminFormController {
     public TreeTableColumn colName;
     public TreeTableColumn colBtn;
     public TreeTableColumn colEmail;
+    EmailService emailService=new EmailService();
 
     private EmployerBo employerBo = BoFactory.getInstance().getBo(BoType.EMPLOYER);
     private AccessBo accessBo = BoFactory.getInstance().getBo(BoType.ACCESS);
@@ -62,16 +64,26 @@ public class AdminFormController {
                     generateId
             );
 
+            String generatePassword = employerBo.generatePassword();
 
-            employerBo.saveEmployer(new EmployerDto(
+            EmployerDto employerDto = new EmployerDto(
                     generateId,
                     txtName.getText(),
                     null,
                     txtEmail.getText(),
                     accessDto,
-                    employerBo.generateOTP()
-            ));
-            loadEmTable();
+                    generatePassword
+
+            );
+
+            boolean savedEmployer = employerBo.saveEmployer(employerDto);
+
+
+            if (savedEmployer){
+                loadEmTable();
+                emailService.setAccountPassword(employerDto.getEmail(),generatePassword);
+            }
+
 
         }
 
