@@ -12,6 +12,9 @@ import dto.AccessDto;
 import dto.EmployerDto;
 import entity.Access;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
@@ -64,9 +67,16 @@ public class EmployerBoImpl implements EmployerBo {
     }
 
     @Override
-    public boolean updateItem(EmployerDto dto) throws SQLException, ClassNotFoundException {
+    public boolean updateEmployer(EmployerDto dto) throws SQLException, ClassNotFoundException {
         return employerDao.update(dto);
     }
+
+    @Override
+    public boolean updateEmployerPw(EmployerDto dto) throws SQLException, ClassNotFoundException {
+        return employerDao.updatePw(dto);
+    }
+
+
     public  String generateOTP() {
         int randomPin   =(int)(Math.random()*9000)+1000;
         String otp  =String.valueOf(randomPin);
@@ -84,4 +94,36 @@ public class EmployerBoImpl implements EmployerBo {
 
         return password.toString();
     }
-}
+    public  String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(password.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashedPassword = no.toString(16);
+            while (hashedPassword.length() < 32) {
+                hashedPassword = "0" + hashedPassword;
+            }
+            return hashedPassword;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            // Handle the exception according to your needs
+            return null;
+        }
+    }
+
+    @Override
+    public boolean deleteItem(String id) throws SQLException, ClassNotFoundException {
+        return employerDao.delete(id);
+    }
+
+    public  boolean checkPassword(String enteredPassword, String storedHashedPassword) {
+        // Hash the entered password using the same algorithm
+        String hashedEnteredPassword = hashPassword(enteredPassword);
+
+        // Compare the hashed entered password with the stored hashed password
+        return hashedEnteredPassword.equals(storedHashedPassword);
+    }
+
+
+
+    }

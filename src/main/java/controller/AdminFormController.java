@@ -73,16 +73,15 @@ public class AdminFormController {
                     null,
                     txtEmail.getText(),
                     accessDto,
-                    generatePassword
-
+                    employerBo.hashPassword(generatePassword)
             );
 
             boolean savedEmployer = employerBo.saveEmployer(employerDto);
 
 
             if (savedEmployer){
-                loadEmTable();
                 emailService.setAccountPassword(employerDto.getEmail(),generatePassword);
+                loadEmTable();
             }
 
 
@@ -188,7 +187,14 @@ public class AdminFormController {
 
     }
 
-    private void deleteItem(String code) {
+    private void deleteItem(String code)  {
+        try {
+            employerBo.deleteItem(code);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

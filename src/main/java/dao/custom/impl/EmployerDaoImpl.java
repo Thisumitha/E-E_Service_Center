@@ -49,7 +49,6 @@ public class EmployerDaoImpl implements EmployerDao {
         employer.setName(entity.getName());
         employer.setNumber(entity.getNumber());
         employer.setEmail(entity.getEmail());
-        employer.setPassword(entity.getPassword());
         session.save(employer);
         transaction.commit();
         session.close();
@@ -58,7 +57,12 @@ public class EmployerDaoImpl implements EmployerDao {
 
     @Override
     public boolean delete(String value) throws SQLException, ClassNotFoundException {
-        return false;
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(session.find(Employers.class,value));
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
@@ -107,5 +111,17 @@ public class EmployerDaoImpl implements EmployerDao {
 
         session.close();
         return last;
+    }
+
+    @Override
+    public boolean updatePw(EmployerDto entity) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Employers employer = session.find(Employers.class, entity.getCode());
+        employer.setPassword(entity.getPassword());
+        session.save(employer);
+        transaction.commit();
+        session.close();
+        return true;
     }
 }

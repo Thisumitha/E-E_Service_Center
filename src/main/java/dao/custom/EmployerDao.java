@@ -8,4 +8,6 @@ import java.sql.SQLException;
 
 public interface EmployerDao extends CrudDao<EmployerDto> {
     String lastOrder() throws SQLException, ClassNotFoundException;
+
+    boolean updatePw(EmployerDto dto);
 }

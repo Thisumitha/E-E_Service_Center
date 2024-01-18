@@ -43,7 +43,7 @@ public class LoginController {
                     if (employerDto.getEmail().equals(txtEmail.getText())) {
                         isEmailValid = true;
 
-                        if (employerDto.getPassword().equals(txtPassword.getText())) {
+                        if (employerBo.checkPassword(txtPassword.getText(),employerDto.getPassword())) {
                             user.setData(employerDto);
                             success();
                         } else {

@@ -33,7 +33,7 @@ public class UpdateProfileFormController {
         if (!(txtNumber.getText().isEmpty())) {
             if(!(txtName.getText().isEmpty()||txtNumber.getText().isEmpty())){
                 EmployerDto employerDto = user.getUser();
-                employerBo.updateItem(new EmployerDto(
+                employerBo.updateEmployer(new EmployerDto(
                     employerDto.getCode(),
                         txtName.getText(),
                         Integer.parseInt(txtNumber.getText()),
@@ -52,16 +52,16 @@ public class UpdateProfileFormController {
     }
 
     public void updatePwBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        if (!(txtNumber.getText().isEmpty())) {
+
             EmployerDto employerDto = user.getUser();
-            if (!(txtNewPassword.getText().isEmpty())) {
-                boolean updated = employerBo.updateItem(new EmployerDto(
+            if (!(txtNewPassword.getText().isEmpty())){
+                boolean updated = employerBo.updateEmployerPw(new EmployerDto(
                         employerDto.getCode(),
-                        txtName.getText(),
-                        Integer.parseInt(txtNumber.getText()),
-                        employerDto.getEmail(),
-                        employerDto.getAccess(),
-                        txtNewPassword.getText()
+                       null,
+                        null,
+                       null,
+                        null,
+                        employerBo.hashPassword(txtNewPassword.getText())
                 ));
                 if (updated) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -71,13 +71,8 @@ public class UpdateProfileFormController {
                     alert.show();
                 }
             }
-        }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("EROR");
-            alert.setHeaderText("Fill number");
-            alert.setContentText("Fill number correctly");
-            alert.show();
-        }
+
+
     }
 
 
@@ -105,7 +100,7 @@ public class UpdateProfileFormController {
         if (!(employerDto.getNumber() == null)) {
             txtNumber.setText(String.valueOf(employerDto.getNumber()));
         }
-        txtNewPassword.setText(employerDto.getPassword());
+
 
     }
 

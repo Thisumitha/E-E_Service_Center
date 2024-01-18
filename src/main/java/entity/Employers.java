@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -22,7 +23,7 @@ public class Employers {
     private String email;
     private String password;
 
-    @OneToOne(mappedBy = "employer")
+    @OneToOne(mappedBy = "employer", cascade = CascadeType.ALL)
     private Access access;
 
     public Employers(String code, String name, Integer number, String email, String password) {
