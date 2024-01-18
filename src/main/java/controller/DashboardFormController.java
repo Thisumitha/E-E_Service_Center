@@ -1,5 +1,8 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
+import dao.util.User;
+import dto.AccessDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +13,29 @@ import java.io.IOException;
 
 public class DashboardFormController  {
     public BorderPane pane;
+    public JFXButton storeBtn;
+    public JFXButton orderHistoryBtn;
+    public JFXButton inventoryBtn;
+    public JFXButton customerBtn;
+    public JFXButton repairBtn;
+    public JFXButton reportBtn;
+    public JFXButton adminBtn;
+
+    User user=new User();
+    public void initialize() {
+      //  getAccess();
+    }
+
+    private void getAccess() {
+        AccessDto accessLevel = user.getAccessLevel();
+        storeBtn.setDisable(!(accessLevel.isStoreAccess()));
+        orderHistoryBtn.setDisable(!(accessLevel.isStoreAccess()));
+        inventoryBtn.setDisable(!(accessLevel.isInventoryAccess()));
+        customerBtn.setDisable(!(accessLevel.isCustomerAccess()));
+        repairBtn.setDisable(!(accessLevel.isRepairAccess()));
+        reportBtn.setDisable(!(accessLevel.isReportAccess()));
+        adminBtn.setDisable(!(true));
+    }
 
     public void inventoryButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) pane.getScene().getWindow();
