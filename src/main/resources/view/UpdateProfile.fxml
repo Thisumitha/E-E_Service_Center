@@ -190,11 +190,6 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="Current Password :" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font name="System Bold" size="25.0" />
-                                 </font>
-                              </Label>
                               <Label text="New Pssword :" GridPane.rowIndex="3">
                                  <font>
                                     <Font name="System Bold" size="25.0" />
@@ -205,8 +200,12 @@
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </JFXButton>
-                              <JFXPasswordField fx:id="txtPassword" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <JFXPasswordField fx:id="txtNewPassword" layoutX="294.0" layoutY="55.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Create Password" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </GridPane>
                      </children>

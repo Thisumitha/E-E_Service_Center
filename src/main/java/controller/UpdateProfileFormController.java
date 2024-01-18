@@ -10,6 +10,7 @@ import dto.EmployerDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -22,31 +23,39 @@ public class UpdateProfileFormController {
     public Label lblName;
     public JFXTextField txtNumber;
     public JFXTextField txtName;
-    public JFXPasswordField txtPassword;
+
     public JFXPasswordField txtNewPassword;
     public Label lblSideBarName;
     private EmployerBo employerBo = BoFactory.getInstance().getBo(BoType.EMPLOYER);
     User user=new User();
 
     public void updateDataBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        if(!(txtName.getText().isEmpty()||txtNumber.getText().isEmpty())){
-            EmployerDto employerDto = user.getUser();
-            employerBo.updateItem(new EmployerDto(
-                employerDto.getCode(),
-                    txtName.getText(),
-                    Integer.parseInt(txtNumber.getText()),
-                    employerDto.getEmail(),
-                    employerDto.getAccess(),
-                    employerDto.getPassword()
-            ));
+        if (!(txtNumber.getText().isEmpty())) {
+            if(!(txtName.getText().isEmpty()||txtNumber.getText().isEmpty())){
+                EmployerDto employerDto = user.getUser();
+                employerBo.updateItem(new EmployerDto(
+                    employerDto.getCode(),
+                        txtName.getText(),
+                        Integer.parseInt(txtNumber.getText()),
+                        employerDto.getEmail(),
+                        employerDto.getAccess(),
+                        employerDto.getPassword()
+                ));
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Fill number");
+            alert.setContentText("Fill number correctly");
+            alert.show();
         }
     }
 
     public void updatePwBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        EmployerDto employerDto = user.getUser();
-        if(txtPassword.getText().isEmpty()||txtNewPassword.getText().isEmpty()) {
-            if (txtPassword.getText().equals(employerDto.getPassword())) {
-                employerBo.updateItem(new EmployerDto(
+        if (!(txtNumber.getText().isEmpty())) {
+            EmployerDto employerDto = user.getUser();
+            if (!(txtNewPassword.getText().isEmpty())) {
+                boolean updated = employerBo.updateItem(new EmployerDto(
                         employerDto.getCode(),
                         txtName.getText(),
                         Integer.parseInt(txtNumber.getText()),
@@ -54,9 +63,23 @@ public class UpdateProfileFormController {
                         employerDto.getAccess(),
                         txtNewPassword.getText()
                 ));
+                if (updated) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("password");
+                    alert.setHeaderText("updated");
+                    alert.setContentText("password update successfully");
+                    alert.show();
+                }
             }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("EROR");
+            alert.setHeaderText("Fill number");
+            alert.setContentText("Fill number correctly");
+            alert.show();
         }
     }
+
 
     public void backButton(ActionEvent actionEvent) {
         Stage stage = (Stage) pane.getScene().getWindow();
@@ -82,6 +105,7 @@ public class UpdateProfileFormController {
         if (!(employerDto.getNumber() == null)) {
             txtNumber.setText(String.valueOf(employerDto.getNumber()));
         }
+        txtNewPassword.setText(employerDto.getPassword());
 
     }
 

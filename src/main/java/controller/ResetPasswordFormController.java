@@ -48,7 +48,7 @@ public class ResetPasswordFormController {
                 }
             }
 
-            // If no matching email is found
+
             if (!isEmailValid) {
                 showAlert("Incorrect Email", "The entered email is not registered.");
             }
