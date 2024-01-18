@@ -251,7 +251,7 @@
                         <Image url="@../Assets/logo.png" />
                      </image>
                   </ImageView>
-                  <JFXButton text="." textFill="TRANSPARENT" GridPane.columnIndex="5">
+                  <JFXButton onAction="#updateProfileBtn" text="." textFill="TRANSPARENT" GridPane.columnIndex="5">
                      <graphic>
                         <ImageView fitHeight="72.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
                            <image>

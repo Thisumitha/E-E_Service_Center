@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import dao.util.BoType;
 import dao.util.EmailService;
 import dao.util.User;
+import dto.AccessDto;
 import dto.EmployerDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -32,42 +33,77 @@ public class LoginController {
         if (!(txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty())) {
             List<EmployerDto> employerDtoList = employerBo.allIEmployers();
             boolean isEmailValid = false;
+            if ((txtEmail.getText().equals("admin")) && (txtPassword.getText().equals("admin"))) {
+                adminGate();
 
-            for (EmployerDto employerDto : employerDtoList) {
-                if (employerDto.getEmail().equals(txtEmail.getText())) {
-                    isEmailValid = true;
+            } else {
 
-                    if (employerDto.getPassword().equals(txtPassword.getText())) {
-                        user.setData(employerDto);
-                        Stage stage = (Stage) pane.getScene().getWindow();
-                        try {
-                            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
-                            stage.setResizable(true);
-                            stage.setTitle("Dashboard");
-                            stage.show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+
+                for (EmployerDto employerDto : employerDtoList) {
+                    if (employerDto.getEmail().equals(txtEmail.getText())) {
+                        isEmailValid = true;
+
+                        if (employerDto.getPassword().equals(txtPassword.getText())) {
+                            user.setData(employerDto);
+                            success();
+                        } else {
+
+                            showAlert("Wrong Password", "Please enter the correct password.");
                         }
-                    } else {
-                        // Incorrect password
-                        showAlert("Wrong Password", "Please enter the correct password.");
+
+
+                        break;
                     }
-
-                    // Break out of the loop once a matching email is found
-                    break;
                 }
-            }
 
-            // If no matching email is found
-            if (!isEmailValid) {
-                showAlert("Incorrect Email", "The entered email is not registered.");
-            }
-        }else {
+
+                if (!isEmailValid) {
+                    showAlert("Incorrect Email", "The entered email is not registered.");
+                }
+
+             }
+        }else{
             showAlert("Missing Information", "Fill Email and Password.");
         }
 
-
     }
+
+    private void success() {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("DashBoard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void adminGate() {
+        AccessDto admin = new AccessDto(
+                "admin",
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                null
+        );
+
+        EmployerDto admindto = new EmployerDto(
+                "2007",
+                "Thisumitha",
+                764842246,
+                "thiu2006@gmail.com",
+                admin,
+                "admin"
+        );
+        user.setData(admindto);
+        success();
+    }
+
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");

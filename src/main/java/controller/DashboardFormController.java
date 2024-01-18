@@ -23,7 +23,7 @@ public class DashboardFormController  {
 
     User user=new User();
     public void initialize() {
-      //  getAccess();
+        getAccess();
     }
 
     private void getAccess() {
@@ -34,7 +34,7 @@ public class DashboardFormController  {
         customerBtn.setDisable(!(accessLevel.isCustomerAccess()));
         repairBtn.setDisable(!(accessLevel.isRepairAccess()));
         reportBtn.setDisable(!(accessLevel.isReportAccess()));
-        adminBtn.setDisable(!(false));
+        adminBtn.setDisable(!(accessLevel.isAdminAccess()));
     }
 
     public void inventoryButtonOnAction(ActionEvent actionEvent) {
@@ -123,11 +123,24 @@ public class DashboardFormController  {
     }
 
     public void signOutBtn(ActionEvent actionEvent) {
+        user.setData(null);
         Stage stage = (Stage) pane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LginForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"))));
 
             stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateProfileBtn(ActionEvent actionEvent) {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UpdateProfile.fxml"))));
+            stage.setResizable(true);
+            stage.setTitle("Profile ");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

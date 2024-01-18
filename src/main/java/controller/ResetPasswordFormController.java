@@ -89,7 +89,7 @@ public class ResetPasswordFormController {
     public void backButton(ActionEvent actionEvent) {
         Stage stage = (Stage) pane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LginForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"))));
 
             stage.setTitle("Login");
             stage.show();

@@ -76,6 +76,7 @@ public class EmployerDaoImpl implements EmployerDao {
                     emp.getAccess().isCustomerAccess(),
                     emp.getAccess().isReportAccess(),
                     emp.getAccess().isRepairAccess(),
+                    false,
                     null
             );
 
