@@ -28,7 +28,9 @@ public class RepairItemDaoImpl implements RepairItemDao {
         RepairItem repairItem = new RepairItem(
                 dto.getId(),
                 dto.getName(),
-                dto.getDate(),
+                dto.getEndDate(),
+                dto.getOrderDate(),
+                dto.getStatus(),
                 dto.getCashier(),
                 dto.getPrice(),
                 dto.getNote()
@@ -49,8 +51,12 @@ public class RepairItemDaoImpl implements RepairItemDao {
         RepairItem item = session.find(RepairItem.class, dto.getId());
         item.setName(dto.getName());
         item.setNote(dto.getNote());
-        item.setDate(dto.getDate());
+        item.setEndDate(dto.getEndDate());
+        item.setStatus(dto.getStatus());
+        item.setOrderDate(dto.getOrderDate());
+        item.setCashier(dto.getCashier());
         item.setPrice(dto.getPrice());
+
         session.save(item);
         transaction.commit();
         session.close();
@@ -74,7 +80,9 @@ public class RepairItemDaoImpl implements RepairItemDao {
             orderDtos.add(new RepairItemDto(
                     repairItem.getId(),
                     repairItem.getName(),
-                    repairItem.getDate(),
+                    repairItem.getEndDate(),
+                    repairItem.getOrderDate(),
+                    repairItem.getStatus(),
                     repairItem.getCashier(),
                     repairItem.getPrice(),
                     repairItem.getNote(),

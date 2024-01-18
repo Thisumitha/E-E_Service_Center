@@ -18,7 +18,9 @@ public class RepairItem {
     @Id
     private String id;
     private String name;
-    private String date;
+    private String endDate;
+    private String orderDate;
+    private String status;
     private String cashier;
     private String price;
     private String note;
@@ -31,10 +33,12 @@ public class RepairItem {
     private List<RepairaPartsDetails> repairParts = new ArrayList<>();
 
 
-    public RepairItem(String id, String name, String date, String cashier, String price, String note) {
+    public RepairItem(String id, String name, String endDate, String orderDate, String status, String cashier, String price, String note) {
         this.id = id;
         this.name = name;
-        this.date = date;
+        this.endDate = endDate;
+        this.orderDate = orderDate;
+        this.status = status;
         this.cashier = cashier;
         this.price = price;
         this.note = note;

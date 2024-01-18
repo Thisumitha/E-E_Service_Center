@@ -2,19 +2,14 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.CustomerBo;
-import bo.custom.OrderBo;
 import bo.custom.RepairItemBo;
 import bo.custom.RepairPartsBo;
-import bo.custom.impl.RepairItemBoImpl;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
 import dto.CustomerDto;
 import dto.RepairItemDto;
 import dto.RepairPartDto;
-import dto.TypeDto;
-import dto.tm.ItemTm;
-import dto.tm.PlaceOrderTm;
 import dto.tm.RepairItemTm;
 import dto.tm.RepairPartsTm;
 import entity.Customer;
@@ -28,7 +23,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -41,7 +35,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -71,30 +64,35 @@ public class RepairManagementController implements Initializable {
     public TreeTableColumn colRepPrice;
     public TreeTableColumn colRepQty;
     public JFXButton repairPartAddbtn;
-    public Label status;
+   
     public JFXTextField repairItemSearch;
+    public JFXComboBox status;
+    public Label price;
     private CustomerDto selectedCustomer;
     private boolean isNew=true;
-
-
-
     private RepairItemBo repairItemBo = BoFactory.getInstance().getBo(BoType.REPAIR_ITEM);
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private RepairPartsBo repairPartsBo = BoFactory.getInstance().getBo(BoType.REPAIR_PARTS);
 
     private String codeSelect=null;
+    private String dateSelect=null;
+    private String elcPartCode=null;
 
     private List<RepairItemDto> repairItemDto=new ArrayList<>();
 
     public void btnUpdate(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        tblRepair.refresh();
+
         if (!(txtName.getText().isEmpty()||txtMsg.getText().isEmpty()||txtNumber.getText().isEmpty()||txtEmail.getText().isEmpty()||cusName.getText().isEmpty())){
 
 
-            String date = (datePicker.getValue() == null) ? "Processing" : datePicker.getValue().toString();
+            String date = (datePicker.getValue() == null) ? "Not Given" : datePicker.getValue().toString();
             boolean updated = repairItemBo.updateItem(new RepairItemDto(
                     codeSelect,
                     txtName.getText(),
                     date,
+                    dateSelect,
+                    status.getValue().toString(),
                     "thisu",
                     "",
                     txtMsg.getText(),
@@ -131,12 +129,15 @@ public class RepairManagementController implements Initializable {
           }else{
                customer = new Customer(selectedCustomer.getCode(), selectedCustomer.getName(), selectedCustomer.getNumber(), selectedCustomer.getEmail());
           }
-            String date = (datePicker.getValue() == null) ? "Processing" : datePicker.getValue().toString();
-            System.out.println(customer);
+            String date = (datePicker.getValue() == null) ? "Not given" : datePicker.getValue().toString();
+
+
             repairItemBo.saveItem(new RepairItemDto(
                     repairItemBo.generateId(),
                     txtName.getText(),
                     date,
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                    "Pending",
                     "thisu",
                     "",
                     txtMsg.getText(),
@@ -171,6 +172,9 @@ public class RepairManagementController implements Initializable {
                     Double.parseDouble(txtPartPrice.getText().toString()),
                     codeSelect
             ));
+            if (saveItem){
+                repaiPartsTable();
+            }
         }
 
 
@@ -189,12 +193,23 @@ public class RepairManagementController implements Initializable {
         colRepPrice.setCellValueFactory(new TreeItemPropertyValueFactory<>("price"));
         colRepQty.setCellValueFactory(new TreeItemPropertyValueFactory<>("qty"));
 
+        ObservableList statusList = FXCollections.observableArrayList();
+        statusList.add("Pending");
+        status.setItems(statusList);
+
 
         tblRepair.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             try {
                 clear();
-                tblRepair(newValue);
-                setDetails(newValue.getValue().getItemCode());
+
+                tblElecParts.setDisable(false);
+                if (!(newValue == null)) {
+                    elcPartCode=newValue.getValue().getItemCode();
+                    setDetails(newValue.getValue());
+                    repaiPartsTable();
+                    unload();
+                }
+
 
 
             } catch (SQLException e) {
@@ -231,15 +246,17 @@ public class RepairManagementController implements Initializable {
         txtNumber.clear();
         txtEmail.clear();
         txtMsg.clear();
-        status.setText("");
+
         datePicker.setValue(null);
     }
 
-    private void setDetails(String itemCode) throws SQLException, ClassNotFoundException {
+    private void setDetails(RepairItemTm value) throws SQLException, ClassNotFoundException {
+        String itemCode = value.getItemCode();
         List<RepairItemDto> repairItemDtos = repairItemBo.allItems();
         for (RepairItemDto dto:repairItemDtos ){
             if (itemCode.equals(dto.getId())){
                 codeSelect = dto.getId();
+                dateSelect=dto.getOrderDate();
                 cusName.setText(dto.getCustomer().getName());
                 txtName.setText(dto.getName());
                 txtNumber.setText(String.valueOf(dto.getCustomer().getNumber()));
@@ -248,53 +265,59 @@ public class RepairManagementController implements Initializable {
                 cusName.setEditable(false);
                 txtEmail.setEditable(false);
                 txtNumber.setEditable(false);
-
-                if(!(dto.getDate().equals("Processing")||dto.getDate().equals("completed")||dto.getDate().equals("completed"))){
-                    LocalDate localDate = LocalDate.parse(dto.getDate(), DateTimeFormatter.ISO_LOCAL_DATE);
-                    status.setDisable(true);
-                    datePicker.setValue(localDate);
-                } else if (dto.getDate().equals("Processing")) {
-                    status.setDisable(false);
-                    status.setText("Processing");
-                }else{
-                    status.setDisable(false);
-                    status.setText("completed");
+                if (!(dto.getEndDate().equals("Not given"))){
+                    LocalDate date = Date.valueOf(dto.getEndDate()).toLocalDate();
+                    datePicker.setValue(date);
+                }else {
+                    datePicker.setValue(null);
                 }
+                if (dto.getStatus().equals("Pending")){
+                    ObservableList statusList = FXCollections.observableArrayList();
+                    statusList.addAll("Processing","Completed","Closed");
+                    status.setItems(statusList);
+                } else if (dto.getStatus().equals("Processing")) {
+                    ObservableList statusList = FXCollections.observableArrayList();
+                    statusList.addAll("Completed","Closed");
+                    status.setItems(statusList);
+                }else if (dto.getStatus().equals("Completed")) {
+                    ObservableList statusList = FXCollections.observableArrayList();
+                    statusList.addAll( "Closed");
+                    status.setItems(statusList);
+                }
+                break;
+
             }
         }
     }
 
-    private void tblRepair(TreeItem<RepairItemTm> newValue) throws SQLException, ClassNotFoundException {
-        if (newValue != null) {
-            tblElecParts.setDisable(true);
+    private void unload()  {
+
+            tblElecParts.setDisable(false);
             txtPartName.setDisable(false);
             txtPartPrice.setDisable(false);
             txtPartQty.setDisable(false);
             repairPartAddbtn.setDisable(false);
-            List<RepairPartDto>tableLoadList=new ArrayList<>();
-            for (RepairPartDto repairPartDto :repairPartsBo.allItems()) {
-                if (repairPartDto.getItemcode().equals(newValue.getValue().getItemCode())) {
 
-                    tableLoadList.add(repairPartDto);
-                }
-            }
-            if(!(tableLoadList.isEmpty())) {
-                tblElecParts.setDisable(false);
-                repaiPartsTable(tableLoadList);
-            }
-
-        }
 
     }
 
-    private void repaiPartsTable(List<RepairPartDto> tableLoadList) {
+    private void repaiPartsTable() throws SQLException, ClassNotFoundException {
+        List<RepairPartDto>tableLoadList=new ArrayList<>();
+
+        for (RepairPartDto repairPartDto :repairPartsBo.allItems()) {
+            if (repairPartDto.getItemcode().equals(elcPartCode)) {
+                tableLoadList.add(repairPartDto);
+            }
+        }
         ObservableList<RepairPartsTm> tmList = FXCollections.observableArrayList();
+        double tot=0;
         for(RepairPartDto dto:tableLoadList){
             RepairPartsTm tm = new RepairPartsTm(
                     dto.getName(),
                     dto.getQty(),
                     dto.getPrice()
             );
+            tot+=dto.getPrice();
             tmList.add(tm);
 
 
@@ -303,7 +326,7 @@ public class RepairManagementController implements Initializable {
         tblElecParts.setRoot(treeItem);
         tblElecParts.setShowRoot(false);
 
-
+        price.setText("Total : RS :" +String.format("%.2f",tot));
     }
 
     private void loadTable() throws SQLException, ClassNotFoundException {
@@ -311,31 +334,33 @@ public class RepairManagementController implements Initializable {
         repairItemDto = repairItemBo.allItems();
         for (RepairItemDto dto:repairItemDto){
             JFXButton btn = new JFXButton();
-            if (!(dto.getDate().equals("Processing")||dto.getDate().equals("completed"))) {
+            if ((dto.getStatus().equals("Pending"))) {
 
-                LocalDate date = Date.valueOf(dto.getDate()).toLocalDate();
+                LocalDate date = Date.valueOf(dto.getOrderDate()).toLocalDate();
                 LocalDate currentDate = LocalDate.now();
                 int daysBetween = (int) ChronoUnit.DAYS.between(currentDate, date);
 
 
-                if (daysBetween > 10) {
-                    btn = new JFXButton("    “Pending”      ");
+                if (daysBetween > 5) {
+                    btn = new JFXButton("    Pending      ");
                     btn.setStyle("-fx-background-color:#D93400; -fx-text-fill: white; -fx-font-size: 16px;");
-                } else if (daysBetween < 5) {
-                    btn = new JFXButton("    “Pending”      ");
+                } else if (daysBetween > 10) {
+                    btn = new JFXButton("    Pending      ");
                     btn.setStyle("-fx-background-color: #CC0101; -fx-text-fill: white; -fx-font-size: 16px;");
                 } else {
-                    btn = new JFXButton("      “Not Complete”       ");
-                    btn.setStyle("-fx-background-color: #3F3D3D; -fx-text-fill: white; -fx-font-size: 16px;");
+                    btn = new JFXButton("       Pending       ");
+                    btn.setStyle("-fx-background-color: #fdfdfd; -fx-text-fill: #000000; -fx-font-size: 16px;");
                 }
 
-            } else if (dto.getDate().equals("Processing")) {
-                btn = new JFXButton("      “Processing”       ");
-
+            } else if (dto.getStatus().equals("Processing")) {
+                btn = new JFXButton("      Processing       ");
                 btn.setStyle("-fx-background-color: #E7C200;-fx-text-fill: white; -fx-font-size: 16px;");
-            }else if(dto.getDate().equals("completed")) {
-                btn = new JFXButton("      “completed”       ");
+            }else if(dto.getStatus().equals("Completed")) {
+                btn = new JFXButton("      completed       ");
                 btn.setStyle("-fx-background-color: MediumSeaGreen;-fx-text-fill: white; -fx-font-size: 16px;");
+            }else if(dto.getStatus().equals("Closed")) {
+                btn = new JFXButton("      Closed       ");
+                btn.setStyle("-fx-background-color: #282626;-fx-text-fill: white; -fx-font-size: 16px;");
             }
 
             RepairItemTm tm =new RepairItemTm(
@@ -343,12 +368,12 @@ public class RepairManagementController implements Initializable {
             dto.getName(),
             btn,
             dto.getCustomer().getName(),
-            dto.getDate()
+            dto.getEndDate()
             );
 
             btn.setOnAction(actionEvent -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                String string = tm.getStatus().equals("Processing") ? "Processing" : tm.getStatus().equals("completed") ? "completed" : (tm.getStatus() +"  want to give");
+                String string = tm.getStatus().equals("Not given") ? "Not given" :  (tm.getStatus() +"  want to give");
                 alert.setContentText(string);
                 alert.show();
             });

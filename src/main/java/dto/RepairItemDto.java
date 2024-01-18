@@ -14,7 +14,9 @@ import java.util.List;
 public class RepairItemDto {
     private String id;
     private String name;
-    private String date;
+    private String endDate;
+    private String orderDate;
+    private String status;
     private String cashier;
     private String price;
     private String note;
