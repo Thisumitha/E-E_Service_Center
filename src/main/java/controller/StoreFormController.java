@@ -73,6 +73,7 @@ public class StoreFormController  {
     List<ItemDto> itemDtos =new ArrayList<ItemDto>();
     private static List<ItemCatologDto> catologDtoList=new ArrayList<>();
     ObservableList<CatologTm> tmList = FXCollections.observableArrayList();
+    static List<ItemDto> selectList =new ArrayList<>();
 
 
 
@@ -172,6 +173,7 @@ public class StoreFormController  {
     }
 
     private void loadItems(List<ItemDto> list) throws SQLException, ClassNotFoundException {
+        grid.getChildren().clear();
         int column = 0;
         int row = 1;
 
@@ -179,19 +181,7 @@ public class StoreFormController  {
 
        items=new ArrayList<>(allcatologs(list));
         try {
-//            System.out.println(grid.getRowCount());
-//
-//
-//
-//            // Create RowConstraints for the row
-//            RowConstraints rowConstraints = new RowConstraints();
-//            rowConstraints.setMinHeight(10.0);
-//            rowConstraints.setPrefHeight(30.0);
-//            rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
-//
-//
-//            // Add the RowConstraints to the GridPane
-//            grid.getRowConstraints().add(rowConstraints);
+
 
 
             for (int i = 0; i < items.size(); i++) {
@@ -311,7 +301,7 @@ public class StoreFormController  {
         return list;
     }
     public void selectedType(String checkBoxId) throws SQLException, ClassNotFoundException {
-        List<ItemDto> list =new ArrayList<>();
+         selectList.clear();
         List<ItemDto> dtoList = itemBo.allItems();
         List<TypeDto> dtos = typeBo.allItems();
 
@@ -320,16 +310,15 @@ public class StoreFormController  {
                 if(item.getType().equals(type.getType())){
 
                     if(checkBoxId.equals(type.getId())){
-                        list.add(item);
+                        selectList.add(item);
+
                     }
                 }
             }
 
         }
 
-        if (!(list.isEmpty())) {
-            loadItems(list);
-        }
+
 
     }
 
@@ -355,9 +344,14 @@ public class StoreFormController  {
     }
 
 
-    public void reloadButton(ActionEvent actionEvent) {
+    public void reloadButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         loadToCart();
         tblList.refresh();
+
+        if (!(selectList.isEmpty())) {
+
+            loadItems(selectList);
+        }
     }
     public void savecart(ItemCatologDto itemCatologDto) {
         boolean add= true;
@@ -429,5 +423,9 @@ public class StoreFormController  {
 
     public void reloadTrack(MouseEvent mouseEvent) {
      load.fire();
+    }
+
+    public void moveDetect(MouseEvent mouseEvent) {
+        load.fire();
     }
 }

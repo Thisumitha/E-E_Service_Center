@@ -38,7 +38,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <GridPane style="-fx-border-color: #000; -fx-background-color: D9D9D9;">
+                        <GridPane onMouseMoved="#moveDetect" style="-fx-border-color: #000; -fx-background-color: D9D9D9;">
                             <columnConstraints>
                                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="200.0" />
                             </columnConstraints>
