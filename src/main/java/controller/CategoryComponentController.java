@@ -12,11 +12,12 @@ import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CategoryComponentController implements Initializable {
-    private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+
     StoreFormController storeFormController= new StoreFormController();
     public JFXCheckBox checkBox;
     public AnchorPane layout;
@@ -37,6 +38,7 @@ public class CategoryComponentController implements Initializable {
         String checkBoxId = checkBox.getId();
 
 
+
         try {
             storeFormController.selectedType(checkBoxId);
         } catch (SQLException e) {
@@ -44,6 +46,14 @@ public class CategoryComponentController implements Initializable {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+                Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                checkBox.setSelected(false);
+            }
+        }, 1000, 0);
+
     }
 
 

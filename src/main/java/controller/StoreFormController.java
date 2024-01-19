@@ -111,13 +111,7 @@ public class StoreFormController  {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-//        Timer t = new Timer();
-//        t.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                loadToCart();
-//            }
-//        }, 0, 5000);
+
 
 
 
@@ -345,13 +339,11 @@ public class StoreFormController  {
 
 
     public void reloadButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        loadToCart();
-        tblList.refresh();
 
-        if (!(selectList.isEmpty())) {
+        loadItems(itemBo.allItems());
+        selectList=new ArrayList<>();
 
-            loadItems(selectList);
-        }
+
     }
     public void savecart(ItemCatologDto itemCatologDto) {
         boolean add= true;
@@ -422,10 +414,14 @@ public class StoreFormController  {
 
 
     public void reloadTrack(MouseEvent mouseEvent) {
-     load.fire();
+        loadToCart();
+        tblList.refresh();
+
     }
 
-    public void moveDetect(MouseEvent mouseEvent) {
-        load.fire();
+    public void moveDetect(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        if (!(selectList.isEmpty())) {
+            loadItems(selectList);
+        }
     }
 }

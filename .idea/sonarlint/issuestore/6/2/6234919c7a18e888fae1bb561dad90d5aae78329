@@ -1,9 +1,9 @@
 
 g	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Š´ßŠĞ1
 g	java:S112p"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Š´ßŠĞ1
-h	java:S112Ó"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Š´ßŠĞ1
-h	java:S112¡"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8©Ÿå™Ñ1
-h	java:S112£"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8«Ÿå™Ñ1
+h	java:S112Í"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Š´ßŠĞ1
+h	java:S112™"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8©Ÿå™Ñ1
+h	java:S112›"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8«Ÿå™Ñ1
 Q
 java:S3740+"/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8Š´ßŠĞ1
 L
@@ -19,7 +19,7 @@ java:S2293H"YReplace the type specification in this constructor call with the d
 {
 java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(­Ôéœüÿÿÿÿ8Œ´ßŠĞ1
 M
-java:S1066¸"/Merge this if statement with the enclosing one.(œšğÇ8Œ´ßŠĞ1
+java:S1066²"/Merge this if statement with the enclosing one.(œšğÇ8Œ´ßŠĞ1
 p
 java:S1104*"SMake tblList a static final constant or non-public and provide accessors if needed.(Ëµ«å8´ßŠĞ1
 u
@@ -44,46 +44,47 @@ O
 java:S1172Q"2Remove this unused method parameter "actionEvent".(÷ßù±8¨¶ßŠĞ1
 b
 java:S2147o"ECombine this catch with the one at line 109, which has the same body.(ıàÑÎ8°¶ßŠĞ1
-X	java:S125r"<This block of commented-out lines of code should be removed.(÷ñµ8°¶ßŠĞ1
 \
-java:S1117":Rename "tmList" which hides the field declared at line 75.(Ÿœ“ƒûÿÿÿÿ8±¶ßŠĞ1
+java:S1117y":Rename "tmList" which hides the field declared at line 75.(Ÿœ“ƒûÿÿÿÿ8±¶ßŠĞ1
 J
-java:S1602™",Remove useless curly braces around statement(óëÕè8³¶ßŠĞ1
+java:S1602“",Remove useless curly braces around statement(óëÕè8³¶ßŠĞ1
 O
-java:S1602",Remove useless curly braces around statement(ğºÊÒüÿÿÿÿ8³¶ßŠĞ1
+java:S1602—",Remove useless curly braces around statement(ğºÊÒüÿÿÿÿ8³¶ßŠĞ1
 p
-java:S3776Ú"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(”Áå8¼¶ßŠĞ1
+java:S3776Ô"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(”Áå8¼¶ßŠĞ1
 Œ
-java:S1130Ú"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(”Áå8—ùè’Ò1
+java:S1130Ô"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(”Áå8şöÒ”Ò1
 —
-java:S1130Ú"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(”Áå8—ùè’Ò1
-M	java:S106ö"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8¿¶ßŠĞ1
-M	java:S106"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8À¶ßŠĞ1
+java:S1130Ô"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(”Áå8şöÒ”Ò1
+M	java:S106ğ"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8¿¶ßŠĞ1
+M	java:S106‡"+Replace this use of System.err by a logger.(¡ÌÄÅüÿÿÿÿ8À¶ßŠĞ1
 Œ
-java:S1130–"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ó²Š–8šùè’Ò1
+java:S1130"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ó²Š–8÷Ò”Ò1
 —
-java:S1130–"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(ó²Š–8šùè’Ò1
+java:S1130"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(ó²Š–8÷Ò”Ò1
 J
-java:S1602¥",Remove useless curly braces around statement(ë¹¬8Â¶ßŠĞ1
+java:S1602Ÿ",Remove useless curly braces around statement(ë¹¬8Â¶ßŠĞ1
 U
-java:S1172Å"2Remove this unused method parameter "actionEvent".(­Ü£ƒıÿÿÿÿ8Å¶ßŠĞ1
+java:S1172¿"2Remove this unused method parameter "actionEvent".(­Ü£ƒıÿÿÿÿ8Å¶ßŠĞ1
 T
-java:S2696Ì"6Make the enclosing method "static" or remove this set.(É‚Şö8¥èĞ1
+java:S2696Æ"6Make the enclosing method "static" or remove this set.(É‚Şö8¥èĞ1
 U
-java:S1172Û"2Remove this unused method parameter "actionEvent".(Òêø±ùÿÿÿÿ8Ç¶ßŠĞ1
+java:S1172Õ"2Remove this unused method parameter "actionEvent".(Òêø±ùÿÿÿÿ8Ç¶ßŠĞ1
+T
+java:S2696Ø"6Make the enclosing method "static" or remove this set.(‡¥ú®8›ƒß”Ò1
 u
-java:S3776ı"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(í¹‚Ìúÿÿÿÿ8‘¦å™Ñ1
+java:S3776õ"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(í¹‚Ìúÿÿÿÿ8‘¦å™Ñ1
 c
-java:S2147¢"ECombine this catch with the one at line 416, which has the same body.(ıàÑÎ8’¦å™Ñ1
+java:S2147š"ECombine this catch with the one at line 408, which has the same body.(ıàÑÎ8’¦å™Ñ1
 Z
-java:S1117ÿ"<Rename "itemDtos" which hides the field declared at line 73.(Ï–8’¦å™Ñ1
+java:S1117÷"<Rename "itemDtos" which hides the field declared at line 73.(Ï–8’¦å™Ñ1
 L
-java:S1940ˆ")Use the opposite operator ("!=") instead.(ŒºäÉÿÿÿÿÿ8”¦å™Ñ1
+java:S1940€")Use the opposite operator ("!=") instead.(ŒºäÉÿÿÿÿÿ8”¦å™Ñ1
 L
-java:S1940“")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8”¦å™Ñ1
+java:S1940‹")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8”¦å™Ñ1
 N
-java:S1172¨"1Remove this unused method parameter "mouseEvent".(²¡Ë28ÌœˆÒ1
-T
-java:S1172¬"1Remove this unused method parameter "mouseEvent".(ë¦‘ñøÿÿÿÿ8±ú›“Ò1
+java:S1172 "1Remove this unused method parameter "mouseEvent".(²¡Ë28ÌœˆÒ1
+O
+java:S1172¦"1Remove this unused method parameter "mouseEvent".(ÿìÃ¥8±ú›“Ò1
 R
-java:S1128"5Remove this unused import 'javafx.scene.image.Image'.(‰¿½Ç8Õ•é’Ò1
+java:S1128"5Remove this unused import 'javafx.scene.image.Image'.(‰¿½Ç8Š÷Ò”Ò1
