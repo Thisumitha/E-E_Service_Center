@@ -428,6 +428,6 @@ public class StoreFormController  {
 
 
     public void reloadTrack(MouseEvent mouseEvent) {
-//       load.fire();
+     load.fire();
     }
 }

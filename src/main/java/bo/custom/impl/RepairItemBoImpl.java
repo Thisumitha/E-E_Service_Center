@@ -16,7 +16,7 @@ import java.util.List;
 
 public class RepairItemBoImpl implements RepairItemBo {
     private RepairItemDao repairItemDao= DaoFactory.getInstance().getDao(DaoType.REPAIR_ITEM);
-    private CustomerDao customerDao= DaoFactory.getInstance().getDao(DaoType.CUSTOMER);
+
     @Override
     public boolean saveItem(RepairItemDto dto) throws SQLException, ClassNotFoundException {
             return repairItemDao.save(dto);

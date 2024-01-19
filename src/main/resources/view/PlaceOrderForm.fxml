@@ -322,7 +322,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <JFXButton contentDisplay="GRAPHIC_ONLY" GridPane.columnIndex="1">
+                                          <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#printBill" GridPane.columnIndex="1">
                                              <graphic>
                                                 <ImageView fitHeight="35.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>

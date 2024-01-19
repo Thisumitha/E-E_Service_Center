@@ -82,6 +82,7 @@ L
 java:S1940")Use the opposite operator ("!=") instead.(ŒºäÉÿÿÿÿÿ8”¦å™Ñ1
 L
 java:S1940™")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8”¦å™Ñ1
-X	java:S125¯"<This block of commented-out lines of code should be removed.(´åŒk8–¦å™Ñ1
+N
+java:S1172®"1Remove this unused method parameter "mouseEvent".(²¡Ë28ÌœˆÒ1
 R
 java:S1128"5Remove this unused import 'javafx.scene.image.Image'.(‰¿½Ç8á×ˆèĞ1

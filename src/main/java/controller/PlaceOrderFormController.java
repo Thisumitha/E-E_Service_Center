@@ -1,16 +1,14 @@
 package controller;
 
 import bo.BoFactory;
-import bo.custom.CustomerBo;
-import bo.custom.ItemBo;
-import bo.custom.OrderBo;
-import bo.custom.TypeBo;
+import bo.custom.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
+import dao.util.HibernateUtil;
 import dto.CustomerDto;
 import dto.ItemDto;
 import dto.OrderDetailsDto;
@@ -34,9 +32,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import org.hibernate.internal.SessionImpl;
 
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -61,6 +65,7 @@ public class PlaceOrderFormController {
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
+    private OrderDetailsBo detailsBo = BoFactory.getInstance().getBo(BoType.ORDER_DETAIL);
 
     @FXML
     private BorderPane pane;
@@ -84,7 +89,7 @@ public class PlaceOrderFormController {
     private CustomerDto selectedCustomer;
     private boolean isNew=true;
     String cId;
-
+    String oId=null;
 
     public void PlaceOrderButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (txtName.getText().isEmpty()||txtNumber.getText().isEmpty()||txtEmail.getText().isEmpty()){
@@ -113,7 +118,7 @@ public class PlaceOrderFormController {
     }
     private void placeOrder() throws SQLException, ClassNotFoundException {
 
-        String oId = orderBo.generateId();
+         oId = orderBo.generateId();
         List<OrderDetailsDto> list = new ArrayList<>();
         for(ItemCatologDto catologDto :itemCatologDtos){
             OrderDetailsDto dto=new OrderDetailsDto(
@@ -152,6 +157,7 @@ public class PlaceOrderFormController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Order Placed");
                 alert.show();
+
             }
 
 
@@ -349,5 +355,17 @@ public class PlaceOrderFormController {
         txtNumber.setText("");
         txtEmail.setText("");
         searchText.setText("");
+    }
+
+    public void printBill(ActionEvent actionEvent) {
+        try {
+            JasperDesign design = JRXmlLoader.load("src/main/resources/Reports/Invoice.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+            Connection connection = ((SessionImpl) HibernateUtil.getSession()).connection();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, connection);
+            JasperViewer.viewReport(jasperPrint,false);
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

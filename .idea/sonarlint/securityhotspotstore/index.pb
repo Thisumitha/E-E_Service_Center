@@ -349,3 +349,7 @@ X
 (src/main/java/dao/util/EmailService.java,0\a\0a8b29f654f63e2fc19e5c2c2a86af49b6ef6e88
 i
 9src/main/java/controller/ResetPasswordFormController.java,6\a\6aa137bc906070754995213a7d2efe6e395e1115
+[
++src/main/java/bo/custom/OrderDetailsBo.java,4\9\497021ea6d5d163964988848408dc12beaed8aa0
+d
+4src/main/java/bo/custom/impl/OrderDetailsBoImpl.java,8\8\88a8de834924e254fc7a7c4120699646481b0cc3
