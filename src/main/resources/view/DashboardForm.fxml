@@ -140,7 +140,7 @@
                                           <Image url="@../Assets/people.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="0" textFill="WHITE" GridPane.columnIndex="1">
+                                    <Label fx:id="lblWorks" prefHeight="83.0" prefWidth="71.0" text="0" textFill="WHITE" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="56.0" />
                                        </font>
@@ -177,7 +177,7 @@
                                           <Image url="@../Assets/people.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="15" textFill="WHITE" GridPane.columnIndex="1">
+                                    <Label fx:id="lblWorkers" text="15" textFill="WHITE" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="56.0" />
                                        </font>
@@ -214,7 +214,7 @@
                                           <Image url="@../Assets/people.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="0" textFill="WHITE" GridPane.columnIndex="1">
+                                    <Label fx:id="lblItems" text="0" textFill="WHITE" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="56.0" />
                                        </font>

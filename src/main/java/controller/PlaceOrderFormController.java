@@ -9,6 +9,7 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
 import dao.util.HibernateUtil;
+import dao.util.User;
 import dto.CustomerDto;
 import dto.ItemDto;
 import dto.OrderDetailsDto;
@@ -88,9 +89,9 @@ public class PlaceOrderFormController {
     private double netTotal=0;
     private CustomerDto selectedCustomer;
     private boolean isNew=true;
-    String cId;
-    String oId=null;
 
+    String oId=null;
+    User user =new User();
     public void PlaceOrderButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (txtName.getText().isEmpty()||txtNumber.getText().isEmpty()||txtEmail.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -117,7 +118,7 @@ public class PlaceOrderFormController {
 
     }
     private void placeOrder() throws SQLException, ClassNotFoundException {
-
+        String cId= customerBo.generateId();
          oId = orderBo.generateId();
         List<OrderDetailsDto> list = new ArrayList<>();
         for(ItemCatologDto catologDto :itemCatologDtos){
@@ -130,14 +131,18 @@ public class PlaceOrderFormController {
             list.add(dto);
 
         }
-        Customer customer ;
+
         if (isNew) {
                     customerBo.saveCustomer(new CustomerDto(
-                    customerBo.generateId(),
+                            cId,
                     txtName.getText(),
                     Integer.parseInt(txtNumber.getText()),
                     txtEmail.getText()
             ));
+
+        }else{
+                cId = selectedCustomer.getCode();
+
 
         }
 
@@ -148,7 +153,7 @@ public class PlaceOrderFormController {
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
                     cId,
                     list,
-                    "thisumitha"
+                    user.getName()
             ));
             itemBo.updatequantities(itemCatologDtos);
             itemBo.savecart(new ArrayList<>());
@@ -174,7 +179,6 @@ public class PlaceOrderFormController {
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("option"));
         loadTable();
         loadCustomers();
-         cId = customerBo.generateId();
 
     }
 
@@ -334,14 +338,19 @@ public class PlaceOrderFormController {
         for (CustomerDto customerDto: customerDtos){
             if (customerDto.getCode().equals(customer)||customerDto.getName().equals(customer)||String.valueOf(customerDto.getNumber()).equals(customer)||customerDto.getEmail().equals(customer)){
                 selectedCustomer=customerDto;
-                cId=customerDto.getCode();
                 txtName.setText(customerDto.getName());
                 txtNumber.setText(String.valueOf(customerDto.getNumber()));
                 txtEmail.setText(customerDto.getEmail());
+                txtName.setEditable(true);
+                txtEmail.setEditable(true);
+                txtNumber.setEditable(true);
                 isNew=false;
+                break;
             }else{
-                cId=customerBo.generateId();
-                isNew=false;
+                selectedCustomer=null;
+                txtName.setEditable(false);
+                txtEmail.setEditable(false);
+                txtNumber.setEditable(false);
                 txtName.setText("");
                 txtNumber.setText("");
                 txtEmail.setText("");
@@ -355,6 +364,9 @@ public class PlaceOrderFormController {
         txtNumber.setText("");
         txtEmail.setText("");
         searchText.setText("");
+        txtName.setEditable(false);
+        txtEmail.setEditable(false);
+        txtNumber.setEditable(false);
     }
 
     public void printBill(ActionEvent actionEvent) {

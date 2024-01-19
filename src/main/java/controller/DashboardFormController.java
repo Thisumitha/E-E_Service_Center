@@ -1,15 +1,24 @@
 package controller;
 
+import bo.BoFactory;
+import bo.custom.*;
 import com.jfoenix.controls.JFXButton;
+import dao.util.BoType;
 import dao.util.User;
 import dto.AccessDto;
+import dto.EmployerDto;
+import dto.ItemDto;
+import dto.RepairItemDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class DashboardFormController  {
     public BorderPane pane;
@@ -20,10 +29,44 @@ public class DashboardFormController  {
     public JFXButton repairBtn;
     public JFXButton reportBtn;
     public JFXButton adminBtn;
+    public Label lblWorkers;
+
+    public Label lblItems;
+    public Label lblWorks;
 
     User user=new User();
-    public void initialize() {
+    private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
+    private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
+    private OrderDetailsBo detailsBo = BoFactory.getInstance().getBo(BoType.ORDER_DETAIL);
+    private RepairItemBo repairItemBo = BoFactory.getInstance().getBo(BoType.REPAIR_ITEM);
+    private EmployerBo employerBo = BoFactory.getInstance().getBo(BoType.EMPLOYER);
+    public void initialize() throws SQLException, ClassNotFoundException {
         getAccess();
+        loadRepairCount();
+        loadWorkers();
+        loadItems();
+    }
+
+    private void loadItems() throws SQLException, ClassNotFoundException {
+        List<ItemDto> dtoList = itemBo.allItems();
+        lblItems.setText(String.valueOf(dtoList.size()));
+    }
+
+    private void loadWorkers() throws SQLException, ClassNotFoundException {
+        List<EmployerDto> employerDtoList = employerBo.allIEmployers();
+        lblWorkers.setText(String.valueOf(employerDtoList.size()));
+    }
+
+    private void loadRepairCount() throws SQLException, ClassNotFoundException {
+        List<RepairItemDto> repairItemDtos = repairItemBo.allItems();
+        int count=0;
+        for (RepairItemDto repairItemDto:repairItemDtos){
+            if (!(repairItemDto.getStatus().equals("Completed")||repairItemDto.getStatus().equals("Closed"))){
+                count++;
+            }
+        }
+        lblWorks.setText(String.valueOf(count));
     }
 
     private void getAccess() {
