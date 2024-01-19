@@ -209,6 +209,7 @@
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="253.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="14.0" minWidth="0.0" prefWidth="0.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
                            </columnConstraints>
@@ -250,10 +251,19 @@
                                     <Font size="14.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton onAction="#btnUpdate" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #0B5AA4; -fx-background-radius: 34px;" text="Update" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="3">
+                              <JFXButton onAction="#btnUpdate" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #0B5AA4; -fx-background-radius: 34px;" text="Update" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="3">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                              </JFXButton>
+                              <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#printReport" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="54.0"  pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Assets/print-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </JFXButton>
                            </children>
                         </GridPane>

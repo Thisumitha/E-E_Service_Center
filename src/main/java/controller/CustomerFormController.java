@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
+import dao.util.HibernateUtil;
 import dto.CustomerDto;
 import dto.ItemDto;
 import dto.TypeDto;
@@ -26,8 +27,14 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import org.hibernate.internal.SessionImpl;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -141,6 +148,18 @@ public class CustomerFormController {
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void printReport(ActionEvent actionEvent) {
+        try {
+            JasperDesign design = JRXmlLoader.load("src/main/resources/Reports/customerReport.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+            Connection connection = ((SessionImpl) HibernateUtil.getSession()).connection();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, connection);
+            JasperViewer.viewReport(jasperPrint,false);
+        } catch (JRException e) {
+            throw new RuntimeException(e);
         }
     }
 }

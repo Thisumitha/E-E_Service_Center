@@ -7,6 +7,7 @@ import bo.custom.RepairPartsBo;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
+import dao.util.User;
 import dto.CustomerDto;
 import dto.RepairItemDto;
 import dto.RepairPartDto;
@@ -77,6 +78,7 @@ public class RepairManagementController implements Initializable {
     private String codeSelect=null;
     private String dateSelect=null;
     private String elcPartCode=null;
+    User user=new User();
 
     private List<RepairItemDto> repairItemDto=new ArrayList<>();
 
@@ -93,7 +95,7 @@ public class RepairManagementController implements Initializable {
                     date,
                     dateSelect,
                     status.getValue().toString(),
-                    "thisu",
+                    user.getName(),
                     "",
                     txtMsg.getText(),
                     null,
@@ -138,7 +140,7 @@ public class RepairManagementController implements Initializable {
                     date,
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     "Pending",
-                    "thisu",
+                    user.getName(),
                     "",
                     txtMsg.getText(),
                     customer,
