@@ -2,8 +2,8 @@
 g	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Š´ßŠĞ1
 g	java:S112p"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Š´ßŠĞ1
 h	java:S112Í"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Š´ßŠĞ1
-h	java:S112™"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8©Ÿå™Ñ1
-h	java:S112›"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8«Ÿå™Ñ1
+h	java:S112š"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8©Ÿå™Ñ1
+h	java:S112œ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8«Ÿå™Ñ1
 Q
 java:S3740+"/Provide the parametrized type for this generic.(¸ç€˜ÿÿÿÿÿ8Š´ßŠĞ1
 L
@@ -69,22 +69,22 @@ java:S1172¿"2Remove this unused method parameter "actionEvent".(­Ü£ƒıÿÿÿÿ8Å¶ß
 T
 java:S2696Æ"6Make the enclosing method "static" or remove this set.(É‚Şö8¥èĞ1
 U
-java:S1172Õ"2Remove this unused method parameter "actionEvent".(Òêø±ùÿÿÿÿ8Ç¶ßŠĞ1
+java:S1172Ö"2Remove this unused method parameter "actionEvent".(Òêø±ùÿÿÿÿ8Ç¶ßŠĞ1
 T
-java:S2696Ø"6Make the enclosing method "static" or remove this set.(‡¥ú®8›ƒß”Ò1
+java:S2696Ù"6Make the enclosing method "static" or remove this set.(‡¥ú®8›ƒß”Ò1
 u
-java:S3776õ"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(í¹‚Ìúÿÿÿÿ8‘¦å™Ñ1
+java:S3776ö"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(í¹‚Ìúÿÿÿÿ8‘¦å™Ñ1
 c
-java:S2147š"ECombine this catch with the one at line 408, which has the same body.(ıàÑÎ8’¦å™Ñ1
+java:S2147›"ECombine this catch with the one at line 409, which has the same body.(ıàÑÎ8’¦å™Ñ1
 Z
-java:S1117÷"<Rename "itemDtos" which hides the field declared at line 73.(Ï–8’¦å™Ñ1
+java:S1117ø"<Rename "itemDtos" which hides the field declared at line 73.(Ï–8’¦å™Ñ1
 L
-java:S1940€")Use the opposite operator ("!=") instead.(ŒºäÉÿÿÿÿÿ8”¦å™Ñ1
+java:S1940")Use the opposite operator ("!=") instead.(ŒºäÉÿÿÿÿÿ8”¦å™Ñ1
 L
-java:S1940‹")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8”¦å™Ñ1
+java:S1940Œ")Use the opposite operator ("!=") instead.(ùûøÿÿÿÿ8”¦å™Ñ1
 N
-java:S1172 "1Remove this unused method parameter "mouseEvent".(²¡Ë28ÌœˆÒ1
+java:S1172¡"1Remove this unused method parameter "mouseEvent".(²¡Ë28ÌœˆÒ1
 O
-java:S1172¦"1Remove this unused method parameter "mouseEvent".(ÿìÃ¥8±ú›“Ò1
+java:S1172§"1Remove this unused method parameter "mouseEvent".(ÿìÃ¥8±ú›“Ò1
 R
 java:S1128"5Remove this unused import 'javafx.scene.image.Image'.(‰¿½Ç8Š÷Ò”Ò1

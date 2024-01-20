@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class OrderDetailsDto {
     private String orderId;
-    private String itemCode;
+    private String itemId;
     private int qty;
     private double price;
 }

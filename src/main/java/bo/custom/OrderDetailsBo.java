@@ -1,12 +1,11 @@
 package bo.custom;
 
 import bo.SuperBo;
-import dto.OrderDetailsDto;
-
-import java.util.List;
+import net.sf.jasperreports.engine.JRException;
 
 public interface OrderDetailsBo extends SuperBo {
 
 
-    void printBill(String oId);
+
+     void printbill(String id, String email) throws JRException;
 }

@@ -26,7 +26,7 @@ public class Orders {
     private Customer customer;
 
     @OneToMany(mappedBy = "orders")
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private List<OrderDetail> orderDetailsList = new ArrayList<>();
 
     public Orders(String orderId, String date, String time, String cashier) {
         this.orderId = orderId;

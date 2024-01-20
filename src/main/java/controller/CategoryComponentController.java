@@ -52,7 +52,7 @@ public class CategoryComponentController implements Initializable {
             public void run() {
                 checkBox.setSelected(false);
             }
-        }, 1000, 0);
+        }, 2000, 1000);
 
     }
 

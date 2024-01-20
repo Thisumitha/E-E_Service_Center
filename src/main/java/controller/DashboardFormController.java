@@ -85,6 +85,7 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/InventoryForm.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
             stage.setTitle("Inventory");
             stage.show();
         } catch (IOException e) {
@@ -97,6 +98,8 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/StoreForm.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
+
             stage.setTitle("Store");
             stage.show();
         } catch (IOException e) {
@@ -109,6 +112,8 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderHistory.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
+
             stage.setTitle("OrderHistory");
             stage.show();
         } catch (IOException e) {
@@ -121,6 +126,7 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/RepairManegmentForm.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
             stage.setTitle("Repair Management");
             stage.show();
         } catch (IOException e) {
@@ -134,6 +140,7 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CustomersForm.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
             stage.setTitle("Customer Management");
             stage.show();
         } catch (IOException e) {
@@ -146,6 +153,7 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminForm.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
             stage.setTitle("Admin Management");
             stage.show();
         } catch (IOException e) {
@@ -158,6 +166,7 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportForm.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
             stage.setTitle("Report Management");
             stage.show();
         } catch (IOException e) {
@@ -170,7 +179,7 @@ public class DashboardFormController  {
         Stage stage = (Stage) pane.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"))));
-
+            stage.centerOnScreen();
             stage.setTitle("Login");
             stage.show();
         } catch (IOException e) {
@@ -183,6 +192,7 @@ public class DashboardFormController  {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UpdateProfile.fxml"))));
             stage.setResizable(true);
+            stage.centerOnScreen();
             stage.setTitle("Profile ");
             stage.show();
         } catch (IOException e) {

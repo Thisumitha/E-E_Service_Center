@@ -329,6 +329,7 @@ public class StoreFormController  {
             try {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
                 stage.setResizable(true);
+                stage.centerOnScreen();
                 stage.setTitle("Place Order");
                 stage.show();
             } catch (IOException e) {

@@ -12,8 +12,6 @@ import dao.util.BoType;
 import dto.ItemDto;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
-import dto.TypeDto;
-import dto.tm.ItemTm;
 import dto.tm.OrderDetailsTm;
 import dto.tm.OrderTm;
 import javafx.collections.FXCollections;
@@ -25,7 +23,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -124,9 +121,9 @@ public class OrderHistoryController {
             if (dto.getOrderId().equals(id)) {
                 for (OrderDetailsDto dtoList : dto.getList()) {
                     for (ItemDto item : itemDtos) {
-                        if (item.getCode().equals(dtoList.getItemCode())) {
+                        if (item.getCode().equals(dtoList.getItemId())) {
                             OrderDetailsTm tm = new OrderDetailsTm(
-                                    dtoList.getItemCode(),
+                                    dtoList.getItemId(),
                                     dtoList.getQty(),
                                     dtoList.getPrice(),
                                     item.getType()

@@ -4,7 +4,6 @@ import dao.custom.OrderDao;
 import dao.util.HibernateUtil;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
-import dto.RepairItemDto;
 import entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -65,8 +64,8 @@ public class OrderDaoImpl implements OrderDao {
         for(OrderDetailsDto detailsDto :list){
 
             OrderDetail orderDetail = new OrderDetail(
-                    new OrderDetailsKey(detailsDto.getOrderId(), detailsDto.getItemCode()),
-                    session.find(Item.class, detailsDto.getItemCode()),
+                    new OrderDetailsKey(detailsDto.getOrderId(), detailsDto.getItemId()),
+                    session.find(Item.class, detailsDto.getItemId()),
                     order,
                     detailsDto.getQty(),
                     detailsDto.getPrice()
@@ -101,7 +100,7 @@ public class OrderDaoImpl implements OrderDao {
 
         for (Orders orders:list){
             List<OrderDetailsDto>detailsDtoList=new ArrayList<>();
-            for(OrderDetail detailsDto:orders.getOrderDetails()){
+            for(OrderDetail detailsDto:orders.getOrderDetailsList()){
                 detailsDtoList.add( new OrderDetailsDto(
                         detailsDto.getOrders().getOrderId(),
                         detailsDto.getItem().getCode(),

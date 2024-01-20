@@ -16,8 +16,8 @@ import java.io.Serializable;
 @Embeddable
 public class OrderDetailsKey implements Serializable {
 
-    @Column(name = "order_id")
+    @Column(name = "orderId")
     private String orderId;
-    @Column(name = "item_code")
-    private String itemCode;
+    @Column(name = "itemId")
+    private String itemId;
 }

@@ -52,19 +52,11 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
 
         List<OrderDetail> orderDetailsList = null;
         try (Session session = HibernateUtil.getSession()) {
-            Query query = session.createQuery("FROM OrderDetail  WHERE orders.orderId = :orderId");
+            Query query = session.createQuery("FROM OrderDetail  WHERE orderId = :orderId");
             query.setParameter("orderId", id);
             orderDetailsList = query.list();
-            System.out.println(orderDetailsList.size());
-//
-//            for (OrderDetail orderDetail : orderDetailsList) {
-//                orderDtos.add(new OrderDetailsDto(
-//                        orderDetail.getOrders().getOrderId(),
-//                        orderDetail.getItem().getCode(),
-//                        orderDetail.getQty(),
-//                        orderDetail.getPrice()
-//                ));
-//            }
+
+
         } catch (HibernateException e) {
             e.printStackTrace();
         }

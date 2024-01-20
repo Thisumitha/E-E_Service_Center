@@ -89,6 +89,7 @@ public class PlaceOrderFormController {
     private double netTotal=0;
     private CustomerDto selectedCustomer;
     private boolean isNew=true;
+    private String email=null;
 
     String oId=null;
     User user =new User();
@@ -120,6 +121,7 @@ public class PlaceOrderFormController {
     private void placeOrder() throws SQLException, ClassNotFoundException {
         String cId= customerBo.generateId();
          oId = orderBo.generateId();
+
         List<OrderDetailsDto> list = new ArrayList<>();
         for(ItemCatologDto catologDto :itemCatologDtos){
             OrderDetailsDto dto=new OrderDetailsDto(
@@ -139,9 +141,11 @@ public class PlaceOrderFormController {
                     Integer.parseInt(txtNumber.getText()),
                     txtEmail.getText()
             ));
+                    email=txtEmail.getText();
 
         }else{
                 cId = selectedCustomer.getCode();
+                email=selectedCustomer.getEmail();
 
 
         }
@@ -369,15 +373,7 @@ public class PlaceOrderFormController {
         txtNumber.setEditable(false);
     }
 
-    public void printBill(ActionEvent actionEvent) {
-        try {
-            JasperDesign design = JRXmlLoader.load("src/main/resources/Reports/Invoice.jrxml");
-            JasperReport jasperReport = JasperCompileManager.compileReport(design);
-            Connection connection = ((SessionImpl) HibernateUtil.getSession()).connection();
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, connection);
-            JasperViewer.viewReport(jasperPrint,false);
-        } catch (JRException e) {
-            throw new RuntimeException(e);
-        }
+    public void printBill(ActionEvent actionEvent) throws JRException {
+       detailsBo.printbill(oId,email);
     }
 }
