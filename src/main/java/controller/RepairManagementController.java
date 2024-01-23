@@ -7,6 +7,8 @@ import bo.custom.RepairPartsBo;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.util.BoType;
+import dao.util.StatusInfo;
+import dao.util.StatusType;
 import dao.util.User;
 import dto.CustomerDto;
 import dto.RepairItemDto;
@@ -94,7 +96,7 @@ public class RepairManagementController implements Initializable {
                     txtName.getText(),
                     date,
                     dateSelect,
-                    status.getValue().toString(),
+                    updateStatus(status.getValue().toString()),
                     user.getName(),
                     "",
                     txtMsg.getText(),
@@ -108,6 +110,14 @@ public class RepairManagementController implements Initializable {
         }
 
 
+    }
+    private int updateStatus(String status){
+        switch (status){
+            case "Processing" : return(StatusInfo.statusType(StatusType.PROCESSING));
+            case "Completed" : return(StatusInfo.statusType(StatusType.COMPLETED));
+            case "Closed" : return(StatusInfo.statusType(StatusType.CLOSED));
+        }
+        return 0;
     }
 
     public void btnSave(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -139,7 +149,7 @@ public class RepairManagementController implements Initializable {
                     txtName.getText(),
                     date,
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
-                    "Pending",
+                    StatusInfo.statusType(StatusType.PENDING),
                     user.getName(),
                     "",
                     txtMsg.getText(),
@@ -273,15 +283,15 @@ public class RepairManagementController implements Initializable {
                 }else {
                     datePicker.setValue(null);
                 }
-                if (dto.getStatus().equals("Pending")){
+                if (dto.getStatus() == StatusInfo.statusType(StatusType.PENDING)){
                     ObservableList statusList = FXCollections.observableArrayList();
                     statusList.addAll("Processing","Completed","Closed");
                     status.setItems(statusList);
-                } else if (dto.getStatus().equals("Processing")) {
+                } else if (dto.getStatus()== StatusInfo.statusType(StatusType.PROCESSING)) {
                     ObservableList statusList = FXCollections.observableArrayList();
                     statusList.addAll("Completed","Closed");
                     status.setItems(statusList);
-                }else if (dto.getStatus().equals("Completed")) {
+                }else if (dto.getStatus()== StatusInfo.statusType(StatusType.COMPLETED)) {
                     ObservableList statusList = FXCollections.observableArrayList();
                     statusList.addAll( "Closed");
                     status.setItems(statusList);
@@ -336,7 +346,7 @@ public class RepairManagementController implements Initializable {
         repairItemDto = repairItemBo.allItems();
         for (RepairItemDto dto:repairItemDto){
             JFXButton btn = new JFXButton();
-            if ((dto.getStatus().equals("Pending"))) {
+            if ((dto.getStatus()== StatusInfo.statusType(StatusType.PENDING))) {
 
                 LocalDate date = Date.valueOf(dto.getOrderDate()).toLocalDate();
                 LocalDate currentDate = LocalDate.now();
@@ -354,13 +364,13 @@ public class RepairManagementController implements Initializable {
                     btn.setStyle("-fx-background-color: #fdfdfd; -fx-text-fill: #000000; -fx-font-size: 16px;");
                 }
 
-            } else if (dto.getStatus().equals("Processing")) {
+            } else if (dto.getStatus()== StatusInfo.statusType(StatusType.PROCESSING)) {
                 btn = new JFXButton("      Processing       ");
                 btn.setStyle("-fx-background-color: #E7C200;-fx-text-fill: white; -fx-font-size: 16px;");
-            }else if(dto.getStatus().equals("Completed")) {
+            }else if(dto.getStatus()== StatusInfo.statusType(StatusType.COMPLETED)) {
                 btn = new JFXButton("      completed       ");
                 btn.setStyle("-fx-background-color: MediumSeaGreen;-fx-text-fill: white; -fx-font-size: 16px;");
-            }else if(dto.getStatus().equals("Closed")) {
+            }else if(dto.getStatus()== StatusInfo.statusType(StatusType.CLOSED)) {
                 btn = new JFXButton("      Closed       ");
                 btn.setStyle("-fx-background-color: #282626;-fx-text-fill: white; -fx-font-size: 16px;");
             }

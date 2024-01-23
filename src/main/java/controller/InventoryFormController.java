@@ -231,7 +231,8 @@ public class InventoryFormController {
                     parseDouble(price.getText()),
                     Integer.parseInt(qty.getText()),
                     type.getValue().toString(),
-                    imagepath
+                    imagepath,
+                    true
 
             ));
 
@@ -256,7 +257,8 @@ public class InventoryFormController {
                     parseDouble(price.getText()),
                     Integer.parseInt(qty.getText()),
                     type.getValue().toString(),
-                    imagepath
+                    imagepath,
+                    true
 
 
             ));

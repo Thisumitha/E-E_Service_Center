@@ -16,7 +16,7 @@ public class RepairItemDto {
     private String name;
     private String endDate;
     private String orderDate;
-    private String status;
+    private int status;
     private String cashier;
     private String price;
     private String note;

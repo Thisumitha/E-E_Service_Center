@@ -28,7 +28,8 @@ public class ItemDaoImpl implements ItemDao {
                 item.getUnitPrice(),
                 item.getQtyOnHand(),
                 item.getType().getType(),
-                item.getImage()
+                item.getImage(),
+                item.getIsDisabled()
         );
 
 
@@ -53,19 +54,7 @@ public class ItemDaoImpl implements ItemDao {
     public boolean save(Item entity) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        Item item =new Item(
-                entity.getCode(),
-                entity.getName(),
-                entity.getUnitPrice(),
-                entity.getQtyOnHand(),
-                entity.getImage()
-        );
-
-        item.setType(session.find(Type.class,entity.getType().getId()));
-
-
-
-        session.save(item);
+        session.save(entity);
         transaction.commit();
         session.close();
         return true;
@@ -94,7 +83,9 @@ public class ItemDaoImpl implements ItemDao {
     public boolean delete(String value) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(session.find(Item.class,value));
+        Item item = session.find(Item.class, value);
+        item.setIsDisabled(false);
+        session.save(item);
         transaction.commit();
         session.close();
         return true;

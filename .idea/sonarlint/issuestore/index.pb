@@ -357,3 +357,7 @@ G
 src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
 w
 G.idea/sonarlint/issuestore/8/f/8fac87e7dbcae07decc8ce1bdd12c5fc0460d82b,b\6\b6404cbfc53a3a9a018a53c39907fb849e7c39e1
+V
+&src/main/java/dao/util/StatusType.java,b\c\bcb9a9757712f83e88d31e0881824b3fd574d09d
+V
+&src/main/java/dao/util/StatusInfo.java,1\7\17533bfd58dfc8218e9cb39c71d89802a62ab7fe

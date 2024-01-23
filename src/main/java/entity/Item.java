@@ -22,6 +22,7 @@ public class Item {
     private double unitPrice;
     private int qtyOnHand;
     private String image;
+    private Boolean isDisabled;
 
     @ManyToOne
     @JoinColumn(name = "type")
@@ -29,11 +30,12 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<OrderDetail> orderDetailsList = new ArrayList<>();
 
-    public Item(String code, String name, double unitPrice, int qtyOnHand, String image) {
+    public Item(String code, String name, double unitPrice, int qtyOnHand, String image, Boolean isDisabled) {
         this.code = code;
         this.name = name;
         this.unitPrice = unitPrice;
         this.qtyOnHand = qtyOnHand;
         this.image = image;
+        this.isDisabled = isDisabled;
     }
 }

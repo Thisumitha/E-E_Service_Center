@@ -2,7 +2,6 @@ package dto;
 
 import lombok.*;
 
-import java.awt.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +15,6 @@ public class ItemDto {
     private int qty;
     private String type;
     private String image;
-
+    private Boolean isDisabled;
 
 }

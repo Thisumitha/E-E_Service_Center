@@ -53,7 +53,8 @@ public class ItemBoImpl implements ItemBo {
                 dto.getName(),
                 dto.getUnitPrice(),
                 dto.getQty(),
-                dto.getImage()
+                dto.getImage(),
+               dto.getIsDisabled()
         );
         item.setType(type);
 
@@ -82,7 +83,8 @@ public class ItemBoImpl implements ItemBo {
                 dto.getName(),
                 dto.getUnitPrice(),
                 dto.getQty(),
-                dto.getImage()
+                dto.getImage(),
+                dto.getIsDisabled()
 
         );
         item.setType(type);
@@ -105,7 +107,8 @@ public class ItemBoImpl implements ItemBo {
                     item.getUnitPrice(),
                     item.getQtyOnHand(),
                     item.getType().getType(),
-                    item.getImage()
+                    item.getImage(),
+                    item.getIsDisabled()
             ));
         }
         return list;
@@ -141,7 +144,8 @@ public class ItemBoImpl implements ItemBo {
                             dto.getUnitPrice(),
                             i,
                             dto.getType(),
-                            dto.getImage()
+                            dto.getImage(),
+                            dto.getIsDisabled()
                     ));
                 }
             }

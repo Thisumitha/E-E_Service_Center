@@ -4,6 +4,8 @@ import bo.BoFactory;
 import bo.custom.*;
 import com.jfoenix.controls.JFXButton;
 import dao.util.BoType;
+import dao.util.StatusInfo;
+import dao.util.StatusType;
 import dao.util.User;
 import dto.AccessDto;
 import dto.EmployerDto;
@@ -18,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DashboardFormController  {
@@ -50,7 +53,13 @@ public class DashboardFormController  {
 
     private void loadItems() throws SQLException, ClassNotFoundException {
         List<ItemDto> dtoList = itemBo.allItems();
-        lblItems.setText(String.valueOf(dtoList.size()));
+        List<ItemDto> newDtoList=new ArrayList<>();
+        for (ItemDto dto:dtoList){
+            if (dto.getIsDisabled()){
+                newDtoList.add(dto);
+            }
+        }
+        lblItems.setText(String.valueOf(newDtoList.size()));
     }
 
     private void loadWorkers() throws SQLException, ClassNotFoundException {
@@ -62,7 +71,7 @@ public class DashboardFormController  {
         List<RepairItemDto> repairItemDtos = repairItemBo.allItems();
         int count=0;
         for (RepairItemDto repairItemDto:repairItemDtos){
-            if (!(repairItemDto.getStatus().equals("Completed")||repairItemDto.getStatus().equals("Closed"))){
+            if (!(repairItemDto.getStatus()==StatusInfo.statusType(StatusType.COMPLETED)||repairItemDto.getStatus()==StatusInfo.statusType(StatusType.CLOSED))){
                 count++;
             }
         }

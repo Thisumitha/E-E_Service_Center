@@ -99,7 +99,7 @@ public class StoreFormController  {
         colPus.setCellValueFactory(new TreeItemPropertyValueFactory<CatologTm,JFXButton>("btnPlus"));
         colPrice.setCellValueFactory(new TreeItemPropertyValueFactory<CatologTm,Double>("price"));
         try {
-            itemDtos = itemBo.allItems();
+            itemDtos=loadAvalableItems();
             typeDtos.addAll(typeBo.allItems());
 
             loadTypes();
@@ -116,6 +116,19 @@ public class StoreFormController  {
 
 
     }
+
+    private List<ItemDto> loadAvalableItems() throws SQLException, ClassNotFoundException {
+        List<ItemDto> dtoList = itemBo.allItems();
+        List<ItemDto> newDtoList=new ArrayList<>();
+        for (ItemDto dto:dtoList){
+            if (dto.getIsDisabled()){
+                newDtoList.add(dto);
+            }
+        }
+
+        return  newDtoList;
+    }
+
     public void loadToCart(){
     double tot=0;
         ObservableList<CatologTm> tmList = FXCollections.observableArrayList();
@@ -296,7 +309,7 @@ public class StoreFormController  {
     }
     public void selectedType(String checkBoxId) throws SQLException, ClassNotFoundException {
          selectList.clear();
-        List<ItemDto> dtoList = itemBo.allItems();
+        List<ItemDto> dtoList = loadAvalableItems();
         List<TypeDto> dtos = typeBo.allItems();
 
         for (ItemDto item:dtoList){
@@ -341,7 +354,7 @@ public class StoreFormController  {
 
     public void reloadButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
-        loadItems(itemBo.allItems());
+        loadItems(loadAvalableItems());
         selectList=new ArrayList<>();
 
 
