@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class EmailService {
     private static final String SENDER_EMAIL = "thisu2006@gmail.com";
-    private static final String SENDER_PASSWORD = "dhfv qtrp junh larp";
+    private static final String SENDER_PASSWORD = "mjii vdie hvlk xnyo";
 
     public void sendOtpEmail(String recipientEmail, String otp) {
         Properties properties = System.getProperties();
