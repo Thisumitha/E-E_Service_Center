@@ -12,8 +12,11 @@ import dao.util.BoType;
 import dto.ItemDto;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
+import dto.tm.ItemTm;
 import dto.tm.OrderDetailsTm;
 import dto.tm.OrderTm;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +33,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class OrderHistoryController {
 
@@ -99,10 +103,29 @@ public class OrderHistoryController {
 
         dtoList = orderBo.allOrders();
         itemDtos=itemBo.allItems();
-        loadOrderTable();
+        loadOrderTable(dtoList);
         tblOrder.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             setData(newValue);
         });
+
+        searchText.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String newValue) {
+                tblOrder.setPredicate(new Predicate<TreeItem<OrderTm>>() {
+                    @Override
+                    public boolean test(TreeItem<OrderTm> treeItem) {
+                        return treeItem.getValue().getId().contains(newValue) ||
+                                treeItem.getValue().getCashier().contains(newValue);
+                    }
+                });
+
+
+            }
+        });
+
+
+
+
     }
 
     private void setData(TreeItem<OrderTm> newValue) {
@@ -142,14 +165,14 @@ public class OrderHistoryController {
 
     }
 
-    private void loadOrderTable() {
+    private void loadOrderTable(List<OrderDto> list) {
         ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
 
 
-        for (OrderDto dto:dtoList){
+        for (OrderDto dto:list){
             double price=0;
-            for(OrderDetailsDto dtoList :dto.getList()){
-                price+= dtoList.getPrice()* dtoList.getQty();
+            for(OrderDetailsDto detailsDto :dto.getList()){
+                price+= detailsDto.getPrice()* detailsDto.getQty();
             }
             JFXButton btn = new JFXButton("Delete");
 

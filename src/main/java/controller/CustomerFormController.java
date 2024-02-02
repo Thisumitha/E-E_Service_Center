@@ -33,7 +33,10 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.internal.SessionImpl;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -153,12 +156,28 @@ public class CustomerFormController {
 
     public void printReport(ActionEvent actionEvent) {
         try {
-            JasperDesign design = JRXmlLoader.load("src/main/resources/Reports/customerReport.jrxml");
+            // Use the ClassLoader to load the JRXML file
+            InputStream reportStream = getClass().getClassLoader().getResourceAsStream("Reports/customerReport.jrxml");
+
+            if (reportStream == null) {
+                throw new RuntimeException("Report template not found in the classpath.");
+            }
+
+            JasperDesign design = JRXmlLoader.load(reportStream);
             JasperReport jasperReport = JasperCompileManager.compileReport(design);
+
+            // Assuming HibernateUtil.getSession() returns a Hibernate Session
             Connection connection = ((SessionImpl) HibernateUtil.getSession()).connection();
+
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, connection);
-            JasperViewer.viewReport(jasperPrint,false);
-        } catch (JRException e) {
+
+            // Export the report to a PDF file
+            File pdfFile = File.createTempFile("customerReport", ".pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, pdfFile.getAbsolutePath());
+
+            // Open the generated PDF with the default PDF viewer
+            Desktop.getDesktop().open(pdfFile);
+        } catch (JRException | IOException e) {
             throw new RuntimeException(e);
         }
     }

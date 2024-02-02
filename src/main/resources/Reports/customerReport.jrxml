@@ -86,7 +86,7 @@
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="97" y="5" width="458" height="20" backcolor="#666666" uuid="eb0fefed-b830-492b-a0c9-ec23411537a7"/>
+				<reportElement mode="Opaque" x="10" y="5" width="545" height="20" backcolor="#666666" uuid="eb0fefed-b830-492b-a0c9-ec23411537a7"/>
 				<staticText>
 					<reportElement style="Column header" x="0" y="0" width="114" height="15" uuid="78b0db85-254c-4d53-b24c-c9c03c90dfc5">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="492c135b-0e3e-4c75-b08f-0f9343311d28"/>
@@ -94,19 +94,19 @@
 					<text><![CDATA[number]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="114" y="0" width="114" height="15" uuid="d3731a75-85cc-4993-bbbe-2fb221b09f01">
+					<reportElement style="Column header" x="114" y="0" width="156" height="15" uuid="d3731a75-85cc-4993-bbbe-2fb221b09f01">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6cb368a-1d74-441c-865b-582c821267cc"/>
 					</reportElement>
 					<text><![CDATA[email]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="228" y="0" width="114" height="15" uuid="cb7d833d-4a32-4ffd-a77c-647bb7022593">
+					<reportElement style="Column header" x="280" y="0" width="114" height="15" uuid="cb7d833d-4a32-4ffd-a77c-647bb7022593">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="517d411d-4e95-4eed-9e75-7924042bde2e"/>
 					</reportElement>
 					<text><![CDATA[name]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="342" y="0" width="114" height="15" uuid="97383fc3-3a78-4614-9c73-9241f4de35d7">
+					<reportElement style="Column header" x="420" y="3" width="114" height="15" uuid="97383fc3-3a78-4614-9c73-9241f4de35d7">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1044659-c3dc-4a8c-92d1-706da9f1032a"/>
 					</reportElement>
 					<text><![CDATA[contact number]]></text>
@@ -119,25 +119,25 @@
 			<frame>
 				<reportElement x="97" y="1" width="458" height="15" uuid="5d75be3e-ea39-4b96-baf8-b49497315044"/>
 				<textField>
-					<reportElement style="Detail" x="0" y="0" width="114" height="15" uuid="ead6adec-0a4c-4f82-92d0-f308fcf30955">
+					<reportElement style="Detail" x="-75" y="0" width="114" height="15" uuid="ead6adec-0a4c-4f82-92d0-f308fcf30955">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="492c135b-0e3e-4c75-b08f-0f9343311d28"/>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="114" y="0" width="114" height="15" uuid="ced2832b-df9b-4d62-9906-2d40cf75a68a">
+					<reportElement style="Detail" x="0" y="0" width="170" height="15" uuid="ced2832b-df9b-4d62-9906-2d40cf75a68a">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6cb368a-1d74-441c-865b-582c821267cc"/>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="228" y="0" width="114" height="15" uuid="acb9b59d-d224-4f44-bd4d-c8ddfdbcef50">
+					<reportElement style="Detail" x="200" y="-1" width="114" height="15" uuid="acb9b59d-d224-4f44-bd4d-c8ddfdbcef50">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="517d411d-4e95-4eed-9e75-7924042bde2e"/>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="342" y="0" width="114" height="15" uuid="37eb967a-ef38-4448-b62e-99ec716b5ac1">
+					<reportElement style="Detail" x="335" y="-1" width="114" height="15" uuid="37eb967a-ef38-4448-b62e-99ec716b5ac1">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1044659-c3dc-4a8c-92d1-706da9f1032a"/>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>

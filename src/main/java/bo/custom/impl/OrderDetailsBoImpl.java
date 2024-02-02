@@ -13,7 +13,10 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.awt.*;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,17 +50,43 @@ public class OrderDetailsBoImpl implements OrderDetailsBo {
     public void printbill(String id, String email) throws JRException {
         try {
             JasperDesign design = JRXmlLoader.load("src/main/resources/Reports/Invoice.jrxml");
+
+            // Compile the report
             JasperReport jasperReport = JasperCompileManager.compileReport(design);
-            JRBeanCollectionDataSource customerReport = getOrderDetailsReport(id);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,customerReport);
-            JasperViewer.viewReport(jasperPrint,false);
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
-            byte[] reportBytes = byteArrayOutputStream.toByteArray();
+
+            // Get data source for the report
+            JRBeanCollectionDataSource bill = getOrderDetailsReport(id);
+
+            // Fill the report
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, bill);
+
+            // Export the report to a PDF file
+            byte[] reportBytes = exportReportToPdfBytes(jasperPrint);
+
+            // Open the generated PDF
+            openPdfWithDefaultViewer(reportBytes);
+
             emailService.sendReciept(email,reportBytes);
-        } catch (JRException | SQLException | ClassNotFoundException e) {
+        } catch (JRException | SQLException | ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    private byte[] exportReportToPdfBytes(JasperPrint jasperPrint) throws JRException {
+        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
+            JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
+            return byteArrayOutputStream.toByteArray();
+        } catch (IOException e) {
+            throw new JRException("Error exporting report to PDF", e);
+        }
+    }
+
+    private void openPdfWithDefaultViewer(byte[] pdfBytes) throws IOException {
+        File pdfFile = File.createTempFile("invoice", ".pdf");
+        try (java.io.FileOutputStream fos = new java.io.FileOutputStream(pdfFile)) {
+            fos.write(pdfBytes);
+        }
+
+        Desktop.getDesktop().open(pdfFile);
     }
 
 }
