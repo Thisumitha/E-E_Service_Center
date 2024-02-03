@@ -22,7 +22,7 @@ public class RepairItem {
     private String orderDate;
     private Integer status;
     private String cashier;
-    private String price;
+    private double price;
     private String note;
 
     @ManyToOne
@@ -33,7 +33,7 @@ public class RepairItem {
     private List<RepairaPartsDetails> repairParts = new ArrayList<>();
 
 
-    public RepairItem(String id, String name, String endDate, String orderDate, Integer status, String cashier, String price, String note) {
+    public RepairItem(String id, String name, String endDate, String orderDate, Integer status, String cashier, double price, String note) {
         this.id = id;
         this.name = name;
         this.endDate = endDate;

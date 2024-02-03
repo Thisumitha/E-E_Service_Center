@@ -55,7 +55,7 @@ public class RepairItemDaoImpl implements RepairItemDao {
         item.setStatus(dto.getStatus());
         item.setOrderDate(dto.getOrderDate());
         item.setCashier(dto.getCashier());
-        item.setPrice(dto.getPrice());
+        item.setPrice(item.getPrice()+dto.getPrice());
 
         session.save(item);
         transaction.commit();

@@ -42,6 +42,33 @@ public class EmailService {
             mex.printStackTrace();
         }
     }
+    public void sendCompleteMsg(String recipientEmail, String msg) {
+        Properties properties = System.getProperties();
+        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
+        properties.setProperty("mail.smtp.port", "587");
+        properties.setProperty("mail.smtp.auth", "true");
+        properties.setProperty("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(SENDER_EMAIL, SENDER_PASSWORD);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(SENDER_EMAIL));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
+            message.setSubject("Your Order Complete");
+            message.setText("Your Item is complete  \n  Order number : "+msg +"\n thanks ");
+
+            Transport.send(message);
+            System.out.println(" Email sent successfully!");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+    }
     public void setAccountPassword(String recipientEmail, String password) {
         Properties properties = System.getProperties();
         properties.setProperty("mail.smtp.host", "smtp.gmail.com");

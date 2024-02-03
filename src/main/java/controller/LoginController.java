@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class LoginController {
     public BorderPane pane;
@@ -67,6 +68,7 @@ public class LoginController {
         }
 
     }
+
 
     private void success() {
         Stage stage = (Stage) pane.getScene().getWindow();

@@ -191,6 +191,7 @@ public class AdminFormController {
     private void deleteItem(String code)  {
         try {
             employerBo.deleteItem(code);
+            loadEmTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

@@ -18,7 +18,7 @@ public class RepairItemDto {
     private String orderDate;
     private int status;
     private String cashier;
-    private String price;
+    private double price;
     private String note;
     private Customer customer;
     private List<RepairaPartsDetails> repairItems;

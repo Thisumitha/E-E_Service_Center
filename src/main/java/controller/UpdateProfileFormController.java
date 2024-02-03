@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class UpdateProfileFormController {
     public BorderPane pane;
@@ -55,24 +56,62 @@ public class UpdateProfileFormController {
 
             EmployerDto employerDto = user.getUser();
             if (!(txtNewPassword.getText().isEmpty())){
-                boolean updated = employerBo.updateEmployerPw(new EmployerDto(
-                        employerDto.getCode(),
-                       null,
-                        null,
-                       null,
-                        null,
-                        employerBo.hashPassword(txtNewPassword.getText())
-                ));
-                if (updated) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("password");
-                    alert.setHeaderText("updated");
-                    alert.setContentText("password update successfully");
+                if (!checkPassword(txtNewPassword.getText())){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Password not Strong ");
+                    alert.setHeaderText("change password");
+                    alert.setContentText("include 8 characters or more, which includes numbers, letters, and symbols");
+                    txtNewPassword.clear();
                     alert.show();
+                }else {
+                    boolean updated = employerBo.updateEmployerPw(new EmployerDto(
+                            employerDto.getCode(),
+                            null,
+                            null,
+                            null,
+                            null,
+                            employerBo.hashPassword(txtNewPassword.getText())
+                    ));
+                    if (updated) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("password");
+                        alert.setHeaderText("updated");
+                        alert.setContentText("password update successfully");
+                        alert.show();
+                    }
                 }
             }
 
 
+    }
+    private  boolean checkPassword(String password) {
+        // Minimum length of 8 characters
+        if (password.length() < 8) {
+            return false;
+        }
+
+        // At least one digit
+        if (!Pattern.compile("\\d").matcher(password).find()) {
+            return false;
+        }
+
+        // At least one uppercase letter
+        if (!Pattern.compile("[A-Z]").matcher(password).find()) {
+            return false;
+        }
+
+        // At least one lowercase letter
+        if (!Pattern.compile("[a-z]").matcher(password).find()) {
+            return false;
+        }
+
+        // At least one symbol
+        if (!Pattern.compile("[!@#$%^&*()-=_+{};':\",.<>?/]").matcher(password).find()) {
+            return false;
+        }
+
+        // If all criteria are met, return true
+        return true;
     }
 
 

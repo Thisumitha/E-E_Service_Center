@@ -6,10 +6,7 @@ import bo.custom.RepairItemBo;
 import bo.custom.RepairPartsBo;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import dao.util.BoType;
-import dao.util.StatusInfo;
-import dao.util.StatusType;
-import dao.util.User;
+import dao.util.*;
 import dto.CustomerDto;
 import dto.RepairItemDto;
 import dto.RepairPartDto;
@@ -21,6 +18,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -40,6 +38,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -81,16 +80,26 @@ public class RepairManagementController implements Initializable {
     private String dateSelect=null;
     private String elcPartCode=null;
     User user=new User();
+    double tot=0;
+
+    EmailService emailService=new EmailService();
 
     private List<RepairItemDto> repairItemDto=new ArrayList<>();
 
     public void btnUpdate(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         tblRepair.refresh();
+        boolean sendmail=false;
+
 
         if (!(txtName.getText().isEmpty()||txtMsg.getText().isEmpty()||txtNumber.getText().isEmpty()||txtEmail.getText().isEmpty()||cusName.getText().isEmpty())){
+            double cost=0;
+            if (updateStatus(status.getValue().toString()) == StatusInfo.statusType(StatusType.COMPLETED)) {
+                 cost = openInputDialog();
+                 sendmail=true;
+            }
 
 
-            String date = (datePicker.getValue() == null) ? "Not Given" : datePicker.getValue().toString();
+            String date = (datePicker.getValue() == null) ? "Not given" : datePicker.getValue().toString();
             boolean updated = repairItemBo.updateItem(new RepairItemDto(
                     codeSelect,
                     txtName.getText(),
@@ -98,14 +107,19 @@ public class RepairManagementController implements Initializable {
                     dateSelect,
                     updateStatus(status.getValue().toString()),
                     user.getName(),
-                    "",
+                    cost,
                     txtMsg.getText(),
                     null,
                     null
             ));
             if (updated) {
+                if (sendmail){
+                    System.out.println(txtEmail.getText());
+                    emailService.sendCompleteMsg(txtEmail.getText(),codeSelect);
+                }
 
                 loadTable();
+
             }
         }
 
@@ -151,7 +165,7 @@ public class RepairManagementController implements Initializable {
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     StatusInfo.statusType(StatusType.PENDING),
                     user.getName(),
-                    "",
+                    0,
                     txtMsg.getText(),
                     customer,
                     null
@@ -163,6 +177,7 @@ public class RepairManagementController implements Initializable {
     }
 
     public void backButton(ActionEvent actionEvent) {
+
         Stage stage = (Stage) pane.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
@@ -185,7 +200,7 @@ public class RepairManagementController implements Initializable {
                     codeSelect
             ));
             if (saveItem){
-                repaiPartsTable();
+                repaipartstable();
             }
         }
 
@@ -218,7 +233,7 @@ public class RepairManagementController implements Initializable {
                 if (!(newValue == null)) {
                     elcPartCode=newValue.getValue().getItemCode();
                     setDetails(newValue.getValue());
-                    repaiPartsTable();
+                    repaipartstable();
                     unload();
                 }
 
@@ -250,7 +265,39 @@ public class RepairManagementController implements Initializable {
                 });
             }
         });
+
+
+
+
+
+
+
     }
+
+        private double openInputDialog() {
+            TextInputDialog inputDialog = new TextInputDialog();
+            inputDialog.setTitle("Order finished");
+            inputDialog.setHeaderText("Enter fee to service");
+            inputDialog.setContentText("Fee RS:");
+
+            // Show the dialog and wait for the user's input
+            Optional<String> result = inputDialog.showAndWait();
+
+            // Process the result
+            if (result.isPresent()) {
+                String cost = result.get();
+                try {
+                    return Double.parseDouble(cost);
+                } catch (NumberFormatException e) {
+                    // Handle the case where the input is not a valid double
+                    System.err.println("Invalid input for fee: " + cost);
+                }
+            }
+
+            // Return a default value or handle the case where the input is not present or not valid
+            return 0.0;
+        }
+
 
     private void clear() {
         txtName.clear();
@@ -258,15 +305,18 @@ public class RepairManagementController implements Initializable {
         txtNumber.clear();
         txtEmail.clear();
         txtMsg.clear();
+        status.setValue(null);
 
         datePicker.setValue(null);
     }
+
 
     private void setDetails(RepairItemTm value) throws SQLException, ClassNotFoundException {
         String itemCode = value.getItemCode();
         List<RepairItemDto> repairItemDtos = repairItemBo.allItems();
         for (RepairItemDto dto:repairItemDtos ){
             if (itemCode.equals(dto.getId())){
+                tot= dto.getPrice();
                 codeSelect = dto.getId();
                 dateSelect=dto.getOrderDate();
                 cusName.setText(dto.getCustomer().getName());
@@ -276,7 +326,11 @@ public class RepairManagementController implements Initializable {
                 txtMsg.setText(dto.getNote());
                 cusName.setEditable(false);
                 txtEmail.setEditable(false);
+
+
+
                 txtNumber.setEditable(false);
+
                 if (!(dto.getEndDate().equals("Not given"))){
                     LocalDate date = Date.valueOf(dto.getEndDate()).toLocalDate();
                     datePicker.setValue(date);
@@ -285,17 +339,18 @@ public class RepairManagementController implements Initializable {
                 }
                 if (dto.getStatus() == StatusInfo.statusType(StatusType.PENDING)){
                     ObservableList statusList = FXCollections.observableArrayList();
-                    statusList.addAll("Processing","Completed","Closed");
+                    statusList.addAll("Pending","Processing","Completed","Closed");
                     status.setItems(statusList);
                 } else if (dto.getStatus()== StatusInfo.statusType(StatusType.PROCESSING)) {
                     ObservableList statusList = FXCollections.observableArrayList();
-                    statusList.addAll("Completed","Closed");
+                    statusList.addAll("Processing","Completed","Closed");
                     status.setItems(statusList);
                 }else if (dto.getStatus()== StatusInfo.statusType(StatusType.COMPLETED)) {
                     ObservableList statusList = FXCollections.observableArrayList();
-                    statusList.addAll( "Closed");
+                    statusList.addAll( "Completed","Closed");
                     status.setItems(statusList);
                 }
+                status.getSelectionModel().select(0);
                 break;
 
             }
@@ -313,7 +368,8 @@ public class RepairManagementController implements Initializable {
 
     }
 
-    private void repaiPartsTable() throws SQLException, ClassNotFoundException {
+
+    private void repaipartstable() throws SQLException, ClassNotFoundException {
         List<RepairPartDto>tableLoadList=new ArrayList<>();
 
         for (RepairPartDto repairPartDto :repairPartsBo.allItems()) {
@@ -322,7 +378,7 @@ public class RepairManagementController implements Initializable {
             }
         }
         ObservableList<RepairPartsTm> tmList = FXCollections.observableArrayList();
-        double tot=0;
+
         for(RepairPartDto dto:tableLoadList){
             RepairPartsTm tm = new RepairPartsTm(
                     dto.getName(),
@@ -338,7 +394,7 @@ public class RepairManagementController implements Initializable {
         tblElecParts.setRoot(treeItem);
         tblElecParts.setShowRoot(false);
 
-        price.setText("Total : RS :" +String.format("%.2f",tot));
+        price.setText("RS : " +String.format("%.2f",tot));
     }
 
     private void loadTable() throws SQLException, ClassNotFoundException {
@@ -402,6 +458,7 @@ public class RepairManagementController implements Initializable {
         cusName.setEditable(true);
         txtEmail.setEditable(true);
         txtNumber.setEditable(true);
+        tot=0;
 
     }
 
