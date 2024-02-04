@@ -103,7 +103,16 @@ public class LoginController {
                 "admin"
         );
         user.setData(admindto);
-        success();
+        Stage stage = (Stage) pane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminForm.fxml"))));
+            stage.setResizable(true);
+            stage.centerOnScreen();
+            stage.setTitle("Admin Management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showAlert(String title, String content) {

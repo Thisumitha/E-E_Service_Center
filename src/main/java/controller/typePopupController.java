@@ -90,6 +90,13 @@ public class typePopupController {
     public void initialize() throws ClassNotFoundException, SQLException {
         cmbload();
        loadupdate();
+        categories = itemBo.getCategories();
+        ObservableList categorylist = FXCollections.observableArrayList();
+
+        for(String category:categories){
+            categorylist.add(category);
+        }category.setItems(categorylist);
+        categoryUpdate.setItems(categorylist);
 
 
     }
@@ -118,19 +125,16 @@ public class typePopupController {
 
     private void cmbload() throws SQLException, ClassNotFoundException {
 
-        categories = itemBo.getCategories();
+
         types=typeBo.allItems();
         ObservableList categorylist = FXCollections.observableArrayList();
         ObservableList typelist = FXCollections.observableArrayList();
-        for(String category:categories){
-            categorylist.add(category);
-        }
+
         for(TypeDto typeDto:types){
             typelist .add(typeDto.getType());
         }
 
-        category.setItems(categorylist);
-        categoryUpdate.setItems(categorylist);
+
         selectType.setItems(typelist);
         selectType.setVisibleRowCount(3);
 
