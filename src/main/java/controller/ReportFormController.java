@@ -5,6 +5,7 @@ import bo.custom.CustomerBo;
 import bo.custom.ItemBo;
 import bo.custom.OrderBo;
 import dao.util.BoType;
+import dao.util.HibernateUtil;
 import dto.CustomerDto;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
@@ -18,9 +19,17 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import org.hibernate.internal.SessionImpl;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -162,5 +171,33 @@ public class ReportFormController implements Initializable {
 
         loadIncomeChart(monthlyOrders);
         customerChart(monthlyOrders);
+    }
+
+    public void printOnAction(ActionEvent actionEvent) {
+        try {
+            // Use the ClassLoader to load the JRXML file
+            InputStream reportStream = getClass().getClassLoader().getResourceAsStream("Reports/income.jrxml");
+
+            if (reportStream == null) {
+                throw new RuntimeException("Report template not found in the classpath.");
+            }
+
+            JasperDesign design = JRXmlLoader.load(reportStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+
+            // Assuming HibernateUtil.getSession() returns a Hibernate Session
+            Connection connection = ((SessionImpl) HibernateUtil.getSession()).connection();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, connection);
+
+            // Export the report to a PDF file
+            File pdfFile = File.createTempFile("customerReport", ".pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, pdfFile.getAbsolutePath());
+
+            // Open the generated PDF with the default PDF viewer
+            Desktop.getDesktop().open(pdfFile);
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

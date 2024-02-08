@@ -308,6 +308,15 @@
                                     <JFXButton onAction="#DailyReport" text="Daily" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <JFXButton onAction="#annualReport" text="Annual" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <JFXButton onAction="#monthlyReport" text="Monthly" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <JFXButton onAction="#printOnAction" prefHeight="26.0" prefWidth="129.0" text="Print" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                       <graphic>
+                                          <ImageView fitHeight="18.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Assets/print-50.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
                                  </children>
                               </GridPane>
                               <BarChart fx:id="customerChart" title="CustomerChart" GridPane.columnIndex="1" GridPane.rowIndex="2">

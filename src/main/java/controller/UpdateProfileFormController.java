@@ -85,32 +85,32 @@ public class UpdateProfileFormController {
 
     }
     private  boolean checkPassword(String password) {
-        // Minimum length of 8 characters
+
         if (password.length() < 8) {
             return false;
         }
 
-        // At least one digit
+
         if (!Pattern.compile("\\d").matcher(password).find()) {
             return false;
         }
 
-        // At least one uppercase letter
+
         if (!Pattern.compile("[A-Z]").matcher(password).find()) {
             return false;
         }
 
-        // At least one lowercase letter
+
         if (!Pattern.compile("[a-z]").matcher(password).find()) {
             return false;
         }
 
-        // At least one symbol
+
         if (!Pattern.compile("[!@#$%^&*()-=_+{};':\",.<>?/]").matcher(password).find()) {
             return false;
         }
 
-        // If all criteria are met, return true
+
         return true;
     }
 
